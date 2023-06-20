@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Seller\SellerController;
-use App\Http\Controllers\Produser\ProduserController;
+use App\Http\Controllers\Producer\ProducerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +35,9 @@ require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show']);
-    Route::get('/produser/dashboard', [ProduserController::class, 'show']);
+    Route::get('/producer/dashboard', [ProducerController::class, 'show']);
     Route::get('/seller/dashboard', [SellerController::class, 'show']);
 });
 
-Route::get('/produser/barang', [ProduserController::class, 'showBarang']);
-Route::get('/produser/keuangan', [ProduserController::class, 'showKeuangan']);
+Route::get('/producer/barang', [ProducerController::class, 'showBarang']);
+Route::get('/producer/keuangan', [ProducerController::class, 'showKeuangan']);
