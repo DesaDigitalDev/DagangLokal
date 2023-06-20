@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Seller\SellerController;
 use App\Http\Controllers\Produser\ProduserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Seller\SellerController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,7 @@ use App\Http\Controllers\Produser\ProduserController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,10 +31,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show']);
     Route::get('/produser/dashboard', [ProduserController::class, 'show']);
     Route::get('/seller/dashboard', [SellerController::class, 'show']);
 });
+
+Route::get('/produser/tambahbarang', [ProduserController::class, 'add'])->name('tambahbarang');
