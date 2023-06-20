@@ -12,4 +12,14 @@ class ProduserController extends Controller
     {
         return view('produser.dashboard');
     }
+
+    public function showBarang(): View
+    {
+        return view('produser.list_barang');
+    }
+
+    public function showKeuangan(): View
+    {
+        return view('produser.keuangan');
+    }
 }

@@ -38,3 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/produser/dashboard', [ProduserController::class, 'show']);
     Route::get('/seller/dashboard', [SellerController::class, 'show']);
 });
+
+Route::get('/produser/barang', [ProduserController::class, 'showBarang']);
+Route::get('/produser/keuangan', [ProduserController::class, 'showKeuangan']);
