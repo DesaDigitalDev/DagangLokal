@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Produser;
+namespace App\Http\Controllers\Producer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class ProduserController extends Controller
+class ProducerController extends Controller
 {
     public function show(): View
     {
-        return view('produser.dashboard');
+        return view('producer.dashboard');
     }
 }
