@@ -47,3 +47,13 @@ Route::resource("/admin/barang", BarangController::class);
 // Route::get('/producer/barang', [ListBarangController::class, 'index']);
 // Route::delete('/producer/delete/{id}', [ListBarangController::class, 'destroy']);
 Route::get('/producer/keuangan', [ProducerController::class, 'showKeuangan']);
+
+Route::get('/producer/tambah-barang', [ProducerController::class, 'insertBarang'])->name('insertBarang');
+Route::post('/producer/simpan-barang', [ProducerController::class, 'store'])->name('simpan-barang');
+Route::get('/producer/edit-barang/{id}', [ProducerController::class, 'editBarang'])->name('editBarang');
+Route::put('/producer/update-barang/{id}', [ProducerController::class, 'updateBarang'])->name('updateBarang');
+
+Route::get('/producer/transaksi', [ProducerController::class, 'transaksi'])->name('transaksi');
+Route::post('/producer/simpan-transaksi', [ProducerController::class, 'storetransaksi'])->name('simpan-transaksi');
+Route::get('/producer/edit-transaksi/{id}', [ProducerController::class, 'editTransaksi'])->name('editTransaksi');
+Route::put('/producer/update-transaksi/{id}', [ProducerController::class, 'updateTransaksi'])->name('updateTransaksi');

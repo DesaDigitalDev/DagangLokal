@@ -3,26 +3,27 @@
 namespace App\Http\Controllers\Producer;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
+use App\Models\ProductPicture;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class ListBarangController extends Controller
 {
-    public function index() : View
+    public function index(): View
     {
         $akun_id = Auth::id();
         $product = Product::join('categories', 'categories.id', 'category_id')
-                        ->get(['products.*', 'categories.name as category_name']);
+            ->get(['products.*', 'categories.name as category_name']);
 
-        return view('producer.list_barang')->with('product' , $product);
+        return view('producer.list_barang')->with('product', $product);
     }
 
     public function create()
     {
-       
     }
 
     /**
@@ -60,9 +61,13 @@ class ListBarangController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) : RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
+        $picture = DB::table('product_pictures')->where('product_id', $id)->get();
+        foreach ($picture as $item) {
+            ProductPicture::destroy($item->id);
+        }
         Product::destroy($id);
-        return redirect('producer')->with('status' , 'Data Berhasil Di hapus');
+        return redirect('producer/barang')->with('status', 'Data Berhasil Di hapus');
     }
 }
