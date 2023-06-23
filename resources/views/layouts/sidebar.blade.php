@@ -1,30 +1,17 @@
-<div class="ms-3">
-    <!-- Logo -->
-    <div class="shrink-0 flex items-center py-2">
-        <a href="{{ route('dashboard') }}">
-            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-        </a>
-    </div>
+{{-- logo --}}
+<div class="sidebar-brand">
+    <h2>Desa Digital</h2>
 </div>
 
-<ul class="navbar-nav sidebar accordion ms-4 mt-3" id="accordionSidebar">
-        <li class="nav-item {{ Request::is('dashboard') ? 'active': '' }}">
-            <a class="nav-link" href="dashboard">
-                <i class="fas fa-fw fa-home"></i>
-                <span>Beranda</span></a>
-        </li>
-
-        <li class="nav-item {{ Request::is('barang') ? 'active': '' }}">
-            <a class="nav-link" href="barang" >
-                <i class="fas fa-fw fa-boxes"></i>
-                <span>Barang</span>
-            </a>
-        </li>
-
-        <li class="nav-item {{ Request::is('keuangan') ? 'active' : '' }}">
-            <a class="nav-link" href="keuangan" >
-                <i class="fas fa-fw fa-coins"></i>
-                <span>Keuangan</span>
-            </a>
-        </li>
+{{-- sidebar --}}
+<ul class="sidebar-nav">
+    <li class="active">
+        <a href="#"><i class="fa fa-home"></i>Home</a>
+    </li>
+    <li>
+        <a href="#"><i class="fa fa-plug"></i>Plugins</a>
+    </li>
+    <li>
+        <a href="#"><i class="fa fa-user"></i>Users</a>
+    </li>
 </ul>

@@ -38,7 +38,7 @@ require __DIR__ . '/auth.php';
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show']);
     Route::get('/producer/dashboard', [ProducerController::class, 'show']);
-    Route::get('/seller/dashboard', [SellerController::class, 'show']);
+    Route::get('/seller/dashboard', [SellerController::class, 'index']);
 });
 
 Route::resource("/producer/barang", ListBarangController::class);
@@ -47,3 +47,4 @@ Route::resource("/admin/barang", BarangController::class);
 // Route::get('/producer/barang', [ListBarangController::class, 'index']);
 // Route::delete('/producer/delete/{id}', [ListBarangController::class, 'destroy']);
 Route::get('/producer/keuangan', [ProducerController::class, 'showKeuangan']);
+Route::get('/seller/produk', [SellerController::class, 'show']);
