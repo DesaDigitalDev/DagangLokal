@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('unit_in_stock');
             $table->double('unit_weight', 8, 2);
             $table->string('bpom_no')->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

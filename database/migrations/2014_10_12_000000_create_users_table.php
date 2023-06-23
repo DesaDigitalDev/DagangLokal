@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id')->constrained();
             $table->string('name');
+            $table->foreignId('role_id')->constrained();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('mobile_number')->unique();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->date('date_of_birth');
             $table->text('address')->nullable();
-            $table->string('photos');
+            $table->string('photos')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
