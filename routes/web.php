@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BarangController;
+use App\Http\Controllers\Producer\ListBarangController;
 use App\Http\Controllers\Producer\ProducerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\SellerController;
@@ -39,5 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/seller/dashboard', [SellerController::class, 'show']);
 });
 
-Route::get('/producer/barang', [ProducerController::class, 'showBarang']);
+Route::resource("/producer/barang", ListBarangController::class);
+Route::resource("/admin/barang", BarangController::class);
+
+// Route::get('/producer/barang', [ListBarangController::class, 'index']);
+// Route::delete('/producer/delete/{id}', [ListBarangController::class, 'destroy']);
 Route::get('/producer/keuangan', [ProducerController::class, 'showKeuangan']);

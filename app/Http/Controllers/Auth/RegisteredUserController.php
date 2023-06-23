@@ -37,14 +37,14 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'nik' => $request->nik,
+            'role_id' => $request->role_id,
             'name' => $request->name,
             'email' => $request->email,
+            'mobile_number' => $request->mobile_number,
             'password' => Hash::make($request->password),
-            'phone_number' => $request->phone_number,
+            'date_of_birth' => date('Y/m/d'),
             'address' => $request->address,
-            'profile_picture' => $request->profile_picture == "" ?:"",
-            'user_roles_id' => $request->user_roles_id,
+            'photos' => $request->photos == "" ?:"",
         ]);
 
         event(new Registered($user));
@@ -52,13 +52,13 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         $url="";
-        if ($request->user()->user_roles_id === 1) {
+        if ($request->user()->role_id === 1) {
             $url = "admin/dashboard";
         }
-        elseif ($request->user()->user_roles_id == 3) {
-            $url = "produser/dashboard";
+        elseif ($request->user()->role_id == 3) {
+            $url = "producer/dashboard";
         }
-        elseif ($request->user()->user_roles_id === 2) {
+        elseif ($request->user()->role_id === 2) {
             $url = "seller/dashboard";
         }
 
