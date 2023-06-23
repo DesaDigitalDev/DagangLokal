@@ -24,7 +24,6 @@ class ListBarangController extends Controller
 
     public function create()
     {
-
     }
 
     /**
