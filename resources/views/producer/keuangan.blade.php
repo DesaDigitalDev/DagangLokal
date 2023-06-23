@@ -16,7 +16,7 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
                             </div>
                             <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                <i class="fas fa-users fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
                             </div>
                             <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                <i class="fas fa-users fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -46,18 +46,18 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
                             </div>
                             <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                <i class="fas fa-users fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-            
+
         <div class="card shadow mb-4">
             <div class="card-body">
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
+                <x-primary-button class="ml-4" onclick="window.location='{{ route('transaksi') }}'">
+                    {{ __('Tambah Data') }}
                 </x-primary-button>
                 <!-- tabel -->
                 <div class="mt-3 table-responsive">
@@ -65,38 +65,36 @@
                         <thead>
                             <tr>
                                 <th style="min-width: 60px">No</th>
-                                <th style="min-width: 200px">NIK</th>
                                 <th style="min-width: 200px">No KK</th>
                                 <th style="min-width: 200px">Nama</th>
                                 <th style="min-width: 165px">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>12345</td>
-                                <td>124324</td>
-                                <td>test</td>
-                                <td>
-                                    <a href="#" class="btn btn-circle btn-sm btn-warning">
-                                        <i class="fa fa-edit"></i> Edit
-                                    </a>
-                                    <a href="#" onclick="return confirm('Hapus Data Penduduk ?')" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-trash"></i> Hapus
-                                    </a>
-                                </td>
-                            </tr>
-
-                            <tr class="text-center">
-                                <td colspan="5">Data Penduduk Tidak Ditemukan</td>
-                            </tr>
+                            @foreach ($dtTransactionHistory as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->amount }}</td>
+                                    <td>{{ $item->transaction_no }}</td>
+                                    <td>
+                                        <a href="{{ url('/producer/edit-transaksi/' . $item->id) }}"
+                                            class="btn btn-circle btn-sm btn-warning">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                        <a href="#" onclick="return confirm('Hapus Data Penduduk ?')"
+                                            class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i> Hapus
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
+                                    <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
                             <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -104,7 +102,7 @@
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
+                                    <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
                         </ul>

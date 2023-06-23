@@ -10,6 +10,7 @@ use App\Models\TransactionHistory;
 use App\Models\TransactionType;
 use App\Models\UserBalance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -42,7 +43,7 @@ class ProducerController extends Controller
     {
         $product = Product::insertGetId([
             'name' => $request->name,
-            'user_id' => $request->user,
+            'user_id' => Auth::id(),
             'is_in_warehouse' => $request->gudang,
             'unit_in_stock' => $request->stock,
             'category_id' => $request->category,
@@ -108,12 +109,11 @@ class ProducerController extends Controller
     public function transaksi(): View
     {
         $transactionType = TransactionType::all();
-        // $bankAcc = DB::table('bank_accounts')->where('user_id', Auth::id())->get();
         $bankAcc = DB::table('bank_accounts AS ba')
             ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
             ->select('b.name as bankName', 'ba.name as bankAccName', 'ba.account_no as ac', 'ba.id as id')
-            ->where('user_id', 1)->get();
-        $userBalance = DB::table('user_balances')->where('user_id', 1)->get();
+            ->where('user_id', Auth::id())->get();
+        $userBalance = DB::table('user_balances')->where('user_id', Auth::id())->get();
 
         return view('producer.transaksi')->with('transactionType', $transactionType)
             ->with('bankAcc', $bankAcc)
@@ -122,7 +122,7 @@ class ProducerController extends Controller
 
     public function storetransaksi(Request $request)
     {
-        $userBalance = DB::table('user_balances')->where('user_id', 1)->get();
+        $userBalance = DB::table('user_balances')->where('user_id', Auth::id())->get();
         if ($userBalance[0]->balance >= floatval($request->jumTransaksi)) {
             $thnBln = date('Ym');
             $cek = TransactionHistory::count();
@@ -138,7 +138,7 @@ class ProducerController extends Controller
                 'transaction_type_id' => $request->tipeTransaksi,
                 'bank_account_id' => $request->akunBank,
                 'user_balance_id' => $request->saldo,
-                'user_id' => $request->user,
+                'user_id' => Auth::id(),
                 'transaction_no' => $invoice,
                 'date_time' => date('Y-m-d'),
                 'amount' => $request->jumTransaksi,
@@ -163,8 +163,8 @@ class ProducerController extends Controller
         $bankAcc = DB::table('bank_accounts AS ba')
             ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
             ->select('b.name as bankName', 'ba.name as bankAccName', 'ba.account_no as ac', 'ba.id as id')
-            ->where('user_id', 1)->get();
-        $userBalance = DB::table('user_balances')->where('user_id', 1)->get();
+            ->where('user_id', Auth::id())->get();
+        $userBalance = DB::table('user_balances')->where('user_id', Auth::id())->get();
 
         return view('producer.edit-transaksi')->with('transactionType', $transactionType)
             ->with('transactionHistory', $transactionHistory)

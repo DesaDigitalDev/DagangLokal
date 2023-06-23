@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Bootsrap -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <script src="{{ asset('js/style.js') }}"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Tambah Data Barang Produsen</title>
-</head>
-
-<body>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Edit Transaksi') }}
+        </h2>
+    </x-slot>
     <h1 class="container">Update Transaksi</h1>
     <div class="container card shadow p-3 mb-5 bg-white rounded">
         <form class="row g-3 container" method="post"
@@ -71,10 +61,11 @@
                     class="form-control shadow bg-white rounded">
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary mb-3 shadow rounded">Simpan</button>
+                <x-primary-button type="submit" class="ml-4"
+                    onclick="window.location='{{ route('insertBarang') }}'">
+                    {{ __('Simpan Data') }}
+                </x-primary-button>
             </div>
         </form>
     </div>
-</body>
-
-</html>
+</x-app-layout>
