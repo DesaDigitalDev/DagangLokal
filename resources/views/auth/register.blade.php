@@ -8,10 +8,10 @@
 
         <!-- user_roles_id -->
         <div class="text-center">
-            <input type="radio" value="2" class="btn-check" name="user_roles_id" id="Seller" autocomplete="off">
+            <input type="radio" value="2" class="btn-check" name="role_id" id="Seller" autocomplete="off">
             <label class="btn btn-secondary" for="Seller">Seller</label>
 
-            <input type="radio" value="3" class="btn-check" name="user_roles_id" id="produser" autocomplete="off">
+            <input type="radio" value="3" class="btn-check" name="role_id" id="produser" autocomplete="off">
             <label class="btn btn-secondary" for="produser">Produser</label>
         </div>
         
@@ -55,10 +55,10 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- phone_number -->
+        <!-- mobile_number -->
         <div class="mt-4">
-            <x-text-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="old('phone_number')" required autofocus autocomplete="phone_number" placeholder="Phone Number"/>
-            <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
+            <x-text-input id="mobile_number" class="block mt-1 w-full" type="text" name="mobile_number" :value="old('mobile_number')" required autofocus autocomplete="mobile_number" placeholder="Phone Number"/>
+            <x-input-error :messages="$errors->get('mobile_number')" class="mt-2" />
         </div>
 
         <!-- address -->
@@ -67,11 +67,10 @@
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
-        <!-- user_roles_id -->
-        <!-- <div class="mt-4">
-            <x-text-input id="user_roles_id" class="block mt-1 w-full" type="text" name="user_roles_id" :value="old('user_roles_id')" required autofocus autocomplete="user_roles_id" placeholder="User Roles"/>
-            <x-input-error :messages="$errors->get('user_roles_id')" class="mt-2" />
-        </div> -->
+        <!-- photos -->
+        <div class="mt-4" hidden>
+            <x-text-input id="photos" class="block mt-1 w-full" type="text" name="photos" :value="old('photos')" autofocus autocomplete="photos" placeholder="User Roles"/>
+        </div>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">

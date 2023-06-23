@@ -88,5 +88,7 @@
             </div>
         </div>
     </div>
-
+    
+    <x-float-whatsapp>
+    </x-float-whatsapp>
 </x-app-layout>

@@ -1,13 +1,13 @@
-<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-            <div class="sidebar-brand-icon">
-                <x-application-logo/>
-            </div>
-            <div class="sidebar-brand-text mx-3">Dagang Lokal </div>
+<div class="ms-3">
+    <!-- Logo -->
+    <div class="shrink-0 flex items-center py-2">
+        <a href="{{ route('dashboard') }}">
+            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
         </a>
+    </div>
+</div>
 
-        <hr class="sidebar-divider my-0">
-
+<ul class="navbar-nav sidebar accordion ms-4 mt-3" id="accordionSidebar">
         <li class="nav-item {{ Request::is('dashboard') ? 'active': '' }}">
             <a class="nav-link" href="dashboard">
                 <i class="fas fa-fw fa-home"></i>
@@ -27,5 +27,4 @@
                 <span>Keuangan</span>
             </a>
         </li>
-
 </ul>
