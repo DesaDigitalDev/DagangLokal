@@ -37,7 +37,7 @@ require __DIR__ . '/auth.php';
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show']);
-    Route::get('/producer/dashboard', [ProducerController::class, 'show']);
+    Route::get('/producer/dashboard', [ProducerController::class, 'show'])->name('Producer');
     Route::get('/seller/dashboard', [SellerController::class, 'show']);
 });
 
@@ -46,7 +46,7 @@ Route::resource("/admin/barang", BarangController::class);
 
 // Route::get('/producer/barang', [ListBarangController::class, 'index']);
 // Route::delete('/producer/delete/{id}', [ListBarangController::class, 'destroy']);
-Route::get('/producer/keuangan', [ProducerController::class, 'showKeuangan']);
+Route::get('/producer/keuangan', [ProducerController::class, 'showKeuangan'])->name('showKeuangan');
 
 Route::get('/producer/tambah-barang', [ProducerController::class, 'insertBarang'])->name('insertBarang');
 Route::post('/producer/simpan-barang', [ProducerController::class, 'store'])->name('simpan-barang');
