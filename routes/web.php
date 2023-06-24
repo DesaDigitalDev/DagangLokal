@@ -49,11 +49,11 @@ Route::middleware(['auth', 'user-access:seller'])->group(function () {
 
 // route producer
 Route::middleware(['auth', 'user-access:producer'])->group(function () {
-    Route::get('/producer/dashboard', [ProducerController::class, 'show']);
+    Route::get('/producer/dashboard', [ProducerController::class, 'show'])->name('dashboard');
     // Route::resource("/producer/barang", ListBarangController::class);
-    Route::get('/producer/keuangan', [ProducerController::class, 'showKeuangan']);
+    Route::get('/producer/keuangan', [ProducerController::class, 'showKeuangan'])->name('showKeuangan');
 
-    Route::get('/producer/barang', [ProducerController::class, 'show']);
+    Route::get('/producer/barang', [ProducerController::class, 'showBarang']);
     Route::get('/producer/tambah-barang', [ProducerController::class, 'insertBarang'])->name('insertBarang');
     Route::post('/producer/simpan-barang', [ProducerController::class, 'store'])->name('simpan-barang');
     Route::get('/producer/edit-barang/{id}', [ProducerController::class, 'editBarang'])->name('editBarang');

@@ -36,7 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($product as $item)
+                        @foreach ($dtProduct as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item['name'] }}</td>
@@ -64,7 +64,7 @@
                             </tr>
                         @endforeach
 
-                        @if ($product == null)
+                        @if ($dtProduct == null)
                             <tr class="text-center">
                                 <td colspan="10">Data Penduduk Tidak Ditemukan</td>
                             </tr>

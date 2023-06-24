@@ -5,13 +5,23 @@
 
 {{-- sidebar --}}
 <ul class="sidebar-nav">
-    <li class="active">
-        <a href="#"><i class="fa fa-home"></i>Home</a>
+    <li class="nav-item {{ request()->segment(2) == "dashboard" ? 'active' : '' }}">
+        <a href="{{ route('dashboard') }}">
+            <i class="fa fa-home"></i>
+            <span>Beranda</span></a>
     </li>
-    <li>
-        <a href="#"><i class="fa fa-plug"></i>Plugins</a>
+
+    <li class="nav-item {{ request()->segment(2) == "barang" ? 'active' : '' }}">
+        <a href="{{ url('/producer/barang') }}">
+            <i class="fa fa-boxes"></i>
+            <span>Barang</span>
+        </a>
     </li>
-    <li>
-        <a href="#"><i class="fa fa-user"></i>Users</a>
+
+    <li class="nav-item {{ request()->segment(2) == "keuangan" ? 'active' : '' }}">
+        <a href="{{ route('showKeuangan') }}">
+            <i class="fa fa-coins"></i>
+            <span>Keuangan</span>
+        </a>
     </li>
 </ul>
