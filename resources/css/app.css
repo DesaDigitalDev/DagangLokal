@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-float-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    height: 60;
+    width: 60px;
+    padding: 5px;
+    background-color: rgb(21, 179, 21);
+    color: white;
+    border-radius: 50%;
+    color: white !important;
+    border: white;
+    cursor: pointer;
+    
+}

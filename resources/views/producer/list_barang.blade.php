@@ -6,17 +6,16 @@
     </x-slot>
 
     @if ($message = Session::get('status'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{ $message }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ $message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
-    @endif 
-        
     <div class="card shadow mb-4">
         <div class="card-body">
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
+            <x-primary-button class="ml-4" onclick="window.location='{{ route('insertBarang') }}'">
+                {{ __('Tambah Data') }}
             </x-primary-button>
             <!-- tabel -->
             <div class="mt-3 table-responsive">
@@ -37,36 +36,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($product as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item['name'] }}</td>
-                            <td>{{ $item['category_name'] }}</td>
-                            <td>{{ $item['vendor'] }}</td>
-                            <td>{{ $item['unit_price'] }}</td>
-                            <td>{{ $item['unit_in_stock'] }}</td>
-                            <td>{{ $item['unit_weight'] }}</td>
-                            <td>{{ $item['bpom_no'] }}</td>
-                            <td>{{ $item['description'] }}</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-warning">
-                                    <i class="fa fa-edit"></i> Edit
-                                </a>
-                                {{-- <form action="{{ url('/producer' . '/' . $item->id) }}" method="POST">
-                                    @method('DELETE')
-                                    @csrf --}}
-                                    <button type="submit" onclick="return confirm('Hapus Data Barang ?')" class="btn btn-sm btn-danger bg-red">
-                                        <i class="fa fa-trash"></i>Hapus
-                                    </button>
-                                {{-- </form> --}}
-                            </td>
-                        </tr>
+                        @foreach ($product as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item['name'] }}</td>
+                                <td>{{ $item['category_name'] }}</td>
+                                <td>{{ $item['vendor'] }}</td>
+                                <td>{{ $item['unit_price'] }}</td>
+                                <td>{{ $item['unit_in_stock'] }}</td>
+                                <td>{{ $item['unit_weight'] }}</td>
+                                <td>{{ $item['bpom_no'] }}</td>
+                                <td>{{ $item['description'] }}</td>
+                                <td>
+                                    <a href="{{ url('/producer/edit-barang/' . $item->id) }}"
+                                        class="btn btn-sm btn-warning">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </a>
+                                    <form action="{{ url('/producer/delete-barang' . '/' . $item->id) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button onclick="return confirm('Hapus Data Barang ?')"
+                                            class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i>Hapus
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
                         @endforeach
 
-                        @if($product == null)
-                        <tr class="text-center">
-                            <td colspan="10">Data Penduduk Tidak Ditemukan</td>
-                        </tr>
+                        @if ($product == null)
+                            <tr class="text-center">
+                                <td colspan="10">Data Penduduk Tidak Ditemukan</td>
+                            </tr>
                         @endif
                     </tbody>
                 </table>
