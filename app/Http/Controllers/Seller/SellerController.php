@@ -8,8 +8,53 @@ use Illuminate\View\View;
 
 class SellerController extends Controller
 {
-    public function show(): View
+    public function index(): View
     {
         return view('seller.dashboard');
+    }
+
+    public function create()
+    {
+       
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show()
+    {
+        return view('seller.list_produk');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+
     }
 }

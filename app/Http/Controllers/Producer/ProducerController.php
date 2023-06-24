@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ProducerController extends Controller
 {
@@ -185,5 +186,15 @@ class ProducerController extends Controller
         $transactionHistory->amount = $request->input('jumTransaksi');
         $transactionHistory->update();
         return redirect('producer/keuangan');
+    }
+
+    public function deleteBarang(string $id): RedirectResponse
+    {
+        $picture = DB::table('product_pictures')->where('product_id', $id)->get();
+        foreach ($picture as $item) {
+            ProductPicture::destroy($item->id);
+        }
+        Product::destroy($id);
+        return redirect('producer/barang')->with('status', 'Data Berhasil Di hapus');
     }
 }

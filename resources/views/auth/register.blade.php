@@ -6,7 +6,7 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- user_roles_id -->
+        <!-- role_id -->
         <div class="text-center">
             <input type="radio" value="2" class="btn-check" name="role_id" id="Seller" autocomplete="off">
             <label class="btn btn-secondary" for="Seller">Seller</label>

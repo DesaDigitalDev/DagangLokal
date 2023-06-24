@@ -36,7 +36,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($product as $item)
+                        @foreach ($dtProduct as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item['name'] }}</td>
@@ -52,7 +52,7 @@
                                         class="btn btn-sm btn-warning">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <form action="{{ url('/producer/barang' . '/' . $item->id) }}" method="POST">
+                                    <form action="{{ url('/producer/delete-barang' . '/' . $item->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button onclick="return confirm('Hapus Data Barang ?')"
@@ -64,7 +64,7 @@
                             </tr>
                         @endforeach
 
-                        @if ($product == null)
+                        @if ($dtProduct == null)
                             <tr class="text-center">
                                 <td colspan="10">Data Produk Tidak Ditemukan</td>
                             </tr>
