@@ -12,8 +12,8 @@
                     <div class="card-body">
                         <div class="row no-gutters align-item-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Penduduk</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Saldo Anda</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dtSaldo[0]->balance }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -27,8 +27,9 @@
                     <div class="card-body">
                         <div class="row no-gutters align-item-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Penduduk</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Transaksi
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $dtTrxUser }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -65,8 +66,9 @@
                         <thead>
                             <tr>
                                 <th style="min-width: 60px">No</th>
-                                <th style="min-width: 200px">No KK</th>
-                                <th style="min-width: 200px">Nama</th>
+                                <th style="min-width: 200px">Tanggal</th>
+                                <th style="min-width: 200px">jumlah</th>
+                                <th style="min-width: 200px">Transaksi No.</th>
                                 <th style="min-width: 165px">Opsi</th>
                             </tr>
                         </thead>
@@ -74,6 +76,7 @@
                             @foreach ($dtTransactionHistory as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->date_time)) }}</td>
                                     <td>{{ $item->amount }}</td>
                                     <td>{{ $item->transaction_no }}</td>
                                     <td>
@@ -81,10 +84,15 @@
                                             class="btn btn-circle btn-sm btn-warning">
                                             <i class="fa fa-edit"></i> Edit
                                         </a>
-                                        <a href="#" onclick="return confirm('Hapus Data Penduduk ?')"
-                                            class="btn btn-sm btn-danger">
-                                            <i class="fa fa-trash"></i> Hapus
-                                        </a>
+                                        <form action="{{ url('/producer/keuangan' . '/' . $item->id) }}"
+                                            method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button onclick="return confirm('Hapus Data Keuangan ?')"
+                                                class="btn btn-sm btn-danger">
+                                                <i class="fa fa-trash"></i>Hapus
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

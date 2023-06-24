@@ -66,7 +66,7 @@
 
                         @if ($product == null)
                             <tr class="text-center">
-                                <td colspan="10">Data Penduduk Tidak Ditemukan</td>
+                                <td colspan="10">Data Produk Tidak Ditemukan</td>
                             </tr>
                         @endif
                     </tbody>

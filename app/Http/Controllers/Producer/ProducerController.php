@@ -30,7 +30,12 @@ class ProducerController extends Controller
     public function showKeuangan(): View
     {
         $dtTransactionHistory = TransactionHistory::all();
-        return view('producer.keuangan')->with('dtTransactionHistory', $dtTransactionHistory);
+        $dtSaldo = DB::table('user_balances')->where('user_id', Auth::id())->get();
+        $dtTrxUser = DB::table('transaction_histories')->where('user_id', Auth::id())->count();
+
+        return view('producer.keuangan')->with('dtTransactionHistory', $dtTransactionHistory)
+            ->with('dtSaldo', $dtSaldo)
+            ->with('dtTrxUser', $dtTrxUser);
     }
 
     public function insertBarang(): View
