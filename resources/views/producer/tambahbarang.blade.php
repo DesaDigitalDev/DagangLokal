@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="container card shadow p-3 mb-5 bg-white rounded">
-        <form class="row g-3 container" method="post" action="{{ route('simpan-barang') }}" enctype="multipart/form-data">
+        <form class="row g-3 container" method="post" action="{{ route('barang.store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="col-12 mt-4" hidden>
                 <label for="inputnamaproduk" class="form-label">Gudang</label>

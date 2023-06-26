@@ -5,8 +5,7 @@
         </h2>
     </x-slot>
     <div class="container card shadow p-3 mb-5 bg-white rounded">
-        <form class="row g-3 container" method="post" action="{{ route('simpan-transaksi') }}"
-            enctype="multipart/form-data">
+        <form class="row g-3 container" method="post" action="{{ route('keuangan.store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="col-12 mt-4">
                 <label for="inputState" class="form-label">Tipe Transaksi</label>
@@ -24,8 +23,8 @@
                     class="form-select shadow bg-white rounded">
                     <option selected>Pilih...</option>
                     @foreach ($bankAcc as $item)
-                        <option value="{{ $item->id }}">{{ $item->bankName }} - {{ $item->bankAccName }} -
-                            {{ $item->ac }}
+                        <option value="{{ $item->id }}">{{ $item->bankName }} - {{ $item->name }} -
+                            {{ $item->account_no }}
                         </option>
                     @endforeach
                 </select>

@@ -14,20 +14,18 @@
 
     <div class="card shadow mb-4">
         <div class="card-body">
-            <x-primary-button class="ml-4" onclick="window.location='{{ route('insertBarang') }}'">
+            <x-primary-button class="ml-4" onclick="window.location='{{ route('barang.create') }}'">
                 {{ __('Tambah Data') }}
             </x-primary-button>
             <!-- tabel -->
-            <div class="mt-3 table-responsive">
+            <div class="mt-3 table-responsive" style="text-align: center">
                 <table class="table table-sm table-bordered table-striped">
                     <thead>
                         <tr>
                             <th style="min-width: 40px">No</th>
-                            <th style="min-width: 100px">Name</th>
+                            <th style="min-width: 100px">Nama Perusahaan</th>
                             <th style="min-width: 100px">Kategori</th>
-                            <th style="min-width: 100px">Vendor</th>
                             <th style="min-width: 100px">Harga</th>
-                            <th style="min-width: 100px">Stock</th>
                             <th style="min-width: 100px">Berat</th>
                             <th style="min-width: 100px">BPOM</th>
                             <th style="min-width: 100px">Deskripsi</th>
@@ -36,23 +34,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($dtProduct as $item)
+                        @foreach ($product as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item['name'] }}</td>
-                                <td>{{ $item['category_name'] }}</td>
                                 <td>{{ $item['vendor'] }}</td>
+                                <td>{{ $item['category_name'] }}</td>
                                 <td>{{ $item['unit_price'] }}</td>
-                                <td>{{ $item['unit_in_stock'] }}</td>
                                 <td>{{ $item['unit_weight'] }}</td>
                                 <td>{{ $item['bpom_no'] }}</td>
                                 <td>{{ $item['description'] }}</td>
                                 <td>
-                                    <a href="{{ url('/producer/edit-barang/' . $item->id) }}"
-                                        class="btn btn-sm btn-warning">
+                                    <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <form action="{{ url('/producer/delete-barang' . '/' . $item->id) }}" method="POST">
+                                    <form action="{{ route('barang.destroy', $item->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button onclick="return confirm('Hapus Data Barang ?')"
@@ -64,7 +59,7 @@
                             </tr>
                         @endforeach
 
-                        @if ($dtProduct == null)
+                        @if ($product == null)
                             <tr class="text-center">
                                 <td colspan="10">Data Produk Tidak Ditemukan</td>
                             </tr>

@@ -4,6 +4,14 @@
             {{ __('Keuangan') }}
         </h2>
     </x-slot>
+
+    @if ($message = Session::get('status'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ $message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="container-fluid">
 
         <div class="row my-3">
@@ -57,15 +65,17 @@
 
         <div class="card shadow mb-4">
             <div class="card-body">
-                <x-primary-button class="ml-4" onclick="window.location='{{ route('transaksi') }}'">
+                <x-primary-button class="ml-4" onclick="window.location='{{ route('keuangan.create') }}'">
                     {{ __('Tambah Data') }}
                 </x-primary-button>
                 <!-- tabel -->
-                <div class="mt-3 table-responsive">
+                <div class="mt-3 table-responsive" style="text-align: center">
                     <table class="table table-sm table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th style="min-width: 60px">No</th>
+                                <th style="min-width: 200px">Jenis Transaksi</th>
+                                <th style="min-width: 200px">Bank</th>
                                 <th style="min-width: 200px">Tanggal</th>
                                 <th style="min-width: 200px">jumlah</th>
                                 <th style="min-width: 200px">Transaksi No.</th>
@@ -73,19 +83,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dtTransactionHistory as $item)
+                            @foreach ($trxHistory as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ date('d-m-Y', strtotime($item->date_time)) }}</td>
-                                    <td>{{ $item->amount }}</td>
-                                    <td>{{ $item->transaction_no }}</td>
+                                    <td> {{ $item['type_name'] }} </td>
                                     <td>
-                                        <a href="{{ url('/producer/edit-transaksi/' . $item->id) }}"
+                                        @foreach ($bankAcc as $bank)
+                                            {{ $bank->bankName }} - {{ $bank->name }} -
+                                            {{ $bank->account_no }}
+                                        @endforeach
+                                    </td>
+                                    <td>{{ date('d-m-Y', strtotime($item['date_time'])) }}</td>
+                                    <td>{{ $item['amount'] }}</td>
+                                    <td>{{ $item['transaction_no'] }}</td>
+                                    <td>
+                                        <a href="{{ route('keuangan.edit', $item->id) }}"
                                             class="btn btn-circle btn-sm btn-warning">
                                             <i class="fa fa-edit"></i> Edit
                                         </a>
-                                        <form action="{{ url('/producer/keuangan' . '/' . $item->id) }}"
-                                            method="POST">
+                                        <form action="{{ route('keuangan.destroy', $item->id) }}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button onclick="return confirm('Hapus Data Keuangan ?')"
@@ -98,23 +114,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </div>

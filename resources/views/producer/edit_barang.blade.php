@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="container card shadow p-3 mb-5 bg-white rounded">
-        <form class="row g-3 container" method="post" action="{{ url('producer/update-barang/' . $product->id) }}"
+        <form class="row g-3 container" method="post" action="{{ route('barang.update', $product->id) }}"
             enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
@@ -65,8 +65,7 @@
                 <textarea type="text" id="desc" name="desc" class="form-control shadow bg-white rounded">{{ $product->description }}</textarea>
             </div>
             <div class="col-12">
-                <x-primary-button type="submit" class="ml-4"
-                    onclick="window.location='{{ route('insertBarang') }}'">
+                <x-primary-button type="submit" class="ml-4">
                     {{ __('Simpan Data') }}
                 </x-primary-button>
             </div>

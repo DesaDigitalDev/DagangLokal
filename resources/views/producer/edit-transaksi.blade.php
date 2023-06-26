@@ -6,8 +6,8 @@
     </x-slot>
     <h1 class="container">Update Transaksi</h1>
     <div class="container card shadow p-3 mb-5 bg-white rounded">
-        <form class="row g-3 container" method="post"
-            action="{{ url('producer/update-transaksi/' . $transactionHistory->id) }}" enctype="multipart/form-data">
+        <form class="row g-3 container" method="post" action="{{ route('keuangan.update', $transactionHistory->id) }}"
+            enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
             <div class="col-12 mt-4">
@@ -29,8 +29,8 @@
                     @foreach ($bankAcc as $item)
                         <option
                             value="{{ $item->id }}"{{ $item->id == $transactionHistory->bank_account_id ? 'selected' : '' }}>
-                            {{ $item->bankName }} - {{ $item->bankAccName }} -
-                            {{ $item->ac }}
+                            {{ $item->bankName }} - {{ $item->name }} -
+                            {{ $item->account_no }}
                         </option>
                     @endforeach
                 </select>
@@ -61,8 +61,7 @@
                     class="form-control shadow bg-white rounded">
             </div>
             <div class="col-12">
-                <x-primary-button type="submit" class="ml-4"
-                    onclick="window.location='{{ route('insertBarang') }}'">
+                <x-primary-button type="submit" class="ml-4">
                     {{ __('Simpan Data') }}
                 </x-primary-button>
             </div>
