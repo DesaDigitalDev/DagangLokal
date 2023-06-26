@@ -83,19 +83,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($trxHistory as $item)
+                            @foreach ($dtHistory as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td> {{ $item['type_name'] }} </td>
-                                    <td>
-                                        @foreach ($bankAcc as $bank)
-                                            {{ $bank->bankName }} - {{ $bank->name }} -
-                                            {{ $bank->account_no }}
-                                        @endforeach
-                                    </td>
-                                    <td>{{ date('d-m-Y', strtotime($item['date_time'])) }}</td>
-                                    <td>{{ $item['amount'] }}</td>
-                                    <td>{{ $item['transaction_no'] }}</td>
+                                    <td> {{ $item->type_name }} </td>
+                                    <td>{{ $item->bank_name }} - {{ $item->acc_name }} -
+                                        {{ $item->acc_no }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->date_time)) }}</td>
+                                    <td>{{ $item->amount }}</td>
+                                    <td>{{ $item->transaction_no }}</td>
                                     <td>
                                         <a href="{{ route('keuangan.edit', $item->id) }}"
                                             class="btn btn-circle btn-sm btn-warning">

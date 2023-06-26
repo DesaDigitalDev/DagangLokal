@@ -17,20 +17,18 @@ class KeuanganProducerController extends Controller
      */
     public function index()
     {
-        $trxHistory = TransactionHistory::join('transaction_types', 'transaction_types.id', 'transaction_type_id')
-            ->get(['transaction_histories.*', 'transaction_types.name as type_name']);
-        foreach ($trxHistory as $item) {
-            $bankAcc = DB::table('bank_accounts AS ba')
-                ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
-                ->select('ba.*', 'b.name as bankName')
-                ->where('ba.id', $item->bank_account_id)->get();
-        }
+        $dtHistory = DB::table('transaction_histories AS th')
+            ->join('transaction_types AS tt', 'th.transaction_type_id', '=', 'tt.id')
+            ->join('bank_accounts AS ba', 'th.bank_account_id', '=', 'ba.id')
+            ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
+            ->select('th.*', 'tt.name as type_name', 'ba.name as acc_name', 'ba.account_no as acc_no', 'b.name as bank_name')
+            ->get();
+
         $dtSaldo = UserBalance::all()->where('user_id', Auth::id());
         $dtTrxUser = Transactionhistory::all()->where('user_id', Auth::id())->count();
-        return view('producer.keuangan')->with('trxHistory', $trxHistory)
+        return view('producer.keuangan')->with('dtHistory', $dtHistory)
             ->with('dtSaldo', $dtSaldo)
-            ->with('dtTrxUser', $dtTrxUser)
-            ->with('bankAcc', $bankAcc);
+            ->with('dtTrxUser', $dtTrxUser);
     }
 
     /**
@@ -60,14 +58,8 @@ class KeuanganProducerController extends Controller
         if ($userBalance[0]->balance >= floatval($request->jumTransaksi)) {
             $thnBln = date('Ym');
             $cek = TransactionHistory::count();
-            if ($cek == 0) {
-                $urut = TransactionHistory::count();
-                $invoice = 'INV' . $thnBln . $urut;
-            } else {
-                $dtTransaksi = TransactionHistory::all()->last();
-                $urut = TransactionHistory::count();
-                $invoice = 'INV' . $thnBln . $urut;
-            }
+            $urut = TransactionHistory::count() + 1;
+            $invoice = 'INV' . $thnBln . $urut;
             $transactionHistory = TransactionHistory::create([
                 'transaction_type_id' => $request->tipeTransaksi,
                 'bank_account_id' => $request->akunBank,
