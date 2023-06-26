@@ -17,3 +17,132 @@
     cursor: pointer;
     
 }
+.card-img-top{
+    border-radius: 8.5px 8.5px 30px 0px;
+    padding: .5px 0px 0px 0px;
+}
+.card{
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    background: rgb(239,130,4);
+    background: linear-gradient(60deg, rgba(239,130,4,1) 20%, rgb(255, 226, 194) 100%);
+}
+.card-title {
+    font-size: 15px ;
+    font-weight: bold;
+}
+.card-body{
+    height: 180px;
+    padding: 20px;
+}
+
+.btn-product {
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+    height: 30px;
+    line-height: 30px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 60%;
+    border: 0;
+    transition: box-shadow .2s;
+}
+
+.btn-product:hover {
+    box-shadow: rgba(252, 222, 207, 0.5) 0 3px 10px;
+    color: #751f0b;
+}
+
+
+.pricing {
+    display: flex;
+    justify-content: space-between;
+    font-size : 11px
+}
+.pricing p {
+    font-size: 15px;
+}
+.pricing h1 {
+    font-size : 11px
+}
+
+.pricing-detail {
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.stars {
+    height: 15px;
+}
+.stars i {
+    font-size: 15px;
+    color: #ffcc00;
+}
+
+@media screen and (max-width: 768px) {
+    .pricing-detail {
+        font-size: 15px;
+    }
+    .pricing p {
+        font-size : 25px
+    }
+    .card-body {
+        height: 220px;
+        padding: 30px 60px;
+    }
+    .btn-product {
+        height: 45px;
+        width: 30%;
+        padding: 8px 8px 0 0;
+        border: 0;
+        transition: box-shadow .2s;
+        font-size: 20px;
+    }
+    .card-title {
+        font-size: 25px;
+    }
+}
+
+@media (992px <=  width <= 1050px) {
+    .pricing p {
+        font-size : 13px
+    }
+    .pricing-detail {
+        font-size: 9px;
+    }
+    .card-body{
+        height: 150px;
+    }
+    .btn-product {
+        margin-top: 10px;
+    }
+    
+} 
+
+@media (992px <= width <= 1400px) {
+    .card-title {
+        font-size: 16px;
+    }
+} 
+@media (768px <= width <= 992px) {
+    .card-title {
+        font-size: 18px;
+    }
+} 
+
