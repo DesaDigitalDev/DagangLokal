@@ -29,9 +29,6 @@
 
 <body class="font-sans antialiased">
     <div id="wrapper">
-        <aside id="sidebar-wrapper">
-            @include('layouts.sidebar')
-        </aside>
         @include('layouts.navigation')
 
         <!-- Page Heading -->

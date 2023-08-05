@@ -1,12 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BarangController;
-use App\Http\Controllers\Producer\ListBarangController;
-use App\Http\Controllers\Producer\ProducerController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\SellerController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Producer\ProducerController;
+use App\Http\Controllers\Producer\ListBarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,12 @@ Route::middleware(['auth', 'user-access:producer'])->group(function () {
     Route::post('/producer/simpan-transaksi', [ProducerController::class, 'storetransaksi'])->name('simpan-transaksi');
     Route::get('/producer/edit-transaksi/{id}', [ProducerController::class, 'editTransaksi'])->name('editTransaksi');
     Route::put('/producer/update-transaksi/{id}', [ProducerController::class, 'updateTransaksi'])->name('updateTransaksi');
+});
+
+// route katalog
+Route::middleware(['auth', 'user-access:seller'])->group(function () {
+    Route::get('/catalog', [ProductsController::class, 'index']);
+    Route::get('/catalog/detail/{id} ', [ProductsController::class, 'show'])->name('ShowProduct');
 });
 
 

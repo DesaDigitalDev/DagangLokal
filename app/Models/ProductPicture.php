@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductPicture extends Model
 {
@@ -14,4 +15,9 @@ class ProductPicture extends Model
     protected $fillable = [
         'id', 'product_id', 'link', 'sequence_no',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
