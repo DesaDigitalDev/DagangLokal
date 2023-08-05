@@ -51,20 +51,8 @@ Route::middleware(['auth', 'user-access:seller'])->group(function () {
 // route producer
 Route::middleware(['auth', 'user-access:producer'])->group(function () {
     Route::get('/producer/dashboard', [ProducerController::class, 'show'])->name('dashboard');
-    // Route::resource("/producer/barang", ListBarangController::class);
-    Route::get('/producer/keuangan', [ProducerController::class, 'showKeuangan'])->name('showKeuangan');
-
-    Route::get('/producer/barang', [ProducerController::class, 'showBarang']);
-    Route::get('/producer/tambah-barang', [ProducerController::class, 'insertBarang'])->name('insertBarang');
-    Route::post('/producer/simpan-barang', [ProducerController::class, 'store'])->name('simpan-barang');
-    Route::get('/producer/edit-barang/{id}', [ProducerController::class, 'editBarang'])->name('editBarang');
-    Route::put('/producer/update-barang/{id}', [ProducerController::class, 'updateBarang'])->name('updateBarang');
-    Route::delete('/producer/delete-barang/{id}', [ProducerController::class, 'deleteBarang'])->name('deleteBarang');
-
-    Route::get('/producer/transaksi', [ProducerController::class, 'transaksi'])->name('transaksi');
-    Route::post('/producer/simpan-transaksi', [ProducerController::class, 'storetransaksi'])->name('simpan-transaksi');
-    Route::get('/producer/edit-transaksi/{id}', [ProducerController::class, 'editTransaksi'])->name('editTransaksi');
-    Route::put('/producer/update-transaksi/{id}', [ProducerController::class, 'updateTransaksi'])->name('updateTransaksi');
+    Route::resource('/producer/barang', BarangProducerController::class);
+    Route::resource('/producer/keuangan', KeuanganProducerController::class);
 });
 
 // route katalog
