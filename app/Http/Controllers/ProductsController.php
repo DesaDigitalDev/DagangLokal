@@ -19,7 +19,7 @@ class ProductsController extends Controller
                     ->join('product_ratings', 'products.id', '=', 'product_ratings.product_id')
                     ->get();
     
-        return view('products-catalog', ['products' => $products]);
+        return view('products-catalog', compact('products'));
 
     }
 
@@ -31,7 +31,8 @@ class ProductsController extends Controller
                 ->where('products.id', '=', $id)
                 ->first();
 
-        return view('product-detail', ['product' => $id]);
+        //return $product;
+        return view('product-detail', compact('product'));
 
     }
     

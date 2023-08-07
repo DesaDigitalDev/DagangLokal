@@ -15,9 +15,8 @@
     <!-- Bootsrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="../assets/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <link href="../assets/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     {{-- mycss --}}
@@ -29,7 +28,7 @@
 
 <body class="font-sans antialiased">
     <div class="container-fluid">
-    @include('layouts.navigation')
+        @include('layouts.navigation')
 
             <x-slot name="header">
                 <div class="d-sm-flex align-items-center justify-content-left my-3 ms-4">
@@ -37,31 +36,37 @@
                 </div>                 
             </x-slot>
 
-
-        <div class="container">    
-            <div class="search-wrapper">
-                <form action="" class="search" id="search-bar">
-                    <input type="search" placeholder="Cari...." class="search-input">
-
-                    <div class="search-button">
-                        <i class="fa fa-search search-icon"></i>
-                    </div>
-                </form>    
-            </div> 
+            <div class="p-3">
+                <form class="d-flex" role="search">
+                    <input class="form-control rounded-start-pill border-end-0" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn pe-4 btn-outline-success rounded-end-pill border-start-0" type="submit"><i class="fa fa-search"></i></button>
+                    <div class="m-2"></div>
+                    <a href="#" class="btn btn-outline-danger">
+                        <i class="fa fa-shopping-cart"></i>
+                    </a>
+                </form>
+            </div>
         
             <div class="row row-cols-1 row-cols-md-3 row-cols-sm-6 g-1">        
                 @foreach ($products as $item)
                 <div class="col-12 col-sm-12 col-md-4 col-lg-2">
-                    <div div class="card">
-                        <img src="assets/img/dish1.jpg" class="card-img-top" width="75" alt="...">
+                    <div div class="card card-clicked" data-card-id="{{ $item->product_id }}"style="cursor: pointer">
+                        <img src="{{ $item['link'] }}</" class="card-img-top" width="75" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $item['name'] }}</h5>
+                            @php
+                                $ratingValue = $item['rating_value'];
+                                $formattedRating = number_format($ratingValue, 1);
+                            @endphp
                             <div class="stars mb-2">
-                                <i class="fa fa-solid fa-star rated"></i>      
-                                <i class="fa fa-solid fa-star rated"></i>    
-                                <i class="fa fa-solid fa-star"></i>   
-                                <i class="fa fa-solid fa-star"></i>  
-                                <i class="fa fa-solid fa-star"></i>                   
+                                @for($i = 1; $i <= 5; $i++)
+                                    @if($ratingValue >= $i)
+                                        <i class="fas fa-star rated"></i>
+                                    @else
+                                        <i class="fas fa-star"></i>
+                                    @endif
+                                @endfor
+    
                             </div>
                             <div class="pricing mb-2">
                                 <div class="pricing-price">
@@ -86,19 +91,25 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="mb-3 d-flex justify-content-around mt-3">
-                            <a href="{{ url('/catalog/detail/' . $item->product_id) }}" class="btn btn-product">
-                                <span>Lihat</span>    
-                            </a>
-                                
-                        </div>
                     </div>
                 </div>
                 @endforeach 
             </div>
-        </div>
-    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    </body>
-    
+    </div>
+</body>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script>
+         $(document).ready(function() {
+           $('.card-clicked').on('click', function() {
+             const cardId = $(this).data('card-id');
+             const newUrl = `/catalog/detail/${cardId}`;
+       
+          
+             window.location.href = newUrl;
+           });
+         });
+       </script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
 </html>
