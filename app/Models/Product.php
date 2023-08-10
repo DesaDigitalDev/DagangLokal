@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\ProductRating;
+use App\Models\ProductComment;
 use App\Models\ProductPicture;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,5 +28,9 @@ class Product extends Model
     public function ratings()
     {
         return $this->hasMany(ProductRating::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(ProductComment::class);
     }
 }

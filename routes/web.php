@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\Admin\AdminController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\Admin\BarangController;
 use App\Http\Controllers\Seller\SellerController;
 use App\Http\Controllers\Producer\ProducerController;
 use App\Http\Controllers\Producer\ListBarangController;
+use App\Http\Controllers\Producer\BarangProducerController;
+use App\Http\Controllers\Producer\KeuanganProducerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +62,7 @@ Route::middleware(['auth', 'user-access:producer'])->group(function () {
 Route::middleware(['auth', 'user-access:seller'])->group(function () {
     Route::get('/catalog', [ProductsController::class, 'index']);
     Route::get('/catalog/detail/{id} ', [ProductsController::class, 'show'])->name('ShowProduct');
+    Route::post('/add-rating ', [RatingController::class, 'add']);
 });
 
 

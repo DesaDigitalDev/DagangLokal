@@ -50,17 +50,16 @@
             <div class="row row-cols-1 row-cols-md-3 row-cols-sm-6 g-1">        
                 @foreach ($products as $item)
                 <div class="col-12 col-sm-12 col-md-4 col-lg-2">
-                    <div div class="card card-clicked" data-card-id="{{ $item->product_id }}"style="cursor: pointer">
-                        <img src="{{ $item['link'] }}</" class="card-img-top" width="75" alt="...">
+                    <div div class="card card-clicked" data-card-id="{{ $item->id }}"style="cursor: pointer">
+                        <img src="{{ $item->link }}" class="card-img-top" width="75" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $item['name'] }}</h5>
+                            <h5 class="card-title">{{ $item->name }}</h5>
                             @php
-                                $ratingValue = $item['rating_value'];
-                                $formattedRating = number_format($ratingValue, 1);
+                                $formattedRating = number_format($item->rating_value);
                             @endphp
                             <div class="stars mb-2">
                                 @for($i = 1; $i <= 5; $i++)
-                                    @if($ratingValue >= $i)
+                                    @if($formattedRating >= $i)
                                         <i class="fas fa-star rated"></i>
                                     @else
                                         <i class="fas fa-star"></i>
@@ -71,7 +70,7 @@
                             <div class="pricing mb-2">
                                 <div class="pricing-price">
                                     <h1>Potensi Jual</h1>
-                                    <p>Rp. {{ $item['unit_price'] }}</p>
+                                    <p>Rp. {{ $item->unit_price }}</p>
                                 </div>
                                 <div class="pricing-margin">
                                     <h1>Margin</h1>
@@ -97,19 +96,17 @@
             </div>
     </div>
 </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+        $('.card-clicked').on('click', function() {
+        const cardId = $(this).data('card-id');
+        const newUrl = `/catalog/detail/${cardId}`;
 
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-     <script>
-         $(document).ready(function() {
-           $('.card-clicked').on('click', function() {
-             const cardId = $(this).data('card-id');
-             const newUrl = `/catalog/detail/${cardId}`;
-       
-          
-             window.location.href = newUrl;
-           });
-         });
-       </script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
+    
+        window.location.href = newUrl;
+        });
+    });
+    </script>
 </html>
