@@ -1,9 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Edit Barang') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
     <div class="container card shadow p-3 mb-5 bg-white rounded">
         <form class="row g-3 container" method="post" action="{{ route('barang.update', $product->id) }}"
             enctype="multipart/form-data">

@@ -28,121 +28,132 @@
     background: linear-gradient(60deg, rgba(239,130,4,1) 20%, rgb(255, 226, 194) 100%);
 }
 .card-title {
+    line-height: 15px;
     font-size: 15px ;
     font-weight: bold;
 }
 .card-body{
-    height: 180px;
+    height: 150px;
     padding: 20px;
 }
-
-.btn-product {
-    background-color: initial;
-    background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline-block;
-    font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
-    height: 30px;
-    line-height: 30px;
-    outline: 0;
-    overflow: hidden;
-    padding: 0 20px;
-    pointer-events: auto;
-    position: relative;
-    text-align: center;
-    touch-action: manipulation;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: top;
-    white-space: nowrap;
-    width: 60%;
-    border: 0;
-    transition: box-shadow .2s;
-}
-
-.btn-product:hover {
-    box-shadow: rgba(252, 222, 207, 0.5) 0 3px 10px;
-    color: #751f0b;
-}
-
 
 .pricing {
     display: flex;
     justify-content: space-between;
-    font-size : 11px
+    font-size : 8px
 }
 .pricing p {
-    font-size: 15px;
+    font-size: 10px;
 }
 .pricing h1 {
-    font-size : 11px
+    font-size : 8px
 }
 
 .pricing-detail {
-    font-size: 11px;
+    font-size: 8px;
     display: flex;
     justify-content: space-between;
     gap: 10px;
 }
 .stars {
-    height: 15px;
+    line-height: 5px;
 }
 .stars i {
-    font-size: 15px;
+    font-size: 10px;
+}
+
+.rated {
     color: #ffcc00;
 }
 
-@media screen and (max-width: 768px) {
-    .pricing-detail {
-        font-size: 15px;
-    }
-    .pricing p {
-        font-size : 25px
-    }
-    .card-body {
-        height: 220px;
-        padding: 30px 60px;
-    }
-    .btn-product {
-        height: 45px;
-        width: 30%;
-        padding: 8px 8px 0 0;
-        border: 0;
-        transition: box-shadow .2s;
+
+@media (width <= 768px) {
+    .card-title {
+        line-height: 10px;
         font-size: 20px;
     }
-    .card-title {
-        font-size: 25px;
+    .stars {
+        padding: 10px 0px;
+    }
+    .stars i {
+        line-height: 15px;
+        font-size: 15px; 
+        height: 10px;
+    }
+    .pricing-detail {
+        height: 20px;
+        font-size: 11px;
+    }
+    .pricing p {
+        font-size : 20px;
+    }
+    .pricing h1 {
+    
     }
 }
 
-@media (992px <=  width <= 1050px) {
+@media (width <= 992px) {
+    .card-title {
+        line-height: 5px;
+        font-size: 20px;
+    }
+    .stars {
+        padding: 5px 0px;
+    }
+    .stars i {
+        font-size: 13px;
+    }
+    .pricing-detail {
+        font-size: 10px;
+    }
     .pricing p {
-        font-size : 13px
+        font-size : 15px;
+    }
+    .pricing h1 {
+        font-size : 10px;
+    }
+    .card-body {
+        height: 150px;
+        padding: 20px 20px;
+    }
+    .btn-product {
+        height: 30px;
+        width: 40% !important;
+    }
+    .btn-product span {
+        font-size: 13px;
+        color: #FFFFFF; 
+    }
+} 
+
+@media (width <= 1200px) {
+    .card-title {
+        line-height: 15px;
+        font-size: 13px;
+    }
+    .stars i {
+        line-height: 2px;
+        font-size: 10px;
     }
     .pricing-detail {
         font-size: 9px;
     }
-    .card-body{
-        height: 150px;
+    .pricing p {
+        font-size : 13px;
+    }
+    .pricing h1 {
+        font-size : 10px;
+    }
+    .card-body {
+        height: 170px;
+        padding: 15px calc(100%-20px);
     }
     .btn-product {
-        margin-top: 10px;
+        line-height: 18px;
+        height : 25px;
     }
-    
-} 
-
-@media (992px <= width <= 1400px) {
-    .card-title {
-        font-size: 16px;
+    .btn-product span {
+        font-size: 12px;
+        color: #FFFFFF; 
     }
 } 
-@media (768px <= width <= 992px) {
-    .card-title {
-        font-size: 18px;
-    }
-} 
-

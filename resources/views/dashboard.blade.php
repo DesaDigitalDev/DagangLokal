@@ -1,17 +1,19 @@
-<x-app-layout>
-    <div class="container-fluid">
-        <x-slot name="header">
-            <div class="d-sm-flex align-items-center justify-content-left my-3 ms-4">
-                <h1 class="h3 mb-0 text-gray-800">{{ __('Dashboard') }}</h1>
-            </div>                 
-        </x-slot>
-        
-        <div class="row row-cols-1 row-cols-md-3 row-cols-sm-6 g-2">
-            <x-product-card/>
-            <x-product-card/>
-            <x-product-card/>
-            <x-product-card/>
-        </div>
+<x-app-layout>      
 
-        <x-float-whatsapp/>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    {{ __("Seller") }}
+                </div>
+            </div>
+        </div>
+    </div>
+
 </x-app-layout>
