@@ -24,7 +24,7 @@ class KeuanganProducerController extends Controller
             ->select('th.*', 'tt.name as type_name', 'ba.name as acc_name', 'ba.account_no as acc_no', 'b.name as bank_name')
             ->get();
 
-        $dtSaldo = UserBalance::all()->where('user_id', Auth::id());
+        $dtSaldo = UserBalance::take(1)->where('user_id', Auth::id());
         $dtTrxUser = Transactionhistory::all()->where('user_id', Auth::id())->count();
         return view('producer.keuangan')->with('dtHistory', $dtHistory)
             ->with('dtSaldo', $dtSaldo)

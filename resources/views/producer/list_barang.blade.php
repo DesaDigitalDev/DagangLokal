@@ -38,13 +38,13 @@
                         @foreach ($product as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item['vendor'] }}</td>
-                                <td>{{ $item['name'] }}</td>
-                                <td>{{ $item['category_name'] }}</td>
-                                <td>{{ $item['unit_price'] }}</td>
-                                <td>{{ $item['unit_weight'] }}</td>
-                                <td>{{ $item['bpom_no'] }}</td>
-                                <td>{{ $item['description'] }}</td>
+                                <td>{{ $item->vendor }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->category_name }}</td>
+                                <td>{{ $item->unit_price }}</td>
+                                <td>{{ $item->unit_weight }}</td>
+                                <td>{{ $item->bpom_no }}</td>
+                                <td>{{ $item->description }}</td>
                                 <td>
                                     <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fa fa-edit"></i> Edit
