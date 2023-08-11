@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductPicture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BarangProducerController extends Controller
 {
@@ -16,8 +17,10 @@ class BarangProducerController extends Controller
      */
     public function index()
     {
-        $product = Product::join('categories', 'categories.id', 'category_id')
-            ->get(['products.*', 'categories.name as category_name']);
+        $product = DB::table('products AS p')
+            ->join('categories AS c', 'c.id', '=', 'p.category_id')
+            ->select('p.*', 'c.name as category_name')
+            ->where('user_id', Auth::id())->get();
         return view('producer.list_barang')->with('product', $product);
     }
 
