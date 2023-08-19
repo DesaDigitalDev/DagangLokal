@@ -65,6 +65,7 @@ Route::middleware(['auth', 'user-access:seller'])->group(function () {
     Route::post('/add-rating ', [RatingController::class, 'add']);
 });
 
+Route::get('/producer/tracking_product', [ProducerController::class, 'getProgress']);
 
 
 

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Producer;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\ProductProgress;
-use App\Models\UserBalance;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\UserBalance;
+use App\Models\ProductProgress;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\Progress;
+use Illuminate\Support\Facades\Auth;
 
 class ProducerController extends Controller
 {
@@ -21,5 +23,13 @@ class ProducerController extends Controller
             ->with('dtProduct', $dtProduct)
             ->with('progressProces', $progressProces)
             ->with('progressComplete', $progressComplete);
+    }
+
+    public function getProgress()
+    {
+        $progresses = Progress::query()->get();
+        $product = Product::query()->find(1);
+
+        return view('producer.tracking_product', compact('progresses', 'product'));
     }
 }

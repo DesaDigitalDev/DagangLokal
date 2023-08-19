@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ProgressSeeder extends Seeder
 {
@@ -12,7 +13,7 @@ class ProgressSeeder extends Seeder
      */
     public function run(): void
     {
-        \DB::table('Progress')->insert([
+        DB::table('Progress')->insert([
             ['name' => 'Pengiriman Informasi Produk',
             'created_at'  =>date('Y-m-d H:i:s'),
             'updated_at'  =>date('Y-m-d H:i:s')],

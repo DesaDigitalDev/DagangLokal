@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('category_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('progress_id')->constrained();
             $table->string('vendor');
             $table->boolean('is_in_warehouse');
             $table->double('unit_price', 12, 2);

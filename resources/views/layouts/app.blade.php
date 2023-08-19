@@ -27,6 +27,11 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{--tracking product --}}
+        <!-- UniIcon CDN Link  -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    {{--end tracking product --}}
 </head>
 
 <body class="font-sans antialiased">
@@ -44,7 +49,11 @@
                 </div>
             </header>
         @endif
-    
+
+        @if (isset($track_progress))
+            {{ $track_progress }}
+        @endif
+
         <!-- Page Content -->
         <main class="p-2">
             {{ $slot }}
@@ -64,8 +73,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
-</body>
+
+    {{--tracking product --}}
+    
+    {{--end tracking product --}}
 
 </body>
-
 </html>
