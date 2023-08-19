@@ -7,6 +7,7 @@ use Illuminate\View\View;
 
 use Illuminate\Http\Request;
 use App\Models\ProductRating;
+use App\Models\ProductComment;
 use App\Models\ProductPicture;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -27,10 +28,9 @@ class ProductsController extends Controller
                 ->join('product_pictures as pp', 'p.id', '=', 'pp.product_id')
                 ->select('p.*', DB::raw('IFNULL(pr.rating_count, 0) AS rating_count'), DB::raw('IFNULL(pr.rating_value, 0) AS rating_value'), 'pp.link')
                 ->get();
-    
-
+        
         //dd ($products);
-        return view('products-catalog', compact('products'));
+        return view('katalog.products-catalog', compact('products'));
         
     }
 
@@ -46,6 +46,14 @@ class ProductsController extends Controller
         $rating_sum = ProductRating::where('product_id', $id)->sum('rating_value');
         $user_rating = ProductRating::where('product_id', $id)->where('user_id', Auth::id())->first();
 
+        $comments = ProductComment::select('product_comments.comment', 'product_ratings.rating_value', 'users.id as user_id', 'users.name')
+            ->join('product_ratings', 'product_comments.product_id', '=', 'product_ratings.product_id')
+            ->join('users', 'product_comments.user_id', '=', 'users.id')
+            ->whereColumn('product_comments.user_id', 'product_ratings.user_id')
+            ->where('product_comments.product_id', $id)
+            ->get();
+
+
         if($ratings->count() > 0)
         {
             $rating_value = $rating_sum/$ratings->count();
@@ -53,8 +61,8 @@ class ProductsController extends Controller
         else {
             $rating_value = 0;
         }
-        //dd($user_rating);
-        return view('product-detail', compact('product', 'product_id', 'ratings', 'rating_value', 'user_rating'));
+        //dd($ratings);
+        return view('katalog.product-detail', compact('product', 'product_id', 'ratings', 'rating_value', 'user_rating', 'comments'));
 
     }
 
