@@ -13,6 +13,11 @@
                     class="form-control shadow bg-white rounded">
             </div>
             <div class="col-12 mt-4" hidden>
+                <label for="inputnamaproduk" class="form-label">Progress</label>
+                <input type="text" id="progress" value="1" name="progress"
+                    class="form-control shadow bg-white rounded">
+            </div>
+            <div class="col-12 mt-4" hidden>
                 <label for="inputnamaproduk" class="form-label">Stock</label>
                 <input type="text" id="stock" value="0" name="stock"
                     class="form-control shadow bg-white rounded">

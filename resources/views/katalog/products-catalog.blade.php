@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     {{-- mycss --}}
-    <link rel="stylesheet" href="../css/mycss.css">
+    <link rel="stylesheet" href="/../css/katalog/style.css">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -36,22 +36,25 @@
                 </div>                 
             </x-slot>
 
-            <div class="p-3">
-                <form class="d-flex" role="search">
-                    <input class="form-control rounded-start-pill border-end-0" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn pe-4 btn-outline-success rounded-end-pill border-start-0" type="submit"><i class="fa fa-search"></i></button>
-                    <div class="m-2"></div>
-                    <a href="#" class="btn btn-outline-danger">
-                        <i class="fa fa-shopping-cart"></i>
-                    </a>
-                </form>
-            </div>
-        
-            <div class="row row-cols-1 row-cols-md-3 row-cols-sm-6 g-1">        
+            <div class="p-3 mt-3" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+            rgba(0, 0, 0, 0.09) 0px -3px 5px; border-radius: 8px">
+                   <form class="d-flex" role="search">
+                       <input class="form-control rounded-start-pill border-end-0" type="search" placeholder="Search" aria-label="Search">
+                       <button class="btn pe-4 btn-outline-success rounded-end-pill border-start-0" type="submit"><i class="fa fa-search"></i></button>
+                       <div class="m-2"></div>
+                       <a href="#" class="btn btn-outline-danger">
+                           <i class="fa fa-shopping-cart"></i>
+                       </a>
+                   </form>
+               </div>
+    </div>
+    <div class="container-fluid mt-4">
+            <div class="row row-cols-1 row-cols-md-3 row-cols-sm-6 ps-2 pe-2">        
                 @foreach ($products as $item)
-                <div class="col-12 col-sm-12 col-md-4 col-lg-2">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3 g-1">
                     <div div class="card card-clicked" data-card-id="{{ $item->id }}"style="cursor: pointer">
-                        <img src="{{ $item->link }}" class="card-img-top" width="75" alt="...">
+                        <img src="/../assets/img/dish1.jpg"  class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->name }}</h5>
                             @php
@@ -94,19 +97,13 @@
                 </div>
                 @endforeach 
             </div>
+        </div>
     </div>
 </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="/../js/katalog/katalog.js"></script>
     <script>
-        $(document).ready(function() {
-        $('.card-clicked').on('click', function() {
-        const cardId = $(this).data('card-id');
-        const newUrl = `/catalog/detail/${cardId}`;
-
-    
-        window.location.href = newUrl;
-        });
-    });
+        
     </script>
 </html>

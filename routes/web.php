@@ -48,6 +48,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 Route::middleware(['auth', 'user-access:seller'])->group(function () {
     Route::get('/seller/dashboard', [SellerController::class, 'index']);
     Route::get('/seller/produk', [SellerController::class, 'show']);
+    Route::get('/catalog', [ProductsController::class, 'index']);
+    Route::get('/catalog/detail/{id} ', [ProductsController::class, 'show'])->name('ShowProduct');
+    Route::post('/add-rating ', [RatingController::class, 'add']);
 });
 
 // route producer
@@ -55,14 +58,5 @@ Route::middleware(['auth', 'user-access:producer'])->group(function () {
     Route::get('/producer/dashboard', [ProducerController::class, 'show'])->name('dashboard');
     Route::resource('/producer/barang', BarangProducerController::class);
     Route::resource('/producer/keuangan', KeuanganProducerController::class);
+    Route::get('/producer/tracking_product', [ProducerController::class, 'getProgress']);
 });
-
-// route katalog
-Route::middleware(['auth', 'user-access:seller'])->group(function () {
-    Route::get('/catalog', [ProductsController::class, 'index']);
-    Route::get('/catalog/detail/{id} ', [ProductsController::class, 'show'])->name('ShowProduct');
-    Route::post('/add-rating ', [RatingController::class, 'add']);
-});
-
-// Route::get('/producer/barang', [ListBarangController::class, 'index']);
-// Route::delete('/producer/delete/{id}', [ListBarangController::class, 'destroy']);

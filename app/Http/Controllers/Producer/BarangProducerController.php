@@ -42,6 +42,7 @@ class BarangProducerController extends Controller
             'name' => $request->name,
             'user_id' => Auth::id(),
             'is_in_warehouse' => $request->gudang,
+            'progress_id' => $request->progress,
             'unit_in_stock' => $request->stock,
             'category_id' => $request->category,
             'vendor' => $request->vendor,

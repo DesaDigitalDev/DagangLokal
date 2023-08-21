@@ -30,13 +30,13 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $url="";
-        if ($request->user()->role_id === 1) {
+        if ($request->user()->role_id == 1) {
             $url = "admin/dashboard";
         }
         elseif ($request->user()->role_id == 3) {
             $url = "producer/dashboard";
         }
-        elseif ($request->user()->role_id === 2) {
+        elseif ($request->user()->role_id == 2) {
             $url = "seller/dashboard";
         }
 
