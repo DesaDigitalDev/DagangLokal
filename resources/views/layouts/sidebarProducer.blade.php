@@ -6,13 +6,13 @@
 {{-- sidebar --}}
 <ul class="sidebar-nav">
     <li class="nav-item {{ request()->segment(2) == 'dashboard' ? 'active' : '' }}">
-        <a href="{{ route('dashboardAdmin') }}">
+        <a href="{{ route('dashboard') }}">
             <i class="fa fa-home"></i>
             <span>Beranda</span></a>
     </li>
 
     <li class="nav-item {{ request()->segment(2) == 'barang' ? 'active' : '' }}">
-        <a href="{{ route('barangAdmin.index') }}">
+        <a href="{{ route('barang.index') }}">
             <i class="fa fa-boxes"></i>
             <span>Barang</span>
         </a>

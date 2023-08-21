@@ -32,7 +32,12 @@
 <body class="font-sans antialiased">
     <div id="wrapper">
         <aside id="sidebar-wrapper">
-            @include('layouts.sidebar')
+            @if (Auth::user()->role_id == 1)
+                @include('layouts.sidebar')
+            @elseif (Auth::user()->role_id == 3)
+                @include('layouts.sidebarProducer')
+            @endif
+
         </aside>
         @include('layouts.navigation')
 
@@ -44,7 +49,7 @@
                 </div>
             </header>
         @endif
-    
+
         <!-- Page Content -->
         <main class="p-2">
             {{ $slot }}
