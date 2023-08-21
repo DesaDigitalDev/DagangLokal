@@ -38,32 +38,41 @@ class RatingController extends Controller
             ->where('user_id', $user_id)
             ->first();
 
+        $user_id = auth()->user()->id;
+
+        $existingRating = ProductRating::where('product_id', $product_id)
+            ->where('user_id', $user_id)
+            ->first();
+
+        $user_id = auth()->user()->id;
+
+        $existingRating = ProductRating::where('product_id', $product_id)
+            ->where('user_id', $user_id)
+            ->first();
+
         if ($product_check) {
-            if ($existingRating == null) {
-                $productComment = new ProductComment();
-                $productComment->user_id = $user_id;
-                $productComment->product_id = $product_id;
-                $productComment->comment = $comment;
+            $user_id = auth()->user()->id; // Ambil user ID dari pengguna yang sedang login
 
-                $productRating = new ProductRating();
-                $productRating->user_id = $user_id;
-                $productRating->product_id = $product_id;
-                $productRating->rating_value = $rating;
+            $productComment = new ProductComment();
+            $productComment->user_id = $user_id;
+            $productComment->product_id = $product_id;
+            $productComment->comment = $comment;
 
-                $currentDateTime = Carbon::now();
-                $dateTimeFormatted = $currentDateTime->format('Y-m-d H:i:s');
-                $productRating->date = $dateTimeFormatted;
+            $productRating = new ProductRating();
+            $productRating->user_id = $user_id;
+            $productRating->product_id = $product_id;
+            $productRating->rating_value = $rating;
 
-                $productComment->save();
-                $productRating->save();
+            $currentDateTime = Carbon::now();
+            $dateTimeFormatted = $currentDateTime->format('Y-m-d H:i:s');
+            $productRating->date = $dateTimeFormatted;
 
-                return redirect()->back()->with('success', 'Rating dan ulasan berhasil disimpan.');
-            } else {
-                return redirect()->back()->with('error', 'Produk tidak ditemukan atau tidak aktif.');
-            }
+            $productComment->save();
+            $productRating->save();
+
+            return redirect()->back()->with('success', 'Rating dan ulasan berhasil disimpan.');
         } else {
-
-            return redirect()->back()->with('error', 'Anda telah memberikan rating pada produk ini');
+            return redirect()->back()->with('error', 'Produk tidak ditemukan atau tidak aktif.');
         }
 
     }
