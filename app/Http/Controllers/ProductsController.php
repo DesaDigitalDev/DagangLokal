@@ -49,11 +49,20 @@ class ProductsController extends Controller
             ->where('product_comments.product_id', $id)
             ->get();
 
+        $comments = ProductComment::select('product_comments.comment', 'product_ratings.rating_value', 'users.id as user_id', 'users.name')
+            ->join('product_ratings', 'product_comments.product_id', '=', 'product_ratings.product_id')
+            ->join('users', 'product_comments.user_id', '=', 'users.id')
+            ->whereColumn('product_comments.user_id', 'product_ratings.user_id')
+            ->where('product_comments.product_id', $id)
+            ->get();
+
         if ($ratings->count() > 0) {
             $rating_value = $rating_sum / $ratings->count();
         } else {
             $rating_value = 0;
         }
+        //dd($ratings);
+        return view('katalog.product-detail', compact('product', 'product_id', 'ratings', 'rating_value', 'user_rating', 'comments'));
         //dd($ratings);
         return view('katalog.product-detail', compact('product', 'product_id', 'ratings', 'rating_value', 'user_rating', 'comments'));
 

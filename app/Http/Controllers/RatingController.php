@@ -32,6 +32,12 @@ class RatingController extends Controller
             ->where('user_id', $user_id)
             ->first();
 
+        $user_id = auth()->user()->id;
+
+        $existingRating = ProductRating::where('product_id', $product_id)
+            ->where('user_id', $user_id)
+            ->first();
+
         if ($product_check) {
             if ($existingRating == null) {
                 $productComment = new ProductComment();

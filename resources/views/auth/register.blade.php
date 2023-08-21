@@ -207,7 +207,7 @@ m462 144 l0 -77 -77 -65 c-42 -36 -81 -66 -86 -66 -9 0 -144 115 -159 135 -8
                             </svg>
 
                         </div>
-                        <label for="produser" class="radio-tile-label">Produser</label>
+                        <label for="produser" class="radio-tile-label">Produsen</label>
                     </div>
                 </div>
 
