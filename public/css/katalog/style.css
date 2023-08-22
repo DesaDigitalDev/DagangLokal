@@ -1,67 +1,94 @@
-.btn-float-whatsapp {
-    position: fixed;
-    bottom: 30px;
-    right: 20px;
-    height: 60;
-    width: 60px;
-    padding: 5px;
-    background-color: rgb(21, 179, 21);
-    color: white;
-    border-radius: 50%;
-    color: white !important;
-    border: white;
-    cursor: pointer;
-    
+.edge {
+    border: 1.3px solid rgb(189, 186, 186);
 }
 .card-img-top{
-    border-radius: 8.5px 8.5px 30px 0px;
+    border-radius: 0px 0px 30px 0px;
     padding: .5px 0px 0px 0px;
 }
 .card{
-    border-radius: 9.5px 9.5px 9.5px 0px;
+    border-radius: 0px 0px 0px 0px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     margin: 5px;
 }
 .card-title {
-    line-height: 15px;
-    font-size: 15px ;
+    line-height: 20px;
+    font-size: 20px ;
     font-weight: bold;
 }
 .card-body{
-    height: 150px;
+    height: 200px;
     padding: 20px;
 }
 
 .pricing {
     display: flex;
     justify-content: space-between;
-    font-size : 8px
+    font-size : 10px
 }
 .pricing p {
-    font-size: 10px;
+    font-size: 19px;
+    font-weight: bold;
 }
 .pricing h1 {
-    font-size : 8px
+    font-size : 13px
 }
 
 .pricing-detail {
-    font-size: 8px;
+    font-size: 12px;
     display: flex;
     justify-content: space-between;
     gap: 10px;
 }
 .stars {
-    line-height: 5px;
+    line-height: 8px;
 }
 .stars i {
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .rated {
     color: #ffcc00;
 }
+.x-notif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: rgba(62, 62, 62, 0.483); 
+    text-transform: uppercase;
+}
+/* category button */
+    .category {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+   }
+   .category button{
+   padding: 5px 8px;
+   font-size: 15px;
+   color: rgb(255, 253, 253);
+   border: .5px solid silver;
+   background-color:rgb(255, 110, 20);  
+   border-radius: 50px;
+   }
 
 
+   .category button:hover{
+    color: white;
+    background-color: rgb(235, 81, 35);  
+   }
+   /* end category button */
+
+   /* breakpoints */
 @media (width <= 768px) {
     .card {
         margin: 10px !important;
@@ -139,31 +166,25 @@
 @media (width <= 1200px) {
     .card-title {
         line-height: 15px;
-        font-size: 13px;
+        font-size: 18px;
+        margin-bottom: 10px;
     }
     .stars i {
-        line-height: 2px;
-        font-size: 10px;
+        line-height: 5px;
+        font-size: 13px;
     }
     .pricing-detail {
-        font-size: 9px;
+        font-size: 12px;
     }
     .pricing p {
-        font-size : 13px;
+        font-size : 16px;
     }
     .pricing h1 {
-        font-size : 10px;
+        font-size : 13px;
     }
     .card-body {
-        height: 170px;
+        height: 200px;
         padding: 15px calc(100%-20px);
-    }
-    .btn-product {
-        line-height: 18px;
-        height : 25px;
-    }
-    .btn-product span {
-        font-size: 12px;
-        color: #FFFFFF; 
-    }
+    }  
 } 
+/* end breakpoints */

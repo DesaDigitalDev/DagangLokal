@@ -26,9 +26,6 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <style>
-    </style>
-
 </head>
 
 <body class="font-sans antialiased">
@@ -40,7 +37,7 @@
             </div>                 
         </x-slot>
 
-        <div class="p-3 mt-3" style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; border-radius: 8px">
+        {{-- <div class="p-3 mt-3" style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; border-radius: 8px">
             <form class="d-flex" role="search">
                 <input class="form-control rounded-start-pill border-end-0" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn pe-4 btn-outline-success rounded-end-pill border-start-0" type="submit"><i class="fa fa-search"></i></button>
@@ -49,134 +46,180 @@
                     <i class="fa fa-shopping-cart"></i>
                 </a>
             </form>
-        </div>
+        </div> --}}
+
     </div>
-    <div class="container-fluid pt-3 mt-2">
-        <div class="wrapper p-2">
-                    <div class="row g-3 col-sm-12 p-5" >
-                        <div class="col-md-6 pb-2">
-                            <img src="/../assets/img/dish1.jpg" class="img-detail" style="border-radius : 10px" alt="...">
+
+    @if (session('success'))
+        <div id="popup-containerX" style="display: block;">
+            <div id="ratePopup">
+                <i id="closePopupX" class="fas fa-times close-icon"></i>
+                <div class="alert-success"><i class="fas fa-check"></i><span>Rating dan ulasan berhasil disimpan</span></div>
+            </div>      
+        </div>
+    @endif
+
+    <div class="container mt-4 pt-4" style="background-color: rgba(231, 229, 229, 0.794)">
+        <div class="wrapper mx-auto">
+            <a href="/catalog"><button class="button-7" role="button"><i class="fa-solid fa-arrow-left"></i> Kembali</button></a>
+        </div>
+
+        <div class="wrapper line mx-auto p-3 mt-3" style="background-color: #e6faff;">
+            <h1 style="font-size : 13.5px;"><a href="/catalog" style="color: rgb(0, 114, 191);">Home</a> / <span>{{ $product->category_name }}</span> 
+                / <span>{{ $product->name }}</span>
+            </h1>   
+        </div>
+        
+        <div class="wrapper edge mx-auto mt-4 mb-5 pt-3" style="background-color: #fafeff;">
+            <div class="row g-3 col-sm-12 pe-3 ps-3" >
+                <div class="card mb-3">
+                    <div class="row g-2">
+                        <div class="col-md-5">
+                            <img src="/../assets/img/dish1.jpg" class="img-detail" alt="...">
                         </div>
                         <div class="col-md-6">
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title mb-3" style="font-size: 30px; fw-bold">{{ $product['name'] }}</h5>
-                                        <h5 class="mb-2" style="font-size: 30px; fw-bold">Rp. {{ $product['unit_price'] }}</h5>
-                                        @php
-                                            $ratings = $ratings->count();
-                                            $ratingValue = $rating_value;
-                                            $formattedRating = number_format($ratingValue);
-                                        @endphp
-                                        <div class="rating mb-4">
-                                            <p>
-                                                @for($i = 1; $i <= $formattedRating; $i++)
-                                                        <i class="fas fa-star rated"></i>
-                                                @endfor
-                                                @for($j = $formattedRating+1; $j <= 5; $j++ )
-                                                        <i class="fas fa-star"></i>
-                                                @endfor
-                                                @if($ratings > 0)
-                                                    {{ $ratings  }} Rating
-                                                @else
-                                                    0 Rating
-                                                @endif
-                                            </p>
-                                        </div>
+                                <h5 class="card-title" style="font-size: 23px; fw-bold">{{ $product->name }}</h5>
+                                <h5 class="mb-2 mt-2" style="font-size: 25px; fw-bold">Rp. {{ $product->unit_price }}</h5>
+                                <div class="rating mb-1">
+                                    <p>
+                                        @for($i = 1; $i <= $formattedRating; $i++)
+                                            <i class="fas fa-star rated"></i>
+                                        @endfor
+                                        @for($j = $formattedRating+1; $j <= 5; $j++ )
+                                                <i class="fas fa-star"></i>
+                                        @endfor
+                                        @if($ratingsCount > 0)
+                                            {{ $ratingsCount  }} Rating
+                                        @else
+                                            0 Rating
+                                        @endif
+                                    </p>
+                                </div>
+                                    <div class="col-lg-10 col-md-12 col-sm-10 picks mt-3 mb-2">
+                                        <button class="pick-button">Saga Merah</button>
+                                        <button class="pick-button">Saga Hijau</button>
+                                        <button class="pick-button">Saga Hijau</button>
+                                        <button class="pick-button">Saga Hijau</button>
                                     </div>
+                                <hr>
+
+                                <div class="xhead mt-2">
+                                    <p>Detail</p>
+                                </div>
+
+                                <div class="half-colored-line">
+                                    <div class="colored-half"></div>
+                                    <div class="transparent-half"></div>
+                                </div>
+
+                                <div class="xtoe mb-1">
+                                    <p>Stock : <span>{{ $product->unit_in_stock }} pcs</span></p>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="product-desc">
-                                            <p class="less-desc">{{ substr($product['description'], 0, 130) }}</p>
+                                            <p class="less-desc">{{ substr($product->description, 0, 100) }} <span><button class="show-more-btn">show more...</button></span></p>
                                             <p class="more-desc" style="display: none;">
-                                                {{ $product['description'] }}
-                                            </p>
-                                            <button class="show-more-btn">Selengkapnya</button>
+                                                {{ $product->description }}
+                                                <span><button class="show-less-btn">show less</button>
+                                            </p> 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                <div>min pemesanan</div>
-                                </div>
-                                <div class="row mt-5">
-                                    <div class="col">
-                                        <button class="btn btn-primary" >Tambah Keranjang</button>
-                                    </div>
-                                </div>
-                                
+                                <!-- Add buttons here -->
+                                {{-- <button class="btn btn-primary mt-3"><i class="fa fa-shopping-cart"></i></button> --}}
                             </div>
                         </div>
                     </div>
-                
-        </div>
-    </div>
+                </div>
+            </div>
+        </div>       
         @if($comments->count() > 0 )
             @foreach($comments as $comment)
-                <div class="container-fluid mt-3">
-                    <div class="comment wrapper mx-auto">
-                        <div class="comment-detail">
-                            <p> {{ $comment['name'] }} </p>
-                            <p> {{ $comment['rating_value'] }} </p>
-                            <p> {{ $comment['comment'] }} </p>
+                <div class="wrapper edge mx-auto mt-3" style="background-color: rgba(255, 255, 255, 0.794);">
+                    <div class="comment">
+                        <div class="row">
+                            <div class="col">
+                                <div class="comment-detail mb-2">
+                                    <div class="user-detail">
+                                        <img src="/../assets/img/dish1.jpg" alt="">
+                                    </div>
+                                    <div class="user-rate">
+                                        <div class="user-name">
+                                            <p class="mb-1"> {{ $comment->name }} <span class="mb-1"> - {{ $comment->formatted_created_at }} </span></p>
+                                        </div>
+                                        <div class="user-ratingvalue">  
+                                            @for($i = 1; $i <= $comment->rating_value; $i++)
+                                                <i class="fas fa-star rated"></i>
+                                            @endfor
+                                            @for($j = $comment->rating_value+1; $j <= 5; $j++ )
+                                                    <i class="fas fa-star"></i>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-detail col-12">
+                                    <div class="user-comment"> 
+                                        <p> {{ $comment->comment }} </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-        @else
-        <div class="container-fluid mt-3">
-            <div class="comment wrapper mx-auto">
-                <div class="comment-detail">
-                    <p> Belum ada komentar</p>
+            @else
+            <div class="wrapper edge mx-auto mt-3" style="background-color: rgba(255, 255, 255, 0.794);">
+                <div class="col-12">
+                    <div class="comment mx-auto">
+                        <div class="row">
+                            <div class="col">
+                                <div class="comment-detail justify-content-center">
+                                    <div class="user-comment"> 
+                                        <p class=""> Belum ada komentar </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
+    </div>
     
-    <button class="btn btn-primary" id="rateButton" ><i class="fas fa-comment"></i></button>
+
+    {{-- <button class="btn btn-primary" id="rateButton" ><i class="fas fa-comment"></i></button> --}}
 
         <div id="popup-container"  style="display: none;">
             <div id="ratePopup">
                 <i id="closePopup" class="fas fa-times close-icon"></i>
                 <div class="popup-body mt-2">
                     <p>Rate {{ $product['name'] }}</p>
-                    <form action="{{ url('/add-rating') }}" method="POST">
+                    <form action="{{ $user_rating ? url('/update-rating') : url('/add-rating') }}" method="POST">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product['product_id'] }}">
+                        @if($user_rating)
+                            <input type="hidden" name="rating_id" value="{{ $user_rating->id }}">
+                        @endif
                         <div class="give-rating mt-3">
-                            @if($user_rating)
-                                @for ($i = 1; $i <= $user_rating->rating_value ; $i++)
-                                    <input type="radio" value="{{ $i }}" name="rating" id="rating{{ $i }}">
-                                    <label for="rating{{ $i }}"> <i class="star fas fa-star rated" data-rating="{{ $i }}"></i></label>
-                                @endfor
-                                @for($j = $user_rating->rating_value+1; $j <= 5; $j++ )
-                                    <input type="radio" value="{{ $j }}" name="rating" id="rating{{ $j }}">
-                                    <label for="rating{{ $j }}"> <i class="star fas fa-star" data-rating="{{ $j }}"></i></label>
-                                @endfor                              
-                            @else 
-                                @for ($i = 1; $i <= 5; $i++)
-                                    <input type="radio" value="{{ $i }}" name="rating" id="rating{{ $i }}">
-                                    <label for="rating{{ $i }}"> <i class="star fas fa-star" data-rating="{{ $i }}"></i></label>
-                                @endfor
-                            @endif
+                            @for ($i = 1; $i <= 5; $i++)
+                                <input type="radio" value="{{ $i }}" name="rating" id="rating{{ $i }}"
+                                {{ $user_rating && $user_rating->rating_value >= $i ? 'checked' : '' }}>
+                                <label for="rating{{ $i }}"> <i class="star fas fa-star{{ $user_rating && $user_rating->rating_value >= $i ? ' rated' : '' }}"
+                                data-rating="{{ $i }}"></i></label>
+                            @endfor
                         </div>
-                        <textarea id="comment" name="ulasan" class="mt-2" placeholder="Masukkan ulasan anda"></textarea>
+                        <textarea id="comment" name="ulasan" class="mt-2" placeholder="{{ $user_rating ? $user_rating->comment : 'Masukkan komentar Anda...' }}"></textarea>
                         <div class="submit-rate">  
-                            <button id="submitRating"  class="btn">Submit</button>
+                            <button class="button-7" role="button">{{ $user_rating ? 'Update' : 'Submit' }}</button>
                         </div> 
                     </form>
-                </div> 
+                </div>
+                
             </div>        
         </div>
-        @if (session('success'))
-        <div id="popup-containerX" style="display: block;">
-            <div id="ratePopup">
-                <i id="closePopupX" class="fas fa-times close-icon"></i>
-                <div>success</div>
-            </div>      
-        </div>
-        @endif
-    
+
 </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

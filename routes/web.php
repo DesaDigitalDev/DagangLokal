@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RatingController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BarangController;
 use App\Http\Controllers\Seller\SellerController;
@@ -60,9 +60,12 @@ Route::middleware(['auth', 'user-access:producer'])->group(function () {
 
 // route katalog
 Route::middleware(['auth', 'user-access:seller'])->group(function () {
-    Route::get('/catalog', [ProductsController::class, 'index']);
-    Route::get('/catalog/detail/{id} ', [ProductsController::class, 'show'])->name('ShowProduct');
+    Route::get('/catalog', [CatalogController::class, 'index']);
+    Route::get('/catalog/search', [CatalogController::class, 'search'])->name('Search');
+    Route::get('/catalog/category', [CatalogController::class, 'searchByCategory'])->name('CategorySearch');
+    Route::get('/catalog/detail/{id} ', [CatalogController::class, 'showProductById'])->name('ShowProduct');
     Route::post('/add-rating ', [RatingController::class, 'add']);
+    Route::post('/update-rating ', [RatingController::class, 'update']);
 });
 
 
