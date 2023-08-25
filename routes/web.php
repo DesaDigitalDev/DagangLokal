@@ -1,14 +1,8 @@
 <?php
 
-<<<<<<< HEAD
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RatingController;
-use App\Http\Controllers\CatalogController;
-use App\Http\Controllers\ProfileController;
-=======
->>>>>>> 52fb6c0238983f275cfd02ea6da7d1f0f4419550
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BarangController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\Producer\BarangProducerController;
 use App\Http\Controllers\Producer\KeuanganProducerController;
 use App\Http\Controllers\Producer\ProducerController;
@@ -64,10 +58,11 @@ Route::middleware(['auth', 'user-access:seller'])->group(function () {
 Route::middleware(['auth', 'user-access:producer'])->group(function () {
     Route::get('/producer/dashboard', [ProducerController::class, 'show'])->name('dashboard');
     Route::resource('/producer/barang', BarangProducerController::class);
+    Route::get('/producer/keuangan/createBank', [KeuanganProducerController::class, 'Bank'])->name('createBank');
+    Route::post('/producer/keuangan/createBank/store', [KeuanganProducerController::class, 'BankStore'])->name('StoreBank');
     Route::resource('/producer/keuangan', KeuanganProducerController::class);
     Route::get('/producer/tracking_product', [ProducerController::class, 'getProgress']);
 });
-<<<<<<< HEAD
 
 // route katalog
 Route::middleware(['auth', 'user-access:seller'])->group(function () {
@@ -79,15 +74,5 @@ Route::middleware(['auth', 'user-access:seller'])->group(function () {
     Route::post('/update-rating ', [RatingController::class, 'update']);
 });
 
-
-
-
-
 // Route::get('/producer/barang', [ListBarangController::class, 'index']);
 // Route::delete('/producer/delete/{id}', [ListBarangController::class, 'destroy']);
-
-
-
-
-=======
->>>>>>> 52fb6c0238983f275cfd02ea6da7d1f0f4419550
