@@ -25,8 +25,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-item-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Produk Sedang
-                                Diproses
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Produk Kurasi
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $progressProces->count() }}</div>
                         </div>
@@ -42,7 +41,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-item-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Produk Selesai</div>
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Produk Diterima</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $progressComplete->count() }}</div>
                         </div>
                         <div class="col-auto">
