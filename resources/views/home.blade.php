@@ -13,15 +13,15 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="/../home/css/bootstrap.min.css">
       <!-- style css -->
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="/../css/katalog/home.css">
       <!-- Responsive-->
-      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="/../home/css/responsive.css">
       <!-- fevicon -->
-      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="icon" href="/../home/images/fevicon.png" type="image/gif" />
       <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="/../home/css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
@@ -34,7 +34,7 @@
 
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+         <div class="loader"><img src="/../home/images/loading.gif" alt="#" /></div>
       </div>
       <!-- end loader --> 
 
@@ -378,7 +378,7 @@
       <!-- end Testimonial -->
 
       <!--  footer --> 
-      <footr>
+      <footer>
          <div class="footer">
             <div class="container">
                <div class="row">
@@ -409,7 +409,7 @@
                <p>Copyright 2023 All Right Reserved By <a href="https://daganglokal.com/">Dagang Lokal</a></p>
             </div>
          </div>
-      </footr>
+      </footer>
       <!-- end footer -->
 
       <!-- Javascript files--> 
