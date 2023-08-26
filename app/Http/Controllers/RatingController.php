@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
-use App\Models\ProductRating;
 use App\Models\ProductComment;
+use App\Models\ProductRating;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    
+
     public function add(Request $request)
     {
         $product_id = $request->input('product_id');
@@ -29,10 +29,29 @@ class RatingController extends Controller
         $user_id = auth()->user()->id;
 
         $existingRating = ProductRating::where('product_id', $product_id)
-        ->where('user_id', $user_id)
-        ->first();
+            ->where('user_id', $user_id)
+            ->first();
+
+        $user_id = auth()->user()->id;
+
+        $existingRating = ProductRating::where('product_id', $product_id)
+            ->where('user_id', $user_id)
+            ->first();
+
+        $user_id = auth()->user()->id;
+
+        $existingRating = ProductRating::where('product_id', $product_id)
+            ->where('user_id', $user_id)
+            ->first();
+
+        $user_id = auth()->user()->id;
+
+        $existingRating = ProductRating::where('product_id', $product_id)
+            ->where('user_id', $user_id)
+            ->first();
 
         if ($product_check) {
+<<<<<<< HEAD
             if($existingRating == null) {
                 $productComment = new ProductComment();
                 $productComment->user_id = $user_id;
@@ -53,14 +72,65 @@ class RatingController extends Controller
         
                 return redirect()->back()->with('success', 'Rating dan ulasan berhasil disimpan.');
             }
-            else {
-                return redirect()->back()->with('error', 'Produk tidak ditemukan atau tidak aktif.');
-            }
         }
-         else {
-        
-            return redirect()->back()->with('error', 'Anda telah memberikan rating pada produk ini');
+        else {
+            return redirect()->back()->with('error', 'Rating untuk produk tidak ditemukan atau tidak diizinkan.');
         }
-        
+=======
+            $user_id = auth()->user()->id; // Ambil user ID dari pengguna yang sedang login
+
+            $productComment = new ProductComment();
+            $productComment->user_id = $user_id;
+            $productComment->product_id = $product_id;
+            $productComment->comment = $comment;
+
+            $productRating = new ProductRating();
+            $productRating->user_id = $user_id;
+            $productRating->product_id = $product_id;
+            $productRating->rating_value = $rating;
+
+            $currentDateTime = Carbon::now();
+            $dateTimeFormatted = $currentDateTime->format('Y-m-d H:i:s');
+            $productRating->date = $dateTimeFormatted;
+
+            $productComment->save();
+            $productRating->save();
+
+            return redirect()->back()->with('success', 'Rating dan ulasan berhasil disimpan.');
+        } else {
+            return redirect()->back()->with('error', 'Produk tidak ditemukan atau tidak aktif.');
+        }
+>>>>>>> 52fb6c0238983f275cfd02ea6da7d1f0f4419550
+
     }
+
+    public function update(Request $request)
+    {
+        $rating_id = $request->input('rating_id');
+        $rating_value = $request->input('rating');
+        $comment = $request->input('ulasan');
+
+        $user_id = auth()->user()->id;
+
+        $existingRating = ProductRating::find($rating_id);
+
+        if ($existingRating && $existingRating->user_id === $user_id) {
+            $existingRating->rating_value = $rating_value;
+            $existingRating->update();
+
+            $existingComment = ProductComment::where('product_id', $existingRating->product_id)
+                ->where('user_id', $user_id)
+                ->first();
+
+            if ($existingComment) {
+                $existingComment->comment = $comment;
+                $existingComment->update();
+            }
+
+            return redirect()->back()->with('success', 'Rating dan ulasan berhasil diperbarui.');
+        } else {
+            return redirect()->back()->with('error', 'Rating untuk produk tidak ditemukan atau tidak diizinkan.');
+        }
+    }
+
 }

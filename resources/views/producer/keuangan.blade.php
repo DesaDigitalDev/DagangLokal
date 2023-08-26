@@ -12,6 +12,13 @@
         </div>
     @endif
 
+    @if ($message = Session::get('alert'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ $message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="container-fluid">
 
         <div class="row my-3">
@@ -52,27 +59,15 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-md-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-item-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Penduduk</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-users fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
 
         <div class="card shadow mb-4">
             <div class="card-body">
                 <x-primary-button class="ml-4" onclick="window.location='{{ route('keuangan.create') }}'">
                     {{ __('Tambah Data') }}
+                </x-primary-button>
+                <x-primary-button class="ml-4" onclick="window.location='{{ route('createBank') }}'">
+                    {{ __('Tambah Data Bank') }}
                 </x-primary-button>
                 <!-- tabel -->
                 <div class="mt-3 table-responsive" style="text-align: center">
@@ -99,10 +94,10 @@
                                     <td>{{ $item->amount }}</td>
                                     <td>{{ $item->transaction_no }}</td>
                                     <td>
-                                        <a href="{{ route('keuangan.edit', $item->id) }}"
+                                        {{-- <a href="{{ route('keuangan.edit', $item->id) }}"
                                             class="btn btn-circle btn-sm btn-warning">
                                             <i class="fa fa-edit"></i> Edit
-                                        </a>
+                                        </a> --}}
                                         <form action="{{ route('keuangan.destroy', $item->id) }}" method="POST">
                                             @method('DELETE')
                                             @csrf

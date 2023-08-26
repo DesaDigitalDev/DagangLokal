@@ -28,16 +28,23 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{--tracking product --}}
-        <!-- UniIcon CDN Link  -->
+    {{-- tracking product --}}
+    <!-- UniIcon CDN Link  -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    {{--end tracking product --}}
+    {{-- end tracking product --}}
 </head>
 
 <body class="font-sans antialiased">
     <div id="wrapper">
         <aside id="sidebar-wrapper">
-            @include('layouts.sidebar')
+            @if (Auth::user()->role_id == 1)
+                @include('layouts.sidebar')
+            @elseif (Auth::user()->role_id == 2)
+                @include('layouts.sidebarProducer')
+            @elseif (Auth::user()->role_id == 3)
+                @include('layouts.sidebarProducer')
+            @endif
+
         </aside>
         @include('layouts.navigation')
 
@@ -74,9 +81,10 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
 
-    {{--tracking product --}}
-    
-    {{--end tracking product --}}
+    {{-- tracking product --}}
+
+    {{-- end tracking product --}}
 
 </body>
+
 </html>

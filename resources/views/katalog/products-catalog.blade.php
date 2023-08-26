@@ -24,6 +24,12 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <style>
+   
+</style>
+
+    
 </head>
 
 <body class="font-sans antialiased">
@@ -39,17 +45,44 @@
             <div class="p-3 mt-3" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
             rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, 
             rgba(0, 0, 0, 0.09) 0px -3px 5px; border-radius: 8px">
-                   <form class="d-flex" role="search">
-                       <input class="form-control rounded-start-pill border-end-0" type="search" placeholder="Search" aria-label="Search">
-                       <button class="btn pe-4 btn-outline-success rounded-end-pill border-start-0" type="submit"><i class="fa fa-search"></i></button>
-                       <div class="m-2"></div>
-                       <a href="#" class="btn btn-outline-danger">
-                           <i class="fa fa-shopping-cart"></i>
-                       </a>
-                   </form>
-               </div>
+                <form class="d-flex" role="search" method="GET" action="{{ url('catalog/search') }}">
+                    @csrf
+                    <input class="form-control rounded-start-pill border-end-0" type="search" placeholder="Search" aria-label="Search" name="q">
+                    <button class="btn pe-4 btn-outline-success rounded-end-pill border-start-0" type="submit"><i class="fa fa-search"></i></button>
+                    <div class="m-2"></div>
+                    <a href="catalog/" class="btn btn-outline-danger">
+                        <i class="fa fa-shopping-cart"></i>
+                    </a>
+                </form>
+            </div>
     </div>
-    <div class="container-fluid mt-4">
+
+    <div class="container-fluid">
+        <div class="mt-3">
+            <div class="category"  @if ($isNoResults = $products->isEmpty()) style="display: none;" @endif>
+                <div class="">
+                    <form action="{{ url('catalog/category')}}" method="GET">
+                        <button class="all" name="category_name" value="">All</button>
+                    </form>
+                </div>
+                @foreach($categories as $category)
+                    <div class="category-btn">
+                        <form action="{{ url('catalog/category')}}" method="GET">
+                            <button class="cat-btn" name="category_name" value="{{  $category->category_name }}">{{ $category->category_name }}</button>
+                        </form>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+    @if ($isNoResults = $products->isEmpty())
+        <div class="x-notif">
+            <h1>Product Not Found</h1>
+        </div>
+    @endif
+
+    <div class="container-fluid mt-2">
             <div class="row row-cols-1 row-cols-md-3 row-cols-sm-6 ps-2 pe-2">        
                 @foreach ($products as $item)
                 <div class="col-12 col-sm-12 col-md-6 col-lg-3 g-1">
@@ -60,7 +93,7 @@
                             @php
                                 $formattedRating = number_format($item->rating_value);
                             @endphp
-                            <div class="stars mb-2">
+                            <div class="stars mb-3">
                                 @for($i = 1; $i <= 5; $i++)
                                     @if($formattedRating >= $i)
                                         <i class="fas fa-star rated"></i>
@@ -68,7 +101,6 @@
                                         <i class="fas fa-star"></i>
                                     @endif
                                 @endfor
-    
                             </div>
                             <div class="pricing mb-2">
                                 <div class="pricing-price">

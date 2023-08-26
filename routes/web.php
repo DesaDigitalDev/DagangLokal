@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RatingController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BarangController;
-use App\Http\Controllers\Seller\SellerController;
-use App\Http\Controllers\Producer\ProducerController;
-use App\Http\Controllers\Producer\ListBarangController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\Producer\BarangProducerController;
 use App\Http\Controllers\Producer\KeuanganProducerController;
+use App\Http\Controllers\Producer\ProducerController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RatingController;
+use App\Http\Controllers\Seller\SellerController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,35 +41,38 @@ require __DIR__ . '/auth.php';
 
 // route admin
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'show']);
-    Route::resource("/admin/barang", BarangController::class);
+    Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('dashboardAdmin');
+    Route::resource("/admin/barangAdmin", BarangController::class);
 });
 
 // route seller
 Route::middleware(['auth', 'user-access:seller'])->group(function () {
     Route::get('/seller/dashboard', [SellerController::class, 'index']);
     Route::get('/seller/produk', [SellerController::class, 'show']);
+    Route::get('/catalog', [ProductsController::class, 'index']);
+    Route::get('/catalog/detail/{id} ', [ProductsController::class, 'show'])->name('ShowProduct');
+    Route::post('/add-rating ', [RatingController::class, 'add']);
 });
 
 // route producer
 Route::middleware(['auth', 'user-access:producer'])->group(function () {
     Route::get('/producer/dashboard', [ProducerController::class, 'show'])->name('dashboard');
     Route::resource('/producer/barang', BarangProducerController::class);
+    Route::get('/producer/keuangan/createBank', [KeuanganProducerController::class, 'Bank'])->name('createBank');
+    Route::post('/producer/keuangan/createBank/store', [KeuanganProducerController::class, 'BankStore'])->name('StoreBank');
     Route::resource('/producer/keuangan', KeuanganProducerController::class);
     Route::get('/producer/tracking_product/{product}', [ProducerController::class, 'getProgress'])->name('tracking_product');
 });
 
 // route katalog
 Route::middleware(['auth', 'user-access:seller'])->group(function () {
-    Route::get('/catalog', [ProductsController::class, 'index']);
-    Route::get('/catalog/detail/{id} ', [ProductsController::class, 'show'])->name('ShowProduct');
+    Route::get('/catalog', [CatalogController::class, 'index']);
+    Route::get('/catalog/search', [CatalogController::class, 'search'])->name('Search');
+    Route::get('/catalog/category', [CatalogController::class, 'searchByCategory'])->name('CategorySearch');
+    Route::get('/catalog/detail/{id} ', [CatalogController::class, 'showProductById'])->name('ShowProduct');
     Route::post('/add-rating ', [RatingController::class, 'add']);
+    Route::post('/update-rating ', [RatingController::class, 'update']);
 });
-
 
 // Route::get('/producer/barang', [ListBarangController::class, 'index']);
 // Route::delete('/producer/delete/{id}', [ListBarangController::class, 'destroy']);
-
-
-
-

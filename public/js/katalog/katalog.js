@@ -63,24 +63,26 @@
                 });
             });
             
+            document.addEventListener("DOMContentLoaded", function () {
+                const showMoreBtns = document.querySelectorAll(".show-more-btn");
+                const showLessBtns = document.querySelectorAll(".show-less-btn");
+                const lessDescs = document.querySelectorAll(".less-desc");
+                const moreDescs = document.querySelectorAll(".more-desc");
         
-        document.addEventListener("DOMContentLoaded", function() {
-            const showMoreBtn = document.querySelector('.show-more-btn');
-            const moreDesc = document.querySelector('.more-desc');
-            const lessDesc = document.querySelector('.less-desc');
-
-            showMoreBtn.addEventListener("click", function() {
-                if (moreDesc.style.display === 'none') {
-                    moreDesc.style.display = 'block';
-                    lessDesc.style.display = 'none';
-                    showMoreBtn.innerText = 'Sembunyikan';
-                } else {
-                    moreDesc.style.display = 'none';
-                    lessDesc.style.display = 'block';
-                    showMoreBtn.innerText = 'Selengkapnya';
-                }
-            });
-        });
+                showMoreBtns.forEach((btn, index) => {
+                    btn.addEventListener("click", function () {
+                        lessDescs[index].style.display = "none";
+                        moreDescs[index].style.display = "block";
+                    });
+                });
+        
+                showLessBtns.forEach((btn, index) => {
+                    btn.addEventListener("click", function () {
+                        moreDescs[index].style.display = "none";
+                        lessDescs[index].style.display = "block";
+                    });
+                });
+            });        
 
         window.addEventListener('popstate', function() {
             if (history.state && history.state.clearSuccess) {
