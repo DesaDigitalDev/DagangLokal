@@ -194,13 +194,10 @@
             </ul-progress>
         </div>
         <div class="container second-col">
-            <div class="secol-item">
-                <p class="head-progress-name">{{  $progress->name}}</p>
-                <p class="dt-progress">{{  $progress->updated_at}}</p>
-                <p class="head-progress-des">{{  $progress->description}}</p>
-                <p class="gjobb"><strong>Good Job!</strong></p>
-            </div>
-            
+            <p class="head-progress-name">{{ $currentProgress->name }}</p>
+            <p class="dt-progress">{{ $currentProgress->updated_at }}</p>
+            <p class="head-progress-des">{{ $currentProgress->description }}</p><br>
+            <p class="gjobb"><strong>Good Job!</strong></p>
         </div>
     </div>
 </x-app-layout>

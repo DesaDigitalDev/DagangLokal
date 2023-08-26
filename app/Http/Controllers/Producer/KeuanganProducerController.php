@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Producer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bank;
+use App\Models\BankAccount;
 use App\Models\TransactionHistory;
 use App\Models\TransactionType;
 use App\Models\UserBalance;
@@ -23,7 +25,6 @@ class KeuanganProducerController extends Controller
             ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
             ->select('th.*', 'tt.name as type_name', 'ba.name as acc_name', 'ba.account_no as acc_no', 'b.name as bank_name')
             ->where('th.user_id', Auth::id())->get();
-
         $dtSaldo = UserBalance::where('user_id', Auth::id())->first();
         $dtTrxUser = Transactionhistory::all()->where('user_id', Auth::id())->count();
         return view('producer.keuangan')->with('dtHistory', $dtHistory)
@@ -36,7 +37,6 @@ class KeuanganProducerController extends Controller
      */
     public function create()
     {
-
         $transactionType = TransactionType::all();
         $bankAcc = DB::table('bank_accounts AS ba')
             ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
@@ -49,13 +49,31 @@ class KeuanganProducerController extends Controller
             ->with('transactionType', $transactionType);
     }
 
+    public function Bank()
+    {
+        $bankType = Bank::all();
+
+        return view('producer.tambah-bank')->with('bankType', $bankType);
+    }
     /**
      * Store a newly created resource in storage.
      */
+    public function BankStore(Request $request)
+    {
+        $BankAcc = BankAccount::create([
+            'bank_id' => $request->namaBank,
+            'user_id' => Auth::id(),
+            'name' => $request->pemilikRekening,
+            'account_no' => $request->noRekening,
+            'type' => $request->BankType,
+        ]);
+        return redirect('producer/keuangan');
+    }
+
     public function store(Request $request)
     {
-        $userBalance = UserBalance::all()->where('user_id', Auth::id());
-        if ($userBalance[0]->balance >= floatval($request->jumTransaksi)) {
+        $userBalance = UserBalance::where('user_id', Auth::id())->first();
+        if ($userBalance->balance >= floatval($request->jumTransaksi)) {
             $thnBln = date('Ym');
             $cek = TransactionHistory::count();
             $urut = TransactionHistory::count() + 1;
@@ -70,14 +88,14 @@ class KeuanganProducerController extends Controller
                 'amount' => $request->jumTransaksi,
             ]);
 
-            $updateBalance = UserBalance::find($userBalance[0]->id);
-            $balanceNow = $userBalance[0]->balance - $request->jumTransaksi;
+            $updateBalance = UserBalance::find($userBalance->id);
+            $balanceNow = $userBalance->balance - $request->jumTransaksi;
             $updateBalance->balance = $balanceNow;
             $updateBalance->update();
 
             return redirect('producer/keuangan');
         } else {
-            dd('error', $userBalance[0]->balance, floatval($request->jumTransaksi));
+            return redirect('producer/keuangan')->with('alert', 'Data gagal ditambahkan, jumlah transaksi melebihi saldo anda');
         }
     }
 
@@ -126,6 +144,13 @@ class KeuanganProducerController extends Controller
      */
     public function destroy(string $id)
     {
+        $transactionHistory = TransactionHistory::find($id);
+        $userBalance = UserBalance::where('user_id', Auth::id())->first();
+        $BalanceDestroy = $transactionHistory->amount;
+        $BalanceDB = $userBalance->balance;
+        $SUMBalance = $BalanceDestroy + $BalanceDB;
+        $userBalance->balance = $SUMBalance;
+        $userBalance->update();
         TransactionHistory::destroy($id);
         return redirect('producer/keuangan')->with('status', 'Data Berhasil Di hapus');
     }

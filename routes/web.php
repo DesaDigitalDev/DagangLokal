@@ -24,7 +24,7 @@ use App\Http\Controllers\Producer\KeuanganProducerController;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/dashboard', function () {
@@ -49,8 +49,10 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 Route::middleware(['auth', 'user-access:producer'])->group(function () {
     Route::get('/producer/dashboard', [ProducerController::class, 'show'])->name('dashboard');
     Route::resource('/producer/barang', BarangProducerController::class);
+    Route::get('/producer/keuangan/createBank', [KeuanganProducerController::class, 'Bank'])->name('createBank');
+    Route::post('/producer/keuangan/createBank/store', [KeuanganProducerController::class, 'BankStore'])->name('StoreBank');
     Route::resource('/producer/keuangan', KeuanganProducerController::class);
-    Route::get('/producer/tracking_product', [ProducerController::class, 'getProgress']);
+    Route::get('/producer/tracking_product/{product}', [ProducerController::class, 'getProgress'])->name('tracking_product');
 });
 
 // route katalog
@@ -63,10 +65,6 @@ Route::middleware(['auth', 'user-access:seller'])->group(function () {
     Route::post('/add-rating ', [RatingController::class, 'add']);
     Route::post('/update-rating ', [RatingController::class, 'update']);
 });
-
-
-
-
 
 // Route::get('/producer/barang', [ListBarangController::class, 'index']);
 // Route::delete('/producer/delete/{id}', [ListBarangController::class, 'destroy']);

@@ -23,11 +23,12 @@ class ProducerController extends Controller
             ->with('progressComplete', $progressComplete);
     }
 
-    public function getProgress()
+    public function getProgress(Product $product)
     {
         $progresses = Progress::query()->get();
-        $product = Product::query()->find(1);
+        $currentProgress = $progresses->firstWhere('id', '=', $product->progress_id);
 
-        return view('producer.tracking_product', compact('progresses', 'product'));
+        return view('producer.tracking_product', compact('progresses', 'product', 'currentProgress'));
     }
+    
 }
