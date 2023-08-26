@@ -77,8 +77,8 @@
                                 <th style="min-width: 60px">No</th>
                                 <th style="min-width: 200px">Jenis Transaksi</th>
                                 <th style="min-width: 200px">Bank</th>
-                                <th style="min-width: 200px">Tanggal</th>
-                                <th style="min-width: 200px">jumlah</th>
+                                <th style="min-width: 200px">Tanggal Transasksi</th>
+                                <th style="min-width: 200px">Jumlah</th>
                                 <th style="min-width: 200px">Transaksi No.</th>
                                 <th style="min-width: 165px">Opsi</th>
                             </tr>
@@ -90,8 +90,8 @@
                                     <td> {{ $item->type_name }} </td>
                                     <td>{{ $item->bank_name }} - {{ $item->acc_name }} -
                                         {{ $item->acc_no }}</td>
-                                    <td>{{ date('d-m-Y', strtotime($item->date_time)) }}</td>
-                                    <td>{{ $item->amount }}</td>
+                                    <td>{{ date('d-m-Y H:i', strtotime($item->date_time)) }}</td>
+                                    <td>Rp.{{ $item->amount }}.00</td>
                                     <td>{{ $item->transaction_no }}</td>
                                     <td>
                                         {{-- <a href="{{ route('keuangan.edit', $item->id) }}"
