@@ -13,15 +13,15 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
-      <link rel="stylesheet" href="/../home/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ asset('/home/css/bootstrap.min.css') }}">
       <!-- style css -->
-      <link rel="stylesheet" href="/../css/katalog/home.css">
+      <link rel="stylesheet" href="{{ asset('/home/css/style.css') }}">
       <!-- Responsive-->
-      <link rel="stylesheet" href="/../home/css/responsive.css">
+      <link rel="stylesheet" href="{{ asset('/home/css/responsive.css') }}">
       <!-- fevicon -->
-      <link rel="icon" href="/../home/images/fevicon.png" type="image/gif" />
+      <link rel="icon" href="{{ asset('/home/images/fevicon.png" type="image/gif') }}" />
       <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="/../home/css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="{{ asset('/home/css/jquery.mCustomScrollbar.min.css') }}">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
@@ -34,9 +34,9 @@
 
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="/../home/images/loading.gif" alt="#" /></div>
+         <div class="loader"><img src="{{ asset('/home/images/loading.gif') }}" alt="#" /></div>
       </div>
-      <!-- end loader --> 
+      <!-- end loader -->
 
       <!-- header -->
       <header>
@@ -47,7 +47,7 @@
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"><a href="index.html"> <img src="images/Logoatas-01.png" alt="img" width="500" height="700"/></a> </div>
+                        <div class="logo"><a href="index.html"> <img src="{{ asset('/home/images/Logoatas-01.png') }}" alt="img" width="500" height="700"/></a> </div>
                      </div>
                   </div>
                </div>
@@ -69,7 +69,7 @@
                </div>
             </div>
          </div>
-         <!-- end header inner --> 
+         <!-- end header inner -->
       </header>
       <!-- end header -->
 
@@ -77,7 +77,7 @@
          <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img class="first-slide" src="images/umkm-1.jpeg" alt="First slide">
+                  <img class="first-slide" src="{{ asset('/home/images/umkm-1.jpeg') }}" alt="First slide">
                   <div class="container">
                      <div class="carousel-caption relative">
                         <h1 style="font-size: 55px"><span style="background-color: rgba(0,0,0,.7)">  Solusi UMKM di Indonesia </span> </h1>
@@ -85,12 +85,12 @@
                            <span style="background-color: rgba(0,0,0,.7)">
                            Dagang Lokal sebagai meja penghubung UMKM dengan Reseller hadir dengan fitur fulfillment, di mana UMKM akan di bantu membuat produk layak dipasarkan dan membantu para Reseller/advertiser
                            menyediakan produk ter-wining secara real time</span></p>
-                           
+
                      </div>
                   </div>
                </div>
                <div class="carousel-item">
-                  <img class="second-slide" src="images/umkm-2.jpg" alt="Second slide">
+                  <img class="second-slide" src="{{ asset('/home/images/umkm-2.jpg') }}" alt="Second slide">
                   <div class="container">
                      <div class="carousel-caption relative">
                         <h1 style="font-size: 55px"><span style="background-color: rgba(0,0,0,.7)">  Management System </span> </h1>
@@ -103,7 +103,7 @@
                   </div>
                </div>
                <div class="carousel-item">
-                  <img class="third-slide" src="images/umkm-3.jpg" alt="Third slide">
+                  <img class="third-slide" src="{{ asset('/home/images/umkm-3.jpg') }}" alt="Third slide">
                   <div class="container">
                      <div class="carousel-caption relative">
                         <h1 style="font-size: 55px"><span style="background-color: rgba(0,0,0,.7)">  UKM dan Fulfillment Marketing </span> </h1>
@@ -122,7 +122,7 @@
             <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
             <i class='fa fa-angle-right'></i>
             </a>
-            <a class="bottom_arrow_scroll" href="#about"><img src="icon/errow.png" /></a>
+            <a class="bottom_arrow_scroll" href="#about"><img src="{{ asset('/home/icon/errow.png') }}" /></a>
          </div>
       </section>
 
@@ -147,23 +147,23 @@
                         <br>
                         Dengan konsep menjadi wadah bagi para pelaku UMKM dan para advertiser, Dagang Lokal berharap dapat membantu mengangkat produk lokal melalui bimbingan peningkatan kualitas, sekaligus menjadi penyedia produk unggul bagi para advertiser atau reseller, yang pada gilirannya menciptakan siklus perekonomian dan berakhir dengan terciptanya lapangan pekerjaan
                      </p>
-                     
+
                   </div>
                </div>
                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                    <div class="about-img">
 
-                     <figure><img src="images/shipping.jpeg" alt="img"/></figure>
-                     
+                     <figure><img src="{{ asset('/home/images/shipping.jpeg') }}" alt="img"/></figure>
+
                   </div>
-                 
+
                </div>
             </div>
          </div>
       </div>
       <!-- end abouts -->
 
-      <!-- service --> 
+      <!-- service -->
       <div id="service" class="service">
          <div class="container">
             <div class="row">
@@ -179,18 +179,18 @@
             <div class="row">
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
                   <div class="service-box">
-                     <figure><img src="images/service-1.jpg" alt="#"/>
+                     <figure><img src="{{ asset('/home/images/service-1.jpg') }}" alt="#"/>
                      </figure>
-                     <b>Fulfillment</b> 
+                     <b>Fulfillment</b>
                      <p>Sistem Dagang Lokal di mulai dari perbaikan kualitas produk,, testing pasar, penyerahan ke Advertiser dan memastikan barang sampai ke tangan konsumen</p>
                   </div>
                </div>
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
                   <div class="service-box">
                      <div class="service-box">
-                        <figure><img src="images/service-2.jpg" alt="#"/>
+                        <figure><img src="{{ asset('/home/images/service-2.jpg') }}" alt="#"/>
                         </figure>
-                        <b>Content</b> 
+                        <b>Content</b>
                         <p>Produk akan dilakukan branding ulang, bersamaan engan pembuatan konten promosi seperti konten web (landing page), Copywriting, Gambar promosi, Video.</p>
                      </div>
                   </div>
@@ -198,9 +198,9 @@
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
                   <div class="service-box">
                      <div class="service-box">
-                        <figure><img src="images/service-3.jpg" alt="#"/>
+                        <figure><img src="{{ asset('/home/images/service-3.jpg') }}" alt="#"/>
                         </figure>
-                        <b>Management</b> 
+                        <b>Management</b>
                         <p>Kontrol management meliputi Tim Cs, CRM, Tim Gudang, Audit dan ekspedisi menjadi bagian yang sangat penting untuk menunjang proses berjalan dengan lancar</p>
                      </div>
                   </div>
@@ -209,7 +209,7 @@
          </div>
       </div>
       <!-- end service -->
-      
+
 
       <!-- what we do  -->
       <div id="what-we-do" class="about">
@@ -228,8 +228,8 @@
                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                   <div class="about-img">
 
-                    <figure><img src="images/dagang-lokal2.jpg" alt="img"/></figure>
-                    
+                    <figure><img src="{{ asset('/home/images/dagang-lokal2.jpg') }}" alt="img"/></figure>
+
                  </div>
               </div>
                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
@@ -252,7 +252,7 @@
                         Kami sudah bekerjasama dengan lebih dari 100 UMKM dan Advertiser, semua masalah dalam kerjasama menjadi tanggung jawab Dagang Lokal
                      </p>
 
-                     
+
                   </div>
                </div>
             </div>
@@ -260,7 +260,7 @@
       </div>
       <!-- end what we do -->
 
-      <!-- proses kerja --> 
+      <!-- proses kerja -->
       <div id="proses-kerja" class="service">
          <div class="container">
             <div class="row">
@@ -276,18 +276,18 @@
             <div class="row">
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
                   <div class="service-box">
-                     <figure><img src="images/umkm.jpg" alt="#"/>
+                     <figure><img src="{{ asset('/home/images/umkm.jpg') }}" alt="#"/>
                      </figure>
-                     <b>UMKM</b> 
+                     <b>UMKM</b>
                      <p>Menjalin kerjasama dengan UMKM dan perbaikan kualitas produk</p>
                   </div>
                </div>
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
                   <div class="service-box">
                      <div class="service-box">
-                        <figure><img src="images/testing.jpg" alt="#"/>
+                        <figure><img src="{{ asset('/home/images/testing.jpg') }}" alt="#"/>
                         </figure>
-                        <b>Testing</b> 
+                        <b>Testing</b>
                         <p>Dagang Lokal akan melakukan tes pasar terhadap produk-produk kerjasama UMKM</p>
                      </div>
                   </div>
@@ -295,9 +295,9 @@
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
                   <div class="service-box">
                      <div class="service-box">
-                        <figure><img src="images/advertiser.jpg" alt="#"/>
+                        <figure><img src="{{ asset('/home/images/advertiser.jpg') }}" alt="#"/>
                         </figure>
-                        <b>Advertiser</b> 
+                        <b>Advertiser</b>
                         <p>Produk-produk dengan respon postif akan di berikan kepada advertiser bersamaan dengan konten promosi berbasis FB Ads, Google Ads, Tiktok Ads</p>
                      </div>
                   </div>
@@ -305,9 +305,9 @@
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
                   <div class="service-box">
                      <div class="service-box">
-                        <figure><img src="images/customer.jpg" alt="#"/>
+                        <figure><img src="{{ asset('/home/images/customer.jpg') }}" alt="#"/>
                         </figure>
-                        <b>Konsumen</b> 
+                        <b>Konsumen</b>
                         <p>Segala proses permintaan produk oleh konsumen, advertiser akan mmberi info ke tim Dagang lokal, bahwa ia telah berhasil menjual produk dengan data konsumen lengkap.</p>
                      </div>
                   </div>
@@ -315,9 +315,9 @@
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
                   <div class="service-box">
                      <div class="service-box">
-                        <figure><img src="images/sending.jpg" alt="#"/>
+                        <figure><img src="{{ asset('/home/images/sending.jpg') }}" alt="#"/>
                         </figure>
-                        <b>Pengiriman</b> 
+                        <b>Pengiriman</b>
                         <p>Setelah menerima invoice dari advertiser, Tim Cs Dagang Loal akan melapor ke Tim gudang Dagang untuk melakukan pengiriman ke konsumen</p>
                      </div>
                   </div>
@@ -325,9 +325,9 @@
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 thumb">
                   <div class="service-box">
                      <div class="service-box">
-                        <figure><img src="images/report.jpg" alt="#"/>
+                        <figure><img src="{{ asset('/home/images/report.jpg') }}" alt="#"/>
                         </figure>
-                        <b>Laporan</b> 
+                        <b>Laporan</b>
                         <p>Laporan akhir yaitu ketika barang telah berhasil ke tangan konsumen, jika terjadi kendala selama proses pengiriman, menjadi tanggung jawab Dagang Lokal.</p>
                      </div>
                   </div>
@@ -361,23 +361,23 @@
                      <p>Setelah Pakai DAGANG LOKAL produk tidakada yang nganggur bahkan kami yang sering kewalahan dengan permintaan Dagang Lokal. Good luck buat DAGANG LOKAL
                      </p>
                      <b>- Anna Stik Pisang</b>
-                     
+
                   </div>
                </div>
                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                    <div class="about-img">
 
-                     <figure><img src="images/testimoni.jpg" alt="img"/></figure>
-                     
+                     <figure><img src="{{ asset('/home/images/testimoni.jpg') }}" alt="img"/></figure>
+
                   </div>
-                 
+
                </div>
             </div>
          </div>
       </div>
       <!-- end Testimonial -->
 
-      <!--  footer --> 
+      <!--  footer -->
       <footer>
          <div class="footer">
             <div class="container">
@@ -385,21 +385,21 @@
                   <div class="col-lg-4 col-md-6 col-sm-12 width">
                      <div class="address">
                         <h3>Phone</h3>
-                        <i><img src="icon/phone.png">+62 813-1584-5094</i>
+                        <i><img src="{{ asset('/home/icon/phone.png') }}">+62 813-1584-5094</i>
                      </div>
                   </div>
                   <div class="col-lg-4 col-md-6 col-sm-12 width">
                      <div class="address">
                         <h3>Email</h3>
-                        <i><img src="icon/mail.png">info@daganglokal.com</i>
+                        <i><img src="{{ asset('/home/icon/mail.png') }}">info@daganglokal.com</i>
                      </div>
                   </div>
                   <div class="col-lg-4 col-md-6 col-sm-12 width">
                      <div class="address">
                         <h3>Social Media </h3>
                         <ul class="contant_icon">
-                           <li><a href="https://facebook.com/daganglokalofficial"><img src="icon/fb.png" alt="icon"/></a></li>
-                           <li><a href="https://instagram.com/daganglokal.co"><img src="icon/instagram.png" alt="icon"/></a></li>
+                           <li><a href="https://facebook.com/daganglokalofficial"><img src="{{ asset('/home/icon/fb.png') }}" alt="icon"/></a></li>
+                           <li><a href="https://instagram.com/daganglokal.co"><img src="{{ asset('/home/icon/instagram.png') }}" alt="icon"/></a></li>
                         </ul>
                      </div>
                   </div>
@@ -412,32 +412,32 @@
       </footer>
       <!-- end footer -->
 
-      <!-- Javascript files--> 
-      <script src="js/jquery.min.js"></script> 
-      <script src="js/popper.min.js"></script> 
-      <script src="js/bootstrap.bundle.min.js"></script> 
-      <script src="js/jquery-3.0.0.min.js"></script> 
-      <script src="js/plugin.js"></script> 
-      <!-- sidebar --> 
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script> 
+      <!-- Javascript files-->
+      <script src="{{ asset('/home/js/jquery.min.js') }}"></script>
+      <script src="{{ asset('/home/js/popper.min.js') }}"></script>
+      <script src="{{ asset('/home/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('/home/js/jquery-3.0.0.min.js') }}"></script>
+      <script src="{{ asset('/home/js/plugin.js') }}"></script>
+      <!-- sidebar -->
+      <script src="{{ asset('/home/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      <script src="js/custom.js"></script>
+      <script src="{{ asset('/home/js/custom.js') }}"></script>
       <script>
          $(document).ready(function(){
          $(".fancybox").fancybox({
          openEffect: "none",
          closeEffect: "none"
          });
-         
+
          $(".zoom").hover(function(){
-         
+
          $(this).addClass('transition');
          }, function(){
-         
+
          $(this).removeClass('transition');
          });
          });
-         
-      </script> 
+
+      </script>
    </body>
 </html>
