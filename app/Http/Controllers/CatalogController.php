@@ -85,7 +85,16 @@ class CatalogController extends Controller
         $formattedRating = number_format($rating_value);    
 
         //dd($user_rating);
-        return view('katalog.product-detail', compact('product', 'product_id', 'ratings', 'rating_value', 'user_rating', 'comments' , 'ratingsCount','formattedRating'));
+        return view('katalog.product-detail')
+        ->with('product', $product)
+        ->with('product_id', $product_id)
+        ->with('ratings', $ratings)
+        ->with('rating_value', $rating_value)
+        ->with('user_rating', $user_rating)
+        ->with('comments', $comments)
+        ->with('ratingsCount', $ratingsCount)
+        ->with('formattedRating', $formattedRating);
+
         }
         catch (ModelNotFoundException $exception) {
             return view('katalog.product-not-found'); 
@@ -123,7 +132,6 @@ class CatalogController extends Controller
         }
     }
 
-     
     public function searchByCategory(Request $request)
     {
         $searchQuery = $request->input('category_name');
@@ -137,11 +145,11 @@ class CatalogController extends Controller
             'p.id', '=', 'pr.product_id'
         )
         ->join('product_pictures as pp', 'p.id', '=', 'pp.product_id')
-        ->join('categories', 'p.category_id', '=', 'categories.id') // Tambahkan ini untuk bergabung dengan tabel kategori
+        ->join('categories', 'p.category_id', '=', 'categories.id')
         ->select('p.*', DB::raw('IFNULL(pr.rating_count, 0) AS rating_count'), DB::raw('IFNULL(pr.rating_value, 0) AS rating_value'), 'pp.link')
         ->when($searchQuery, function ($query, $searchQuery) {
             return $query->where('p.name', 'like', '%' . $searchQuery . '%')
-                         ->orWhere('categories.name', 'like', '%' . $searchQuery . '%'); // Menggunakan kolom kategori
+                         ->orWhere('categories.name', 'like', '%' . $searchQuery . '%');
         })
         ->get();
 
