@@ -56,6 +56,7 @@ Route::middleware(['auth', 'user-access:producer'])->group(function () {
     Route::get('/producer/dashboard', [ProducerController::class, 'show'])->name('dashboard');
     Route::resource('/producer/barang', BarangProducerController::class);
     Route::resource('/producer/keuangan', KeuanganProducerController::class);
+    Route::get('/producer/tracking_product/{product}', [ProducerController::class, 'getProgress'])->name('tracking_product');
 });
 
 // route katalog
@@ -64,10 +65,6 @@ Route::middleware(['auth', 'user-access:seller'])->group(function () {
     Route::get('/catalog/detail/{id} ', [ProductsController::class, 'show'])->name('ShowProduct');
     Route::post('/add-rating ', [RatingController::class, 'add']);
 });
-
-Route::get('/producer/tracking_product', [ProducerController::class, 'getProgress']);
-
-
 
 
 // Route::get('/producer/barang', [ListBarangController::class, 'index']);

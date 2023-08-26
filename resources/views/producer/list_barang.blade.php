@@ -3,6 +3,16 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('List Barang') }}
         </h2>
+        <style>
+            .link_name{
+                color: blue;
+            }
+            .link_name:hover{
+                border-bottom: 1.5px solid blue;
+                font-size: 15px;
+                /* transition: all 0.3s ease-in-out */
+            }
+        </style>
     </x-slot>
 
     @if ($message = Session::get('status'))
@@ -31,7 +41,6 @@
                             <th style="min-width: 100px">BPOM</th>
                             <th style="min-width: 100px">Deskripsi</th>
                             <th style="min-width: 100px">Aksi</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -39,7 +48,9 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->vendor }}</td>
-                                <td>{{ $item->name }}</td>
+                                <td>
+                                    <a href="{{ route('tracking_product', $item->id) }}" class="link_name"> {{ $item->name }} </a>
+                                </td>
                                 <td>{{ $item->category_name }}</td>
                                 <td>{{ $item->unit_price }}</td>
                                 <td>{{ $item->unit_weight }}</td>
