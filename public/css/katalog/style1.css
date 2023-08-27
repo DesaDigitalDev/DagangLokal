@@ -217,7 +217,7 @@
     }
 
     .edge {
-        border: 1.3px solid rgb(189, 186, 186);
+        border: 2px solid rgba(230, 230, 230, 0.807);
     }
     .half-colored-line {
     width: 100%;
