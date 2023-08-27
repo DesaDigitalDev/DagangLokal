@@ -63,7 +63,7 @@
                                 @if (is_null($dtSaldo))
                                     0
                                 @elseif (!is_null($dtSaldo))
-                                    {{ $dtSaldo->balance }}
+                                    Rp.{{ $dtSaldo->balance }}
                                 @endif
                             </div>
                         </div>
