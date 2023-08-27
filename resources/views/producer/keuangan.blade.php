@@ -31,7 +31,7 @@
                                     @if (is_null($dtSaldo))
                                         0
                                     @elseif (!is_null($dtSaldo))
-                                        Rp.{{ number_format($dtSaldo->balance/1000,3) }}
+                                        Rp.{{ number_format($dtSaldo->balance/1,2) }}
                                     @endif
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Withdraw
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Rp.{{ number_format($dtTrxUserTotal/1000,3) }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">Rp.{{ number_format($dtTrxUserTotal/1,2) }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-users fa-2x text-gray-300"></i>
