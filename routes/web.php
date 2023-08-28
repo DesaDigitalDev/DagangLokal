@@ -10,6 +10,7 @@ use App\Http\Controllers\Producer\ProducerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\Seller\SellerController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,8 @@ Route::middleware(['auth', 'user-access:producer'])->group(function () {
     Route::post('/producer/keuangan/createBank/store', [KeuanganProducerController::class, 'BankStore'])->name('StoreBank');
     Route::resource('/producer/keuangan', KeuanganProducerController::class);
     Route::get('/producer/tracking_product/{product}', [ProducerController::class, 'getProgress'])->name('tracking_product');
+    Route::resource('/categories', CategoryController::class);
+
 });
 
 // route katalog

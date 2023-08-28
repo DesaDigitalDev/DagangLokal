@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_balance_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->string('transaction_no');
-            $table->bit('status_transaction');
+            $table->string('status_transaction');
             $table->dateTime('date_time', $precision = 0);
             $table->double('amount', 12, 2);
             $table->timestamps();

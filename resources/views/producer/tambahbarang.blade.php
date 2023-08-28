@@ -32,18 +32,36 @@
                 <input type="text" id="name" required name="name"
                     class="form-control shadow bg-white rounded">
             </div>
-            <div class="col-md-4">
-                <label for="inputState" class="form-label">Kategori</label>
-                <select id="category" name="category" required class="form-select shadow bg-white rounded">
-                    <option selected>Pilih...</option>
-                    @foreach ($category as $item)
-                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
-                </select>
+
+            <div class="col-12 mt-4">
+                <label for="category" class="form-label">Kategori</label>
+                <div class="input-group">
+                    <select class="custom-select" id="inputGroupSelect02">
+                        <option selected>Pilih...</option>
+                        @foreach ($category as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <label class="input-group-text" onclick="window.location='{{ route('categories.create') }}'" for="inputGroupSelect02">Tambah Kategori</label>
+                    </div>
+                </div>
             </div>
+
+
             <div class="col-12 mt-4">
                 <label for="inputnamaproduk" class="form-label">Harga Produk</label>
                 <input type="text" id="price required" name="price" type="number"
+                    class="form-control shadow bg-white rounded">
+            </div>
+            <div class="col-12 mt-4">
+                <label for="pirt" class="form-label">No. PIRT</label>
+                <input type="text" id="pirt" required name="pirt"
+                    class="form-control shadow bg-white rounded">
+            </div>
+            <div class="col-12 mt-4">
+                <label for="halal" class="form-label">Sertifikat halal</label>
+                <input type="text" id="halal" required name="halal"
                     class="form-control shadow bg-white rounded">
             </div>
             <div class="col-12 mt-4">
