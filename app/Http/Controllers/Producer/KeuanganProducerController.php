@@ -27,9 +27,11 @@ class KeuanganProducerController extends Controller
             ->where('th.user_id', Auth::id())->get();
         $dtSaldo = UserBalance::where('user_id', Auth::id())->first();
         $dtTrxUser = Transactionhistory::all()->where('user_id', Auth::id())->count();
+        $dtTrxUserTotal = $dtHistory->sum('amount');
         return view('producer.keuangan')->with('dtHistory', $dtHistory)
             ->with('dtSaldo', $dtSaldo)
-            ->with('dtTrxUser', $dtTrxUser);
+            ->with('dtTrxUser', $dtTrxUser)
+            ->with('dtTrxUserTotal', $dtTrxUserTotal);
     }
 
     /**

@@ -19,7 +19,7 @@
     </li>
 
     <li class="nav-item {{ request()->segment(2) == 'keuangan' ? 'active' : '' }}">
-        <a href="{{ route('keuangan.index') }}">
+        <a href="{{ route('keuanganAdmin.index') }}">
             <i class="fa fa-coins"></i>
             <span>Keuangan</span>
         </a>

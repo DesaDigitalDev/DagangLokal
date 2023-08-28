@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RatingController;
-use App\Http\Controllers\CatalogController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BarangController;
-use App\Http\Controllers\Seller\SellerController;
-use App\Http\Controllers\Producer\ProducerController;
+use App\Http\Controllers\Admin\KeuanganAdminController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\Producer\BarangProducerController;
 use App\Http\Controllers\Producer\KeuanganProducerController;
+use App\Http\Controllers\Producer\ProducerController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RatingController;
+use App\Http\Controllers\Seller\SellerController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ use App\Http\Controllers\Producer\KeuanganProducerController;
     return view('home');
 })->name('home');
 
-Route::get('/dashboard', function () {
+Route::get('admin/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -43,6 +43,7 @@ require __DIR__ . '/auth.php';
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('dashboardAdmin');
     Route::resource("/admin/barangAdmin", BarangController::class);
+    Route::resource("/admin/keuanganAdmin", KeuanganAdminController::class);
 });
 
 // route producer
@@ -68,7 +69,3 @@ Route::middleware(['auth', 'user-access:seller'])->group(function () {
 
 // Route::get('/producer/barang', [ListBarangController::class, 'index']);
 // Route::delete('/producer/delete/{id}', [ListBarangController::class, 'destroy']);
-
-
-
-

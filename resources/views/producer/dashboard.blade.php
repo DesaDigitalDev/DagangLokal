@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-item-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Produk Kurasi
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Sedang Dikurasi
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $progressProces->count() }}</div>
                         </div>
@@ -63,7 +63,7 @@
                                 @if (is_null($dtSaldo))
                                     0
                                 @elseif (!is_null($dtSaldo))
-                                    {{ $dtSaldo->balance }}
+                                    Rp.{{ number_format($dtSaldo->balance/1,3) }}
                                 @endif
                             </div>
                         </div>
