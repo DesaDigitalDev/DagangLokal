@@ -106,7 +106,7 @@
                                     <td>{{ $item->bank_name }} - {{ $item->acc_name }} -
                                         {{ $item->acc_no }}</td>
                                     <td>{{ date('d-m-Y H:i', strtotime($item->date_time)) }}</td>
-                                    <td>Rp.{{ $item->amount }}.00</td>
+                                    <td>Rp.{{ number_format($item->amount/1,2) }}</td>
                                     <td>{{ $item->transaction_no }}</td>
                                     <td>
                                         {{-- <a href="{{ route('keuangan.edit', $item->id) }}"
