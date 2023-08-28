@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     {{-- mycss --}}
-    <link rel="stylesheet" href="/../css/katalog/style1.css">
+    <link rel="stylesheet" href="{{ asset('/css/katalog/style1.css') }} ">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -103,7 +103,7 @@
                                         <button class="pick-button">Saga Hijau</button>
                                         <button class="pick-button">Saga Hijau</button>
                                     </div>
-                                    
+
                                 <div class="xhead mt-2">
                                     <p>Detail</p>
                                 </div>

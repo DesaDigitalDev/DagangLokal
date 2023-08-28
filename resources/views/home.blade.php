@@ -13,7 +13,8 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <!-- bootstrap css -->
-      <link rel="stylesheet" href="{{ asset('/home/css/bootstrap.min.css') }}">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
       <!-- style css -->
       <link rel="stylesheet" href="{{ asset('/home/css/style.css') }}">
       <!-- Responsive-->
@@ -47,7 +48,7 @@
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"><a href="index.html"> <img src="{{ asset('/home/images/Logoatas-01.png') }}" alt="img" width="500" height="700"/></a> </div>
+                        <div class="logo"><a href="index.html"> <img src="{{ asset('/home/images/Logoatas-01.png') }}" alt="img" width="500px" height="700px"/></a> </div>
                      </div>
                   </div>
                </div>
@@ -55,13 +56,33 @@
                   <div class="menu-area">
                      <div class="limit-box">
                         <nav class="main-menu">
-                           <ul class="menu-area-main">
+                           <ul class="menu-area-main"> 
                               <li> <a href="#myCarousel">Home</a> </li>
                               <li> <a href="#about">About</a> </li>
                               <li> <a href="#service">Service</a> </li>
-                              <li> <a href="#what-we-do"> What We Do</a> </li>
+                              <li> <a href="#what-we-do">What We Do</a> </li>
                               <li> <a href="#proses-kerja">Proses Kerja</a> </li>
                               <li> <a href="#testimonial">Testimonial</a> </li>
+                              <li class="dropdown">
+                                 @auth
+                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ ucfirst(Auth::user()->name) }}</a>
+                                     <ul class="dropdown-menu">
+                                          <li><a href="/dashboard">Dashboard</a></li>
+                                          <li>
+                                             <form action="/logout" method="POST">
+                                                @csrf
+                                                <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                                             </form>
+                                          </li>
+                                     </ul>
+                                 @else
+                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Join Us</a>
+                                     <ul class="dropdown-menu">
+                                         <li><a href="/login">Login</a></li>
+                                         <li><a href="/register">Sign Up</a></li>
+                                     </ul>
+                                 @endauth
+                             </li>
                            </ul>
                         </nav>
                      </div>
@@ -80,7 +101,7 @@
                   <img class="first-slide" src="{{ asset('/home/images/umkm-1.jpeg') }}" alt="First slide">
                   <div class="container">
                      <div class="carousel-caption relative">
-                        <h1 style="font-size: 55px"><span style="background-color: rgba(0,0,0,.7)">  Solusi UMKM di Indonesia </span> </h1>
+                        <h1 style="font-size: 40px"><span style="background-color: rgba(0,0,0,.7)">  Solusi UMKM di Indonesia </span> </h1>
                         <p>
                            <span style="background-color: rgba(0,0,0,.7)">
                            Dagang Lokal sebagai meja penghubung UMKM dengan Reseller hadir dengan fitur fulfillment, di mana UMKM akan di bantu membuat produk layak dipasarkan dan membantu para Reseller/advertiser
@@ -93,7 +114,7 @@
                   <img class="second-slide" src="{{ asset('/home/images/umkm-2.jpg') }}" alt="Second slide">
                   <div class="container">
                      <div class="carousel-caption relative">
-                        <h1 style="font-size: 55px"><span style="background-color: rgba(0,0,0,.7)">  Management System </span> </h1>
+                        <h1 style="font-size: 40px"><span style="background-color: rgba(0,0,0,.7)">  Management System </span> </h1>
                         <p>
                            <span style="background-color: rgba(0,0,0,.7)">
                            Teknologi Dagang Lokal akan menjadi solusi bagi pelaku UMKM yang memiliki keterbatasan pemasaran, di sisi lain Dagang Lokal hadir memaksimalkan potensi Teknologi Digital marketing. DAGANG LOKAL akan menjadi tempat bertemu pelaku UMKM dengan Para pakar pamasar profesional digital marketing
@@ -106,7 +127,7 @@
                   <img class="third-slide" src="{{ asset('/home/images/umkm-3.jpg') }}" alt="Third slide">
                   <div class="container">
                      <div class="carousel-caption relative">
-                        <h1 style="font-size: 55px"><span style="background-color: rgba(0,0,0,.7)">  UKM dan Fulfillment Marketing </span> </h1>
+                        <h1 style="font-size: 40px"><span style="background-color: rgba(0,0,0,.7)">  UKM dan Fulfillment Marketing </span> </h1>
                         <p>
                            <span style="background-color: rgba(0,0,0,.7)">
                            Dagang Lokal adalah perusahaan dan komunitas yang memiliki struktur management yang bagus, kontrol yang rapih, dan efisiensi kerja tinggi. Dagang Lokal dalam menghubungkan antar sistem memiliki suber daya manusia unggul yang memastikan sambungan komunikasi dari UMKM, Pemasar dan konsumen berjalan dengan baik.

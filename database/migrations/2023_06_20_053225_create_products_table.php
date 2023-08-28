@@ -17,14 +17,14 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('progress_id')->constrained();
-            $table->string('no_pirt');
-            $table->integer('no_sertifikat_halal');
+            $table->char('no_pirt',16)->nullable();
+            $table->char('no_sertifikat_halal', 14);
             $table->string('vendor');
             $table->boolean('is_in_warehouse');
             $table->double('unit_price', 12, 2);
             $table->integer('unit_in_stock');
             $table->double('unit_weight', 8, 2);
-            $table->string('bpom_no')->nullable();
+            $table->char('bpom_no',16)->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

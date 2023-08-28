@@ -1,6 +1,6 @@
 {{-- logo --}}
 <div class="sidebar-brand">
-    <h2>Desa Digital</h2>
+    <a href="{{ route('home') }}" style="cursor: pointer"><h2>Dagang Lokal</h2></a>
 </div>
 
 {{-- sidebar --}}
