@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BarangController extends Controller
 {
@@ -12,7 +13,10 @@ class BarangController extends Controller
      */
     public function index()
     {
-        return view('admin.barang');
+        $product = DB::table('products AS p')
+            ->join('categories AS c', 'c.id', '=', 'p.category_id')
+            ->select('p.*', 'c.name as category_name')->get();
+        return view('admin.barang')->with('product', $product);
     }
 
     /**

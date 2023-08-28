@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BarangController;
+use App\Http\Controllers\Admin\KeuanganAdminController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\Producer\BarangProducerController;
 use App\Http\Controllers\Producer\KeuanganProducerController;
@@ -43,6 +44,7 @@ require __DIR__ . '/auth.php';
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('dashboardAdmin');
     Route::resource("/admin/barangAdmin", BarangController::class);
+    Route::resource("/admin/keuanganAdmin", KeuanganAdminController::class);
 });
 
 // route seller
