@@ -49,6 +49,11 @@
                 <input type="text" id="noTransaksi" name="noTransaksi" value="1"
                     class="form-control shadow bg-white rounded">
             </div>
+            <div class="col-12 mt-4" hidden>
+                <label class="form-label">status transaksi</label>
+                <input type="text" id="statustranssaksi" name="statustranssaksi" value="0"
+                    class="form-control shadow bg-white rounded">
+            </div>
             <div class="col-12">
                 <x-primary-button type="submit" class="ml-4">
                     {{ __('Simpan Data') }}

@@ -48,6 +48,8 @@ class BarangProducerController extends Controller
             'vendor' => $request->vendor,
             'unit_price' => $request->price,
             'unit_weight' => $request->weight,
+            'no_pirt' => $request->pirt,
+            'no_sertifikat_halal' => $request->halal,
             'bpom_no' => $request->bpom,
             'description' => $request->desc,
         ]);

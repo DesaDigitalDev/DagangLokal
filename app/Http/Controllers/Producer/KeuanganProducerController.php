@@ -78,7 +78,12 @@ class KeuanganProducerController extends Controller
         if ($userBalance->balance >= floatval($request->jumTransaksi)) {
             $thnBln = date('Ym');
             $cek = TransactionHistory::count();
-            $urut = TransactionHistory::count() + 1;
+            $inv = TransactionHistory::orderby('created_at', 'desc')->first();
+            if ($cek == 0) {
+                $urut = 1;
+            } else {
+                $urut = $inv->id + 1;
+            }
             $invoice = 'INV' . $thnBln . $urut;
             $transactionHistory = TransactionHistory::create([
                 'transaction_type_id' => $request->tipeTransaksi,
@@ -88,6 +93,7 @@ class KeuanganProducerController extends Controller
                 'transaction_no' => $invoice,
                 'date_time' => date('Y-m-d'),
                 'amount' => $request->jumTransaksi,
+                'status_transaction' => $request->statustranssaksi,
             ]);
 
             $updateBalance = UserBalance::find($userBalance->id);
