@@ -23,9 +23,9 @@ use App\Http\Controllers\Producer\KeuanganProducerController;
 |
  */
 
-Route::get('/', function () {
+ Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
