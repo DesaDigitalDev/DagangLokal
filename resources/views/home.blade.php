@@ -48,7 +48,7 @@
                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col logo_section">
                   <div class="full">
                      <div class="center-desk">
-                        <div class="logo"><a href="index.html"> <img src="{{ asset('/home/images/Logoatas-01.png') }}" alt="img" width="500px" height="700px"/></a> </div>
+                        <div class="logo"><a href="/"> <img src="{{ asset('/home/images/Logoatas-01.png') }}" alt="img" width="500px" height="700px"/></a> </div>
                      </div>
                   </div>
                </div>
@@ -66,8 +66,8 @@
                               <li class="dropdown">
                                  @auth
                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ ucfirst(Auth::user()->name) }}</a>
-                                     <ul class="dropdown-menu">
-                                          <li><a href="/dashboard">Dashboard</a></li>
+                                     <ul class="dropdown-menu" style="background-color: white; width:10px; height:80px;" >
+                                          <li class="mb-2"><a href="{{ $role }}/dashboard">Dashboard</a></li>
                                           <li>
                                              <form action="/logout" method="POST">
                                                 @csrf
@@ -78,7 +78,7 @@
                                  @else
                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Join Us</a>
                                      <ul class="dropdown-menu">
-                                         <li><a href="/login">Login</a></li>
+                                         <li class="mb-2"><a href="/login">Login</a></li>
                                          <li><a href="/register">Sign Up</a></li>
                                      </ul>
                                  @endauth

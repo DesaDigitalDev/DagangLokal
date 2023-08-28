@@ -1,16 +1,17 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RatingController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BarangController;
+use App\Http\Controllers\Seller\SellerController;
+use App\Http\Controllers\Producer\ProducerController;
 use App\Http\Controllers\Admin\KeuanganAdminController;
-use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\Producer\BarangProducerController;
 use App\Http\Controllers\Producer\KeuanganProducerController;
-use App\Http\Controllers\Producer\ProducerController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RatingController;
-use App\Http\Controllers\Seller\SellerController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
- Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('admin/dashboard', function () {
     return view('dashboard');
