@@ -1,54 +1,67 @@
+.wrappers {
+    width: 100%;
+    border-radius: 5px;
+}
+
 .edge {
     border: 1.3px solid rgb(189, 186, 186);
 }
-.card-img-top{
+
+.card-img-top {
     border-radius: 0px 0px 30px 0px;
     padding: .5px 0px 0px 0px;
 }
-.card{
+
+.card {
     border-radius: 0px 0px 0px 0px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    margin: 5px;
 }
+
 .card-title {
-    line-height: 20px;
-    font-size: 20px ;
+    line-height: 15px;
+    font-size: 16px;
     font-weight: bold;
 }
-.card-body{
-    height: 200px;
+
+.card-body {
+    height: 160px;
     padding: 20px;
 }
 
 .pricing {
     display: flex;
     justify-content: space-between;
-    font-size : 10px
+    font-size: 7px
 }
+
 .pricing p {
-    font-size: 19px;
+    font-size: 15px;
     font-weight: bold;
 }
+
 .pricing h1 {
-    font-size : 13px
+    font-size: 10px
 }
 
 .pricing-detail {
-    font-size: 12px;
+    font-size: 10px;
     display: flex;
     justify-content: space-between;
     gap: 10px;
 }
+
 .stars {
     line-height: 8px;
 }
+
 .stars i {
-    font-size: 13px;
+    font-size: 10px;
 }
 
 .rated {
     color: #ffcc00;
 }
+
 .x-notif {
     display: flex;
     justify-content: center;
@@ -63,128 +76,151 @@
     border-radius: 8px;
     font-size: 30px;
     font-weight: bolder;
-    color: rgba(62, 62, 62, 0.483); 
+    color: rgba(62, 62, 62, 0.483);
     text-transform: uppercase;
 }
+
 /* category button */
-    .category {
+.category {
     display: flex;
     flex-direction: row;
     gap: 5px;
-   }
-   .category button{
-   padding: 5px 8px;
-   font-size: 15px;
-   color: rgb(255, 253, 253);
-   border: .5px solid silver;
-   background-color:rgb(255, 110, 20);  
-   border-radius: 50px;
-   }
+}
+
+.category button {
+    padding: 5px 8px;
+    font-size: 15px;
+    color: rgb(255, 253, 253);
+    border: .5px solid silver;
+    background-color: rgb(255, 110, 20);
+    border-radius: 50px;
+}
 
 
-   .category button:hover{
+.category button:hover {
     color: white;
-    background-color: rgb(235, 81, 35);  
-   }
-   /* end category button */
+    background-color: rgb(235, 81, 35);
+}
 
-   /* breakpoints */
-@media (width <= 768px) {
+/* end category button */
+
+/* breakpoints */
+@media (width <=768px) {
     .card {
         margin: 10px !important;
     }
-    .card-body{
-        height: 300px !important;
+
+    .card-body {
+        height: 250px !important;
         padding: 30px 40px !important;
     }
+
     .card-title {
-        line-height: 30px !important;
-        font-size: 27px !important;
+        line-height: 25px !important;
+        font-size: 20px !important;
     }
+
     .stars {
         padding: 10px 0px;
-        margin-top: 20px;
 
     }
+
     .stars i {
         line-height: 15px;
-        font-size: 20px !important; 
+        font-size: 15px !important;
         height: 10px;
     }
+
     .pricing-detail {
         height: 20px;
-        font-size: 15px !important;
+        font-size: 12px !important;
     }
+
     .pricing p {
-        font-size : 30px !important;
-        margin-bottom: 10px;
+        font-size: 22px !important;
     }
+
     .pricing h1 {
-        margin-top: 10px;
-        font-size : 20px !important;
-    
+        font-size: 15px !important;
+
     }
 }
 
-@media (width <= 992px) {
+@media (width <=992px) {
     .card {
         margin: 5px;
     }
+
     .card-title {
-        line-height: 5px;
+        line-height: 3px;
         font-size: 20px;
     }
+
     .stars {
         padding: 5px 0px;
     }
+
     .stars i {
         font-size: 13px;
     }
+
     .pricing-detail {
         font-size: 10px;
     }
+
     .pricing p {
-        font-size : 15px;
+        font-size: 15px;
     }
+
     .pricing h1 {
-        font-size : 10px;
+        font-size: 10px;
     }
+
     .card-body {
         height: 150px;
         padding: 20px 20px;
     }
+
     .btn-product {
         height: 30px;
         width: 40% !important;
     }
+
     .btn-product span {
         font-size: 13px;
-        color: #FFFFFF; 
+        color: #FFFFFF;
     }
-} 
+}
 
-@media (width <= 1200px) {
+@media (width <=1200px) {
     .card-title {
-        line-height: 15px;
-        font-size: 18px;
+        line-height: 7px;
+        font-size: 14px;
         margin-bottom: 10px;
     }
+
     .stars i {
-        line-height: 5px;
-        font-size: 13px;
+        line-height: 2px;
+        font-size: 10px;
+        margin-bottom: 5px;
     }
+
     .pricing-detail {
-        font-size: 12px;
+        font-size: 7.5px;
     }
+
     .pricing p {
-        font-size : 16px;
+        font-size: 10px;
     }
+
     .pricing h1 {
-        font-size : 13px;
+        font-size: 8px;
     }
+
     .card-body {
-        height: 200px;
+        height: 145px;
         padding: 15px calc(100%-20px);
-    }  
-} 
+    }
+}
+
 /* end breakpoints */

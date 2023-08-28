@@ -37,16 +37,17 @@
             </div>                 
         </x-slot>
 
-        {{-- <div class="p-3 mt-3" style="box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; border-radius: 8px">
-            <form class="d-flex" role="search">
-                <input class="form-control rounded-start-pill border-end-0" type="search" placeholder="Search" aria-label="Search">
+        <div class="p-3 mt-3" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; border-radius: 5px;">
+            <form class="d-flex" role="search" method="GET" action="{{ url('catalog/search') }}">
+                @csrf
+                <input class="form-control rounded-start-pill border-end-0" type="search" placeholder="Search" aria-label="Search" name="q">
                 <button class="btn pe-4 btn-outline-success rounded-end-pill border-start-0" type="submit"><i class="fa fa-search"></i></button>
                 <div class="m-2"></div>
-                <a href="#" class="btn btn-outline-danger">
+                <a href="catalog/" class="btn btn-outline-danger">
                     <i class="fa fa-shopping-cart"></i>
                 </a>
             </form>
-        </div> --}}
+        </div>
 
     </div>
 
@@ -59,7 +60,7 @@
         </div>
     @endif
 
-    <div class="container mt-4 pt-4" style="background-color: rgba(231, 229, 229, 0.794)">
+    <div class="container mt-4 pt-4" style="background-color: rgb(255, 255, 255)">
         <div class="wrapper mx-auto">
             <a href="/catalog"><button class="button-7" role="button"><i class="fa-solid fa-arrow-left"></i> Kembali</button></a>
         </div>
@@ -70,7 +71,7 @@
             </h1>   
         </div>
         
-        <div class="wrapper edge mx-auto mt-4 mb-5 pt-3" style="background-color: #fafeff;">
+        <div class="wrapper edge mx-auto mt-4 mb-5 pt-3" style="background-color: #ffffff;">
             <div class="row g-3 col-sm-12 pe-3 ps-3" >
                 <div class="card mb-3">
                     <div class="row g-2">
@@ -97,13 +98,12 @@
                                     </p>
                                 </div>
                                     <div class="col-lg-10 col-md-12 col-sm-10 picks mt-3 mb-2">
-                                        <button class="pick-button">Saga Merah</button>
+                                        <button class="pick-button" value="saga merah">Saga Merah</button>
                                         <button class="pick-button">Saga Hijau</button>
                                         <button class="pick-button">Saga Hijau</button>
                                         <button class="pick-button">Saga Hijau</button>
                                     </div>
-                                <hr>
-
+                                    
                                 <div class="xhead mt-2">
                                     <p>Detail</p>
                                 </div>
@@ -137,39 +137,9 @@
         </div>       
         @if($comments->count() > 0 )
             @foreach($comments as $comment)
-                <div class="wrapper edge mx-auto mt-3" style="background-color: rgba(255, 255, 255, 0.794);">
-                    <div class="comment">
-                        <div class="row">
-                            <div class="col">
-                                <div class="comment-detail mb-2">
-                                    <div class="user-detail">
-                                        <img src="/../assets/img/dish1.jpg" alt="">
-                                    </div>
-                                    <div class="user-rate">
-                                        <div class="user-name">
-                                            <p class="mb-1"> {{ $comment->name }} <span class="mb-1"> - {{ $comment->formatted_created_at }} </span></p>
-                                        </div>
-                                        <div class="user-ratingvalue">  
-                                            @for($i = 1; $i <= $comment->rating_value; $i++)
-                                                <i class="fas fa-star rated"></i>
-                                            @endfor
-                                            @for($j = $comment->rating_value+1; $j <= 5; $j++ )
-                                                    <i class="fas fa-star"></i>
-                                            @endfor
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="comment-detail col-12">
-                                    <div class="user-comment"> 
-                                        <p> {{ $comment->comment }} </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <x-comment-card :comment="$comment" />
             @endforeach
-            @else
+        @else
             <div class="wrapper edge mx-auto mt-3" style="background-color: rgba(255, 255, 255, 0.794);">
                 <div class="col-12">
                     <div class="comment mx-auto">
@@ -191,14 +161,15 @@
 
     {{-- <button class="btn btn-primary" id="rateButton" ><i class="fas fa-comment"></i></button> --}}
 
+
         <div id="popup-container"  style="display: none;">
             <div id="ratePopup">
                 <i id="closePopup" class="fas fa-times close-icon"></i>
                 <div class="popup-body mt-2">
-                    <p>Rate {{ $product['name'] }}</p>
+                    <p>Rate {{ $product->name }}</p>
                     <form action="{{ $user_rating ? url('/update-rating') : url('/add-rating') }}" method="POST">
                         @csrf
-                        <input type="hidden" name="product_id" value="{{ $product['product_id'] }}">
+                        <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                         @if($user_rating)
                             <input type="hidden" name="rating_id" value="{{ $user_rating->id }}">
                         @endif
@@ -216,7 +187,6 @@
                         </div> 
                     </form>
                 </div>
-                
             </div>        
         </div>
 

@@ -38,6 +38,8 @@
                             <th style="min-width: 100px">Kategori</th>
                             <th style="min-width: 100px">Harga</th>
                             <th style="min-width: 100px">Berat</th>
+                            <th style="min-width: 100px">Nomor P-IRT</th>
+                            <th style="min-width: 100px">Nomor Serfitikat Halal</th>
                             <th style="min-width: 100px">BPOM</th>
                             <th style="min-width: 100px">Deskripsi</th>
                             <th style="min-width: 100px">Aksi</th>
@@ -54,6 +56,8 @@
                                 <td>{{ $item->category_name }}</td>
                                 <td>{{ $item->unit_price }}</td>
                                 <td>{{ $item->unit_weight }}</td>
+                                <td>{{ $item->no_pirt }}</td>
+                                <td>{{ $item->no_sertifikat_halal }}</td>
                                 <td>{{ $item->bpom_no }}</td>
                                 <td>{{ $item->description }}</td>
                                 <td>
