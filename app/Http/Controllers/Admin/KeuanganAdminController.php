@@ -59,16 +59,16 @@ class KeuanganAdminController extends Controller
     public function edit(string $id)
     {
         $transactionHistory = TransactionHistory::find($id);
+        $status = TransactionHistory::all()->where('id', $id)->first();
         $transactionType = TransactionType::all();
         $bankAcc = DB::table('bank_accounts AS ba')
             ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
             ->select('ba.*', 'b.name as bankName')->get();
-        $userBalance = UserBalance::all()->where('user_id', Auth::id());
 
         return view('admin.edit-keuangan')->with('transactionType', $transactionType)
             ->with('transactionHistory', $transactionHistory)
             ->with('bankAcc', $bankAcc)
-            ->with('userBalance', $userBalance);
+            ->with('status', $status);
     }
 
     /**
@@ -76,7 +76,10 @@ class KeuanganAdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $transactionHistory = TransactionHistory::find($id);
+        $transactionHistory->status_transaction = $request->input('statustransaksi');
+        $transactionHistory->update();
+        return redirect('/admin/keuanganAdmin');
     }
 
     /**

@@ -63,7 +63,7 @@
                                 @if (is_null($dtSaldo))
                                     0
                                 @elseif (!is_null($dtSaldo))
-                                    Rp.{{ number_format($dtSaldo->balance/1,3) }}
+                                    Rp.{{ number_format($dtSaldo->balance / 1, 2) }}
                                 @endif
                             </div>
                         </div>

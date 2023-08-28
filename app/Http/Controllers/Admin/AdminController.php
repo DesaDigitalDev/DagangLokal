@@ -42,7 +42,7 @@ class AdminController extends Controller
         $UserProdusen = User::all()->where('role_id', 3);
         $UserSeller = User::all()->where('role_id', 2);
         $progressProces = Product::all()->whereIn('progress_id', [1, 2, 3]);
-        $keuanganProces = TransactionHistory::all();
+        $keuanganProces = TransactionHistory::all()->where('status_transaction', 0);
         return view('admin.dashboard')->with('progressProces', $progressProces)
             ->with('User', $User)
             ->with('UserProdusen', $UserProdusen)

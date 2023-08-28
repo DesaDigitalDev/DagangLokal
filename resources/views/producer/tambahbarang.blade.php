@@ -47,6 +47,16 @@
                     class="form-control shadow bg-white rounded">
             </div>
             <div class="col-12 mt-4">
+                <label for="pirt" class="form-label">No. PIRT</label>
+                <input type="text" id="pirt" required name="pirt"
+                    class="form-control shadow bg-white rounded">
+            </div>
+            <div class="col-12 mt-4">
+                <label for="halal" class="form-label">Sertifikat halal</label>
+                <input type="text" id="halal" required name="halal"
+                    class="form-control shadow bg-white rounded">
+            </div>
+            <div class="col-12 mt-4">
                 <label for="inputnamaproduk" class="form-label">BPOM No. (Optional)</label>
                 <input type="text" id="bpom" required name="bpom"
                     class="form-control shadow bg-white rounded">

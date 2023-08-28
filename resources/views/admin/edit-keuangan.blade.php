@@ -5,10 +5,23 @@
         </h2>
     </x-slot>
     <div class="container card shadow p-3 mb-5 bg-white rounded">
-        <form class="row g-3 container" method="post" action="{{ route('keuangan.update', $transactionHistory->id) }}"
-            enctype="multipart/form-data">
+        <form class="row g-3 container" method="post"
+            action="{{ route('keuanganAdmin.update', $transactionHistory->id) }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
+            <div class="col-12 mt-4">
+                <label for="statustransaksi" class="form-label">Status Transaksi</label>
+                <select id="statustransaksi" name="statustransaksi" class="form-select shadow bg-white rounded">
+                    <option>Pilih...</option>
+                    @if ($status->status_transaction == 0)
+                        <option value="0" selected>On Proses</option>
+                        <option value="1">Selesai</option>
+                    @else
+                        <option value="0">On Proses</option>
+                        <option value="1" selected>Selesai</option>
+                    @endif
+                </select>
+            </div>
             <div class="col-12 mt-4">
                 <label for="inputState" class="form-label">Tipe Transaksi</label>
                 <select disabled id="inputState" id="tipeTransaksi" name="tipeTransaksi"
@@ -31,16 +44,6 @@
                             value="{{ $item->id }}"{{ $item->id == $transactionHistory->bank_account_id ? 'selected' : '' }}>
                             {{ $item->bankName }} - {{ $item->name }} -
                             {{ $item->account_no }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-12 mt-4" hidden>
-                <label for="inputState" class="form-label">Saldo Anda</label>
-                <select id="inputState" id="saldo" name="saldo" class="form-select shadow bg-white rounded">
-                    <option>Pilih...</option>
-                    @foreach ($userBalance as $item)
-                        <option value="{{ $item->id }}" selected>{{ $item->balance }}
                         </option>
                     @endforeach
                 </select>
