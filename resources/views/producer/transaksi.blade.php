@@ -10,7 +10,7 @@
             <div class="col-12 mt-4">
                 <label for="inputState" class="form-label">Tipe Transaksi</label>
                 <select id="inputState" required id="tipeTransaksi" name="tipeTransaksi"
-                    class="form-select shadow bg-white rounded">
+                    class="custom-select shadow bg-white rounded">
                     <option>Pilih...</option>
                     @foreach ($transactionType as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -20,7 +20,7 @@
             <div class="col-12 mt-4">
                 <label for="inputState" class="form-label">Akun Bank</label>
                 <select id="inputState" required id="akunBank" name="akunBank"
-                    class="form-select shadow bg-white rounded">
+                    class="custom-select shadow bg-white rounded">
                     <option selected>Pilih...</option>
                     @foreach ($bankAcc as $item)
                         <option value="{{ $item->id }}">{{ $item->bankName }} - {{ $item->name }} -
@@ -31,7 +31,7 @@
             </div>
             <div class="col-12 mt-4" hidden>
                 <label for="inputState" class="form-label">Saldo Anda</label>
-                <select id="inputState" id="saldo" name="saldo" class="form-select shadow bg-white rounded">
+                <select id="inputState" id="saldo" name="saldo" class="custom-select shadow bg-white rounded">
                     <option>Pilih...</option>
                     @foreach ($userBalance as $item)
                         <option value="{{ $item->id }}" selected>{{ $item->balance }}

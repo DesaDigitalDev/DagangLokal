@@ -11,7 +11,7 @@
             @method('PUT')
             <div class="col-12 mt-4">
                 <label for="statustransaksi" class="form-label">Status Transaksi</label>
-                <select id="statustransaksi" name="statustransaksi" class="form-select shadow bg-white rounded">
+                <select id="statustransaksi" name="statustransaksi" class="custom-select shadow bg-white rounded">
                     <option>Pilih...</option>
                     @if ($status->status_transaction == 0)
                         <option value="0" selected>On Proses</option>
@@ -25,7 +25,7 @@
             <div class="col-12 mt-4">
                 <label for="inputState" class="form-label">Tipe Transaksi</label>
                 <select disabled id="inputState" id="tipeTransaksi" name="tipeTransaksi"
-                    class="form-select shadow bg-white rounded">
+                    class="custom-select shadow bg-white rounded">
                     <option>Pilih...</option>
                     @foreach ($transactionType as $item)
                         <option value="{{ $item->id }}"
@@ -37,7 +37,7 @@
             <div class="col-12 mt-4">
                 <label for="inputState" class="form-label">Akun Bank</label>
                 <select disabled id="inputState" id="akunBank" name="akunBank"
-                    class="form-select shadow bg-white rounded">
+                    class="custom-select shadow bg-white rounded">
                     <option>Pilih...</option>
                     @foreach ($bankAcc as $item)
                         <option

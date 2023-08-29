@@ -10,7 +10,7 @@
             <div class="col-12 mt-4">
                 <label for="namaBank" class="form-label">Nama Bank</label>
                 <select id="namaBank" required id="namaBank" name="namaBank"
-                    class="form-select shadow bg-white rounded">
+                    class="custom-select shadow bg-white rounded">
                     <option>Pilih...</option>
                     @foreach ($bankType as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -29,7 +29,7 @@
             <div class="col-12 mt-4">
                 <label for="BankType" class="form-label">Tipe Bank</label>
                 <select id="BankType" required id="BankType" name="BankType"
-                    class="form-select shadow bg-white rounded">
+                    class="custom-select shadow bg-white rounded">
                     <option>Pilih...</option>
                     <option value="pribadi">Pribadi</option>
                     <option value="bisnis">Bisnis</option>

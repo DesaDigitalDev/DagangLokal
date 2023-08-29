@@ -35,7 +35,7 @@
                             @method('PUT')
                             <tr>
                                 <th style="width: 220px">Progress</th>
-                                <td><select id="progres" name="progres" class="rounded">
+                                <td><select id="progres" name="progres" style="width: 200px" class="custom-select">
                                         <option>Pilih...</option>
                                         @foreach ($progress as $item)
                                             <option value="{{ $item->id }}"
