@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BarangController;
 use App\Http\Controllers\Admin\KeuanganAdminController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Producer\BarangProducerController;
 use App\Http\Controllers\Producer\KeuanganProducerController;
 use App\Http\Controllers\Producer\ProducerController;
@@ -23,9 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('admin/dashboard', function () {
     return view('dashboard');
@@ -58,6 +58,8 @@ Route::middleware(['auth', 'user-access:producer'])->group(function () {
     Route::post('/producer/keuangan/createBank/store', [KeuanganProducerController::class, 'BankStore'])->name('StoreBank');
     Route::resource('/producer/keuangan', KeuanganProducerController::class);
     Route::get('/producer/tracking_product/{product}', [ProducerController::class, 'getProgress'])->name('tracking_product');
+    Route::resource('/categories', CategoryController::class);
+
 });
 
 // route katalog

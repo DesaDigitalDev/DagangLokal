@@ -51,7 +51,7 @@
                     <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col logo_section">
                         <div class="full">
                             <div class="center-desk">
-                                <div class="logo"><a href="index.html"> <img
+                                <div class="logo"><a href="/"> <img
                                             src="{{ asset('/home/images/Logoatas-01.png') }}" alt="img"
                                             width="500px" height="700px" /></a> </div>
                             </div>
@@ -72,9 +72,11 @@
                                             @auth
                                                 <a href="#" class="dropdown-toggle"
                                                     data-toggle="dropdown">{{ ucfirst(Auth::user()->name) }}</a>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu"
+                                                    style="background-color: white; width:10px; height:80px;">
                                                     @if (Auth::user()->role_id == 1)
-                                                        <li><a href="admin/dashboard">Dashboard</a></li>
+                                                        <li class="mb-2"><a
+                                                                href="{{ $role }}admin/dashboard">Dashboard</a></li>
                                                     @elseif (Auth::user()->role_id == 2)
                                                         <li><a href="seller/dashboard">Dashboard</a></li>
                                                     @elseif (Auth::user()->role_id == 3)
@@ -91,7 +93,7 @@
                                             @else
                                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Join Us</a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="/login">Login</a></li>
+                                                    <li class="mb-2"><a href="/login">Login</a></li>
                                                     <li><a href="/register">Sign Up</a></li>
                                                 </ul>
                                             @endauth
