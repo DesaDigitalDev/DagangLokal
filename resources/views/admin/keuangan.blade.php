@@ -37,7 +37,7 @@
                                 <th style="min-width: 60px">No</th>
                                 <th style="min-width: 200px">Status Transaksi</th>
                                 <th style="min-width: 200px">Jenis Transaksi</th>
-                                <th style="min-width: 200px">Bank</th>
+                                <th style="min-width: 200px">Bank Tujuan</th>
                                 <th style="min-width: 200px">Tanggal</th>
                                 <th style="min-width: 200px">jumlah</th>
                                 <th style="min-width: 200px">Transaksi No.</th>

@@ -93,7 +93,7 @@
                                 <th style="min-width: 60px">No</th>
                                 <th style="min-width: 200px">Status Transaksi</th>
                                 <th style="min-width: 200px">Jenis Transaksi</th>
-                                <th style="min-width: 200px">Bank</th>
+                                <th style="min-width: 200px">Bank Tujuan</th>
                                 <th style="min-width: 200px">Tanggal Transasksi</th>
                                 <th style="min-width: 200px">Jumlah</th>
                                 <th style="min-width: 200px">Transaksi No.</th>
@@ -129,16 +129,16 @@
                                                 @csrf
                                                 <button onclick="return confirm('Hapus Data Keuangan ?')"
                                                     class="btn btn-sm btn-danger">
-                                                    <i class="fa fa-trash"></i>Hapus
+                                                    <i class="fa fa-trash"></i>Batalkan
                                                 </button>
                                             </form>
                                         @else
                                             <form action="{{ route('keuangan.destroy', $item->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button onclick="return confirm('Hapus Data Keuangan ?')"
+                                                <button onclick="return confirm('Apakah Anda Yakin Ingin Membatalkan Transaksi ?')"
                                                     class="btn btn-sm btn-danger">
-                                                    <i class="fa fa-trash"></i>Hapus
+                                                    <i class="fa fa-trash"></i>Batalkan
                                                 </button>
                                             </form>
                                         @endif
