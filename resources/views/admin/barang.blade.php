@@ -3,17 +3,6 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('List Barang Approval') }}
         </h2>
-        <style>
-            .link_name {
-                color: blue;
-            }
-
-            .link_name:hover {
-                border-bottom: 1.5px solid blue;
-                font-size: 15px;
-                /* transition: all 0.3s ease-in-out */
-            }
-        </style>
     </x-slot>
 
     @if ($message = Session::get('status'))
@@ -46,10 +35,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->vendor }}</td>
-                                <td>
-                                    <a href="{{ route('tracking_product', $item->id) }}" class="link_name">
-                                        {{ $item->name }} </a>
-                                </td>
+                                <td>{{ $item->name }} </td>
                                 <td>{{ $item->category_name }}</td>
                                 <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                                 <td>
