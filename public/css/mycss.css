@@ -41,6 +41,7 @@ body {
     width: 250px;
     text-align: center;
     padding: 20px 0;
+    padding-left: 47px;
   }
   .sidebar-brand h2 {
     margin: 0;
@@ -68,12 +69,35 @@ body {
     font-weight: 600;
     font-size: 18px;
   }
+  
+  .sidebar-nav > li div {
+    display: block;
+    text-decoration: none;
+    color: #ebebeb;
+    padding-left: 75px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .collapse.show {
+    visibility: visible;
+  }
+
+  .sidebar-nav > li > div:hover,
+  .sidebar-nav > li.active > a {
+    text-decoration: none;
+    color: #fff;
+    background: #413400;
+  }
+
+
   .sidebar-nav > li > a:hover,
   .sidebar-nav > li.active > a {
     text-decoration: none;
     color: #fff;
     background: #413400;
   }
+
   .sidebar-nav > li > a i.fa {
     font-size: 24px;
     width: 60px;

@@ -36,14 +36,15 @@
             <div class="col-12 mt-4">
                 <label for="category" class="form-label">Kategori</label>
                 <div class="input-group">
-                    <select class="custom-select" id="inputGroupSelect02">
+                    <select class="custom-select" id="category" name="category">
                         <option selected>Pilih...</option>
                         @foreach ($category as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
                     <div class="input-group-append">
-                        <label class="input-group-text" onclick="window.location='{{ route('categories.create') }}'" for="inputGroupSelect02">Tambah Kategori</label>
+                        <label class="input-group-text" onclick="window.location='{{ route('categories.create') }}'"
+                            for="inputGroupSelect02">Tambah Kategori</label>
                     </div>
                 </div>
             </div>
@@ -66,8 +67,7 @@
             </div>
             <div class="col-12 mt-4">
                 <label for="inputnamaproduk" class="form-label">BPOM No. (Optional)</label>
-                <input type="text" id="bpom" required name="bpom"
-                    class="form-control shadow bg-white rounded">
+                <input type="text" id="bpom" name="bpom" class="form-control shadow bg-white rounded">
             </div>
             <div class="col-12 mt-4">
                 <label for="inputnamaproduk" class="form-label">Berat Produk</label>
