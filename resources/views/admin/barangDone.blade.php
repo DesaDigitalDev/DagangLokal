@@ -46,10 +46,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->vendor }}</td>
-                                <td>
-                                    <a href="{{ route('tracking_product', $item->id) }}" class="link_name">
-                                        {{ $item->name }} </a>
-                                </td>
+                                <td>{{ $item->name }} </td>
                                 <td>{{ $item->category_name }}</td>
                                 <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
                                 <td>
