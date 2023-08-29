@@ -74,14 +74,8 @@
                                                     data-toggle="dropdown">{{ ucfirst(Auth::user()->name) }}</a>
                                                 <ul class="dropdown-menu"
                                                     style="background-color: white; width:10px; height:80px;">
-                                                    @if (Auth::user()->role_id == 1)
-                                                        <li class="mb-2"><a
-                                                                href="{{ $role }}admin/dashboard">Dashboard</a></li>
-                                                    @elseif (Auth::user()->role_id == 2)
-                                                        <li><a href="seller/dashboard">Dashboard</a></li>
-                                                    @elseif (Auth::user()->role_id == 3)
-                                                        <li><a href="producer/dashboard">Dashboard</a></li>
-                                                    @endif
+                                                    <li class="mb-2"><a href="{{ $role }}/dashboard">Dashboard</a>
+                                                    </li>
                                                     <li>
                                                         <form action="/logout" method="POST">
                                                             @csrf
