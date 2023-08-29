@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
- Route::get('/', function () {
+Route::get('/', function () {
     return view('home');
 })->name('home');
 
@@ -42,6 +42,10 @@ require __DIR__ . '/auth.php';
 // route admin
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'show'])->name('dashboardAdmin');
+    Route::get("/admin/barangAdmin/Approval", [BarangController::class, 'index'])->name('barangAdminApproval');
+    Route::get("/admin/barangAdmin/OnProcess", [BarangController::class, 'indexOnProcess'])->name('barangAdminOnProcess');
+    Route::get("/admin/barangAdmin/Done", [BarangController::class, 'indexDone'])->name('barangAdminDone');
+    Route::get("/admin/barangAdmin/Detail/{id}", [BarangController::class, 'detail'])->name('barangDetail');
     Route::resource("/admin/barangAdmin", BarangController::class);
     Route::resource("/admin/keuanganAdmin", KeuanganAdminController::class);
 });

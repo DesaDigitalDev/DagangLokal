@@ -50,10 +50,9 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
                                         @if ($item->status_transaction == 0)
-                                            <ion-icon name="timer-outline" style="font-size: 25px"></ion-icon>
+                                            <ion-icon name="timer" style="font-size: 25px"></ion-icon>
                                         @else
-                                            <ion-icon name="checkmark-circle-outline"
-                                                style="font-size: 25px"></ion-icon>
+                                            <ion-icon name="checkmark" style="font-size: 25px"></ion-icon>
                                         @endif
                                     </td>
                                     <td> {{ $item->type_name }} </td>
