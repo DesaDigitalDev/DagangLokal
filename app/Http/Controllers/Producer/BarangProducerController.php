@@ -65,7 +65,8 @@ class BarangProducerController extends Controller
             $insertProdPic->sequence_no = $number++;
             $insertProdPic->link = $namaFile;
 
-            $item->move(storage_path() . '/ProdPic', $namaFile);
+            // $item->move(public_path() . '/ProdPic', $namaFile);
+            $item->move(public_path('images'), $namaFile);
             $insertProdPic->save();
         }
 
@@ -78,7 +79,7 @@ class BarangProducerController extends Controller
             $insertProdPic->sequence_no = $number++;
             $insertProdPic->link = $namaFile;
 
-            $item->move(storage_path() . '/ProdPic', $namaFile);
+            $item->move(public_path('images'), $namaFile);
             $insertProdPic->save();
         }
         return redirect('producer/barang');
