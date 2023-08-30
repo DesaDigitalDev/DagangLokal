@@ -25,7 +25,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <x-primary-button class="ml-4" onclick="window.location='{{ route('barang.create') }}'">
-                {{ __('Tambah Data') }}
+                {{ __('Tambah Produk') }}
             </x-primary-button>
             <!-- tabel -->
             <div class="mt-3 table-responsive" style="text-align: center">
