@@ -80,7 +80,7 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <x-primary-button class="ml-4" onclick="window.location='{{ route('keuangan.create') }}'">
-                    {{ __('Tambah Data') }}
+                    {{ __('Top Up / Withdraw') }}
                 </x-primary-button>
                 <x-primary-button class="ml-4" onclick="window.location='{{ route('createBank') }}'">
                     {{ __('Tambah Data Bank') }}
@@ -97,6 +97,7 @@
                                 <th style="min-width: 200px">Tanggal Transasksi</th>
                                 <th style="min-width: 200px">Jumlah</th>
                                 <th style="min-width: 200px">Transaksi No.</th>
+                                <th style="min-width: 200px">Foto Resi</th>
                                 <th style="min-width: 165px">Opsi</th>
                             </tr>
                         </thead>
@@ -117,6 +118,7 @@
                                     <td>{{ date('d-m-Y H:i', strtotime($item->date_time)) }}</td>
                                     <td>Rp.{{ number_format($item->amount / 1, 2) }}</td>
                                     <td>{{ $item->transaction_no }}</td>
+                                    <td>Gambar Resi</td>
                                     <td>
                                         {{-- <a href="{{ route('keuangan.edit', $item->id) }}"
                                             class="btn btn-circle btn-sm btn-warning">
