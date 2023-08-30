@@ -96,8 +96,8 @@
                             <th>Gambar</th>
                             <td>
                                 @foreach ($productPicture as $item)
-                                    <img
-                                        src="{{ asset('storage/ProdPic/' . $item->link) }}">{{ asset('storage/ProdPic/' . $item->link) }}
+                                    <img src="{{ asset('images/' . $item->link) }}" class="rounded"
+                                        style="width: 550px">
                                 @endforeach
                             </td>
                         </tr>
