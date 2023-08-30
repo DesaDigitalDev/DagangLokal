@@ -56,7 +56,7 @@
             </div>
             <div class="col-12 mt-4">
                 <label for="formFile" class="form-label">Foto Resi</label>
-                <input id="formFile" required name="image[]"
+                <input id="transPic" required name="transPic[]"
                     class="form-control shadow bg-white rounded" type="file">
             </div>
             <div class="col-12">
