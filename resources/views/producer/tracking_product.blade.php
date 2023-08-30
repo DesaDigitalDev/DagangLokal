@@ -29,7 +29,7 @@
             border: 2px solid gray;
             border-radius: 20px;
         }
-        .head{
+        .head-prog{
             margin-top: 20px;
             text-align: center;
         }
@@ -172,7 +172,7 @@
     </style>
     <div class="main-progress">
         <div class="first-col">
-            <div class="head">
+            <div class="head-prog">
                 <p class="head_1">{{  $product->name}}</p>
             </div>
             @php
