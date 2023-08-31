@@ -24,7 +24,9 @@ class KeuanganProducerController extends Controller
             ->join('bank_accounts AS ba', 'th.bank_account_id', '=', 'ba.id')
             ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
             ->select('th.*', 'tt.name as type_name', 'ba.name as acc_name', 'ba.account_no as acc_no', 'b.name as bank_name')
-            ->where('th.user_id', Auth::id())->get();
+            ->where('th.user_id', Auth::id())
+            ->orderBy('th.created_at', 'DESC')
+            ->get();
         $dtSaldo = UserBalance::where('user_id', Auth::id())->first();
         $dtTrxUser = Transactionhistory::all()->where('user_id', Auth::id())->count();
         $dtTrxUserTotal = $dtHistory->sum('amount');
