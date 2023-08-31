@@ -85,6 +85,7 @@ class KeuanganProducerController extends Controller
                 $urut = $inv->id + 1;
             }
             $invoice = 'INV' . $thnBln . $urut;
+
             $transactionHistory = TransactionHistory::create([
                 'transaction_type_id' => $request->tipeTransaksi,
                 'bank_account_id' => $request->akunBank,
@@ -94,12 +95,21 @@ class KeuanganProducerController extends Controller
                 'date_time' => date('Y-m-d'),
                 'amount' => $request->jumTransaksi,
                 'status_transaction' => $request->statustranssaksi,
+                'image' => $request->image,
             ]);
+
+            $namaFile = time() . '_' . $request->image->getClientOriginalName();
+            // $uploadedImage = $request->image->move(public_path('images'), $namaFile);
+            $request->image->move(public_path('images'), $namaFile);
+            $imagePath = 'images/' . $namaFile;
+
+            $transactionHistory->image = $imagePath;
 
             $updateBalance = UserBalance::find($userBalance->id);
             $balanceNow = $userBalance->balance - $request->jumTransaksi;
             $updateBalance->balance = $balanceNow;
             $updateBalance->update();
+            $transactionHistory->save();
 
             return redirect('producer/keuangan');
         } else {

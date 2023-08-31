@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status_transaction');
             $table->dateTime('date_time', $precision = 0);
             $table->double('amount', 12, 2);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
