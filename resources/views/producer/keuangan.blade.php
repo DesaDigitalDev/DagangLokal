@@ -118,7 +118,9 @@
                                     <td>{{ date('d-m-Y H:i', strtotime($item->date_time)) }}</td>
                                     <td>Rp.{{ number_format($item->amount / 1, 2) }}</td>
                                     <td>{{ $item->transaction_no }}</td>
-                                    <td><img src="{{ asset($item->image) }}" class="img-thumbnail" style="width:100px" /></td>
+                                    <td>
+                                        <img src="{{ asset($item->image) }}" class="img-thumbnail {{ empty($item->image) ? 'd-none' : '' }}" style="width:100px" />
+                                    </td>
                                     <td>
                                         {{-- <a href="{{ route('keuangan.edit', $item->id) }}"
                                             class="btn btn-circle btn-sm btn-warning">

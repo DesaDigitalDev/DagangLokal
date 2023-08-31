@@ -54,7 +54,7 @@
                 <input type="text" id="statustranssaksi" name="statustranssaksi" value="0"
                     class="form-control shadow bg-white rounded">
             </div>
-            <div class="col-12 mt-4">
+            <div class="col-12 mt-4 hide-target">
                 <label for="formFile" class="form-label">Foto Resi</label>
                 <input id="image" name="image"
                     class="form-control shadow bg-white rounded" type="file">
@@ -66,4 +66,22 @@
             </div>
         </form>
     </div>
+
+    <script>
+        const hideTargetElement = document.querySelector('.hide-target');
+        const inputState = document.getElementById('inputState');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            inputState.addEventListener('change', function() {
+                const selectedValue = this.value;
+                console.log('Selected value:', selectedValue);
+
+                if (selectedValue === '1') {
+                    hideTargetElement.classList.add('d-none');
+                } else {
+                    hideTargetElement.classList.remove('d-none');
+                }
+            });
+        });
+    </script>
 </x-app-layout>
