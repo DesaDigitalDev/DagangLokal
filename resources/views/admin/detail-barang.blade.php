@@ -16,13 +16,6 @@
         </style>
     </x-slot>
 
-    @if ($message = Session::get('status'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{ $message }}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="mt-3 table-responsive" style="text-align: center">
@@ -34,7 +27,7 @@
                             {{ csrf_field() }}
                             @method('PUT')
                             <tr>
-                                <th style="width: 220px">Progress</th>
+                                <th style="width: 220px; vertical-align: top">Progress</th>
                                 <td><select id="progres" name="progres" style="width: 200px" class="custom-select">
                                         <option>Pilih...</option>
                                         @foreach ($progress as $item)
@@ -52,7 +45,7 @@
                         </form>
                         @foreach ($product as $item)
                             <tr>
-                                <th style="width: 220px">Nama Perusahaan</th>
+                                <th>Nama Perusahaan</th>
                                 <td>{{ $item->vendor }}</td>
                             </tr>
                             <tr>
@@ -93,12 +86,14 @@
                             </tr>
                         @endforeach
                         <tr>
-                            <th>Gambar</th>
-                            <td>
-                                @foreach ($productPicture as $item)
-                                    <img src="{{ asset('images/' . $item->link) }}" class="rounded"
-                                        style="width: 550px">
-                                @endforeach
+                            <th style="vertical-align: top">Gambar</th>
+                            <td style="align-items: center">
+                                <div class="d-flex">
+                                    @foreach ($productPicture as $item)
+                                        <img src="{{ asset('images/' . $item->link) }}" class="rounded"
+                                            style="width: 350px">
+                                    @endforeach
+                                </div>
                             </td>
                         </tr>
                     </thead>

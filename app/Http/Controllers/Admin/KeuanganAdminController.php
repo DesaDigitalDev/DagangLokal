@@ -60,10 +60,11 @@ class KeuanganAdminController extends Controller
     {
         $transactionHistory = TransactionHistory::find($id);
         $status = TransactionHistory::all()->where('id', $id)->first();
-        $transactionType = TransactionType::all();
+        $transactionType = TransactionType::find($transactionHistory->transaction_type_id);
         $bankAcc = DB::table('bank_accounts AS ba')
             ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
-            ->select('ba.*', 'b.name as bankName')->get();
+            ->select('ba.*', 'b.name as bankName')
+            ->where('ba.id', $transactionHistory->bank_account_id)->first();
 
         return view('admin.edit-keuangan')->with('transactionType', $transactionType)
             ->with('transactionHistory', $transactionHistory)

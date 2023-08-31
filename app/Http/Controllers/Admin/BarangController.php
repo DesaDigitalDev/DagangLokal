@@ -112,7 +112,7 @@ class BarangController extends Controller
         $product = Product::find($id);
         $product->progress_id = $request->input('progres');
         $product->update();
-        return redirect('/admin/barangAdmin/Approval');
+        return back();
     }
 
     /**
