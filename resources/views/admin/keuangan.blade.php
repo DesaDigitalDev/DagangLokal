@@ -62,7 +62,8 @@
                                     <td>{{ date('d-m-Y H:i', strtotime($item->date_time)) }}</td>
                                     <td>Rp.{{ number_format($item->amount / 1, 2) }}</td>
                                     <td>{{ $item->transaction_no }}</td>
-                                    <td><img src="{{ asset($item->image) }}" class="img-thumbnail" style="width:100px" /></td>
+                                    <td><img src="{{ asset($item->image) }}" class="img-thumbnail"
+                                            style="width:100px" /></td>
                                     <td>
                                         @if ($item->status_transaction == 1)
                                             <a hidden href="{{ route('keuanganAdmin.edit', $item->id) }}"
