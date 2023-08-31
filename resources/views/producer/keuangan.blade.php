@@ -118,7 +118,11 @@
                                     <td>{{ date('d-m-Y H:i', strtotime($item->date_time)) }}</td>
                                     <td>Rp.{{ number_format($item->amount / 1, 2) }}</td>
                                     <td>{{ $item->transaction_no }}</td>
-                                    <td><img src="{{ asset($item->image) }}" class="img-thumbnail" style="width:100px" /></td>
+                                    <td>
+                                        <img src="{{ asset($item->image) }}"
+                                            class="img-thumbnail {{ empty($item->image) ? 'd-none' : '' }}"
+                                            style="width:100px" />
+                                    </td>
                                     <td>
                                         {{-- <a href="{{ route('keuangan.edit', $item->id) }}"
                                             class="btn btn-circle btn-sm btn-warning">
@@ -138,7 +142,8 @@
                                             <form action="{{ route('keuangan.destroy', $item->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button onclick="return confirm('Apakah Anda Yakin Ingin Membatalkan Transaksi ?')"
+                                                <button
+                                                    onclick="return confirm('Apakah Anda Yakin Ingin Membatalkan Transaksi ?')"
                                                     class="btn btn-sm btn-danger">
                                                     <i class="fa fa-trash"></i>Batalkan
                                                 </button>

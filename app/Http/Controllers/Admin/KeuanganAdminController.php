@@ -21,7 +21,9 @@ class KeuanganAdminController extends Controller
             ->join('transaction_types AS tt', 'th.transaction_type_id', '=', 'tt.id')
             ->join('bank_accounts AS ba', 'th.bank_account_id', '=', 'ba.id')
             ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
-            ->select('th.*', 'tt.name as type_name', 'ba.name as acc_name', 'ba.account_no as acc_no', 'b.name as bank_name')->get();
+            ->select('th.*', 'tt.name as type_name', 'ba.name as acc_name', 'ba.account_no as acc_no', 'b.name as bank_name')
+            ->orderBy('th.created_at', 'DESC')
+            ->get();
         $dtSaldo = UserBalance::where('user_id', Auth::id())->first();
         $dtTrxUser = TransactionHistory::all()->where('user_id', Auth::id())->count();
         return view('admin.keuangan')->with('dtHistory', $dtHistory)

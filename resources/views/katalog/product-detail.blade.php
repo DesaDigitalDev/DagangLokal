@@ -60,103 +60,108 @@
         </div>
     @endif
 
-    <div class="container mt-4 pt-4" style="background-color: rgb(255, 255, 255)">
-        <div class="wrapper mx-auto">
-            <a href="/catalog"><button class="button-7" role="button"><i class="fa-solid fa-arrow-left"></i> Kembali</button></a>
-        </div>
+    @if ($product->progress_id == 4)
+        <div class="container mt-4 pt-4" style="background-color: rgb(255, 255, 255)">
+            <div class="wrapper mx-auto">
+                <a href="/catalog"><button class="button-7" role="button"><i class="fa-solid fa-arrow-left"></i> Kembali</button></a>
+            </div>
 
-        <div class="wrapper line mx-auto p-3 mt-3" style="background-color: #e6faff;">
-            <h1 style="font-size : 13.5px;"><a href="/catalog" style="color: rgb(0, 114, 191);">Home</a> / <span>{{ $product->category_name }}</span> 
-                / <span>{{ $product->name }}</span>
-            </h1>   
-        </div>
-        
-        <div class="wrapper edge mx-auto mt-4 mb-5 pt-3" style="background-color: #ffffff;">
-            <div class="row g-3 col-sm-12 pe-3 ps-3" >
-                <div class="card mb-3">
-                    <div class="row g-2">
-                        <div class="col-md-5">
-                            <img src="/../assets/img/dish1.jpg" class="img-detail" alt="...">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <h5 class="card-title" style="font-size: 23px; fw-bold">{{ $product->name }}</h5>
-                                <h5 class="mb-2 mt-2" style="font-size: 25px; fw-bold">Rp. {{ $product->unit_price }}</h5>
-                                <div class="rating mb-1">
-                                    <p>
-                                        @for($i = 1; $i <= $formattedRating; $i++)
-                                            <i class="fas fa-star rated"></i>
-                                        @endfor
-                                        @for($j = $formattedRating+1; $j <= 5; $j++ )
-                                                <i class="fas fa-star"></i>
-                                        @endfor
-                                        @if($ratingsCount > 0)
-                                            {{ $ratingsCount  }} Rating
-                                        @else
-                                            0 Rating
-                                        @endif
-                                    </p>
+            <div class="wrapper line mx-auto p-3 mt-3" style="background-color: #e6faff;">
+                <h1 style="font-size : 13.5px;"><a href="/catalog" style="color: rgb(0, 114, 191);">Katalog</a> / <span>{{ $product->category_name }}</span> 
+                    / <span>{{ $product->name }}</span>
+                </h1>   
+            </div>
+                <div class="wrapper edge mx-auto mt-4 mb-5 pt-3" style="background-color: #ffffff;">
+                    <div class="row g-3 col-sm-12 pe-3 ps-3" >
+                        <div class="card mb-3">
+                            <div class="row g-2">
+                                <div class="col-md-5">
+                                    <img src="{{ asset('images/' . $product->link) }}" style="width: 300px; height: 300px" class="img-detail" alt="{{ $product->name }}">
                                 </div>
-                                    <div class="col-lg-10 col-md-12 col-sm-10 picks mt-3 mb-2">
-                                        <button class="pick-button" value="saga merah">Saga Merah</button>
-                                        <button class="pick-button">Saga Hijau</button>
-                                        <button class="pick-button">Saga Hijau</button>
-                                        <button class="pick-button">Saga Hijau</button>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-size: 23px; fw-bold">{{ $product->name }}</h5>
+                                        <h5 class="mb-2 mt-2" style="font-size: 25px; fw-bold">Rp. {{ $product->unit_price }}</h5>
+                                        <div class="rating mb-1">
+                                            <p>
+                                                @for($i = 1; $i <= $formattedRating; $i++)
+                                                    <i class="fas fa-star rated"></i>
+                                                @endfor
+                                                @for($j = $formattedRating+1; $j <= 5; $j++ )
+                                                        <i class="fas fa-star"></i>
+                                                @endfor
+                                                @if($ratingsCount > 0)
+                                                    {{ $ratingsCount  }} Rating
+                                                @else
+                                                    0 Rating
+                                                @endif
+                                            </p>
+                                        </div>
+                                            <div class="col-lg-10 col-md-12 col-sm-10 picks mt-3 mb-2">
+                                                <button class="pick-button" value="saga merah">Saga Merah</button>
+                                                <button class="pick-button">Saga Hijau</button>
+                                                <button class="pick-button">Saga Hijau</button>
+                                                <button class="pick-button">Saga Hijau</button>
+                                            </div>
+
+                                        <div class="xhead mt-2">
+                                            <p>Detail</p>
+                                        </div>
+
+                                        <div class="half-colored-line">
+                                            <div class="colored-half"></div>
+                                            <div class="transparent-half"></div>
+                                        </div>
+
+                                        <div class="xtoe mb-1">
+                                            <p>Stock : <span>{{ $product->unit_in_stock }} pcs</span></p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="product-desc">
+                                                    <p class="less-desc">{{ substr($product->description, 0, 100) }} <span><button class="show-more-btn">show more...</button></span></p>
+                                                    <p class="more-desc" style="display: none;">
+                                                        {{ $product->description }}
+                                                        <span><button class="show-less-btn">show less</button>
+                                                    </p> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Add buttons here -->
+                                        {{-- <button class="btn btn-primary mt-3"><i class="fa fa-shopping-cart"></i></button> --}}
                                     </div>
-
-                                <div class="xhead mt-2">
-                                    <p>Detail</p>
                                 </div>
-
-                                <div class="half-colored-line">
-                                    <div class="colored-half"></div>
-                                    <div class="transparent-half"></div>
-                                </div>
-
-                                <div class="xtoe mb-1">
-                                    <p>Stock : <span>{{ $product->unit_in_stock }} pcs</span></p>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>       
+                @if($comments->count() > 0 )
+                    @foreach($comments as $comment)
+                        <x-comment-card :comment="$comment" />
+                    @endforeach
+                @else
+                    <div class="wrapper edge mx-auto mt-3" style="background-color: rgba(255, 255, 255, 0.794);">
+                        <div class="col-12">
+                            <div class="comment mx-auto">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="product-desc">
-                                            <p class="less-desc">{{ substr($product->description, 0, 100) }} <span><button class="show-more-btn">show more...</button></span></p>
-                                            <p class="more-desc" style="display: none;">
-                                                {{ $product->description }}
-                                                <span><button class="show-less-btn">show less</button>
-                                            </p> 
+                                        <div class="comment-detail justify-content-center">
+                                            <div class="user-comment"> 
+                                                <p class=""> Belum ada komentar </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Add buttons here -->
-                                {{-- <button class="btn btn-primary mt-3"><i class="fa fa-shopping-cart"></i></button> --}}
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>       
-        @if($comments->count() > 0 )
-            @foreach($comments as $comment)
-                <x-comment-card :comment="$comment" />
-            @endforeach
-        @else
-            <div class="wrapper edge mx-auto mt-3" style="background-color: rgba(255, 255, 255, 0.794);">
-                <div class="col-12">
-                    <div class="comment mx-auto">
-                        <div class="row">
-                            <div class="col">
-                                <div class="comment-detail justify-content-center">
-                                    <div class="user-comment"> 
-                                        <p class=""> Belum ada komentar </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
-    </div>
+                @endif
+        </div>
+    @else
+        <div class="x-notif">
+            <h1>Product Not Found</h1>
+        </div>
+    @endif
     
 
     {{-- <button class="btn btn-primary" id="rateButton" ><i class="fas fa-comment"></i></button> --}}

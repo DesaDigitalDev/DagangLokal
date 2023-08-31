@@ -56,10 +56,10 @@
 
     <div class="container-fluid">
         <div class="mt-3">
-            <div class="category"  @if ($isNoResults = $products->isEmpty()) style="display: none;" @endif>
+            <div class="category">
                 <div class="">
                     <form action="{{ url('catalog/category')}}" method="GET">
-                        <button class="all" name="category_name" value="">All</button>
+                        <button class="all" name="category_name" value="a">All</button>
                     </form>
                 </div>
                 @foreach($categories as $category)
@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    @if ($isNoResults = $products->isEmpty())
+    @if ($products->isEmpty())
         <div class="x-notif">
             <h1>Product Not Found</h1>
         </div>
