@@ -1,19 +1,13 @@
 <div class="col-12 col-sm-6 col-md-3 col-lg-2 g-2">
     <div div class="card card-clicked" data-card-id="{{ $item->id }}" style="cursor: pointer">
-        <img src="/../assets/img/dish1.jpg"  class="card-img-top" alt="...">
+        <img src="{{ asset('images/' . $item->link) }}"  class="card-img-top" style="" alt="{{ $item->name }}">
         <div class="card-body">
             <div class="card-title">{{ $item->name }}</div>
             @php
                 $formattedRating = number_format($item->rating_value);
             @endphp
             <div class="stars mb-2 mt-2">
-                @for($i = 1; $i <= 5; $i++)
-                    @if($formattedRating >= $i)
-                        <i class="fas fa-star rated"></i>
-                    @else
-                        <i class="fas fa-star"></i>
-                    @endif
-                @endfor
+                    <i class="fas fa-star rated"><span style="color: black"> {{ $formattedRating }}</span></i>
             </div>
             <div class="pricing mb-2">
                 <div class="pricing-price">
