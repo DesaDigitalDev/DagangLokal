@@ -39,7 +39,7 @@
                                 <th style="min-width: 200px">Jenis Transaksi</th>
                                 <th style="min-width: 200px">Bank Tujuan</th>
                                 <th style="min-width: 200px">Tanggal</th>
-                                <th style="min-width: 200px">jumlah</th>
+                                <th style="min-width: 200px">Jumlah</th>
                                 <th style="min-width: 200px">Transaksi No.</th>
                                 <th style="min-width: 165px">Opsi</th>
                             </tr>

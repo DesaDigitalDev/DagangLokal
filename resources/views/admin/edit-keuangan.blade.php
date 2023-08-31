@@ -34,17 +34,22 @@
                             </tr>
                         </form>
                         <tr>
-                            <th>Nama Perusahaan</th>
+                            <th>Jenis Transaksi</th>
                             <td>{{ $transactionType->name }}</td>
                         </tr>
                         <tr>
-                            <th>No. Telepon</th>
+                            <th>Bank Tujuan</th>
                             <td>{{ $bankAcc->bankName }} - {{ $bankAcc->name }} -
                                 {{ $bankAcc->account_no }}</td>
                         </tr>
                         <tr>
-                            <th>Nama Produk</th>
+                            <th>Jumlah Transaksi</th>
                             <td>{{ $transactionHistory->amount }}</td>
+                        </tr>
+                        <tr>
+                            <th>Foto Struk</th>
+                            <td><img src="{{ asset($transactionHistory->image) }}" class="img-thumbnail"
+                                    style="width:100px" /></td>
                         </tr>
                         {{-- <tr>
                             <th style="vertical-align: top">Gambar</th>
