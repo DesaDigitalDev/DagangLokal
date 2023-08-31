@@ -39,8 +39,9 @@
                                 <th style="min-width: 200px">Jenis Transaksi</th>
                                 <th style="min-width: 200px">Bank Tujuan</th>
                                 <th style="min-width: 200px">Tanggal</th>
-                                <th style="min-width: 200px">jumlah</th>
+                                <th style="min-width: 200px">Jumlah</th>
                                 <th style="min-width: 200px">Transaksi No.</th>
+                                <th style="min-width: 200px">Foto Struk</th>
                                 <th style="min-width: 165px">Opsi</th>
                             </tr>
                         </thead>
@@ -61,6 +62,7 @@
                                     <td>{{ date('d-m-Y H:i', strtotime($item->date_time)) }}</td>
                                     <td>Rp.{{ number_format($item->amount / 1, 2) }}</td>
                                     <td>{{ $item->transaction_no }}</td>
+                                    <td><img src="{{ asset($item->image) }}" class="img-thumbnail" style="width:100px" /></td>
                                     <td>
                                         @if ($item->status_transaction == 1)
                                             <a hidden href="{{ route('keuanganAdmin.edit', $item->id) }}"
