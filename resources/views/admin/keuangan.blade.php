@@ -69,8 +69,8 @@
                                             </a>
                                         @else
                                             <a href="{{ route('keuanganAdmin.edit', $item->id) }}"
-                                                class="btn btn-circle btn-sm btn-warning">
-                                                <i class="fa fa-edit"></i> Edit
+                                                class="btn btn-sm btn-warning">
+                                                <i class="fa fa-info-circle"></i> Detail
                                             </a>
                                         @endif
                                     </td>

@@ -77,10 +77,23 @@ class KeuanganAdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $transactionHistory = TransactionHistory::find($id);
-        $transactionHistory->status_transaction = $request->input('statustransaksi');
+        $buktirf = $request->buktitf;
+        if (is_null($buktirf)) {
+            $transactionHistory = TransactionHistory::find($id);
+            $transactionHistory->status_transaction = $request->input('statustransaksi');
+        } else {
+            $namaFile = time() . '_' . $buktirf->getClientOriginalName();
+            $imagePath = 'images/' . $namaFile;
+
+            $transactionHistory = TransactionHistory::find($id);
+            $transactionHistory->status_transaction = $request->input('statustransaksi');
+            $transactionHistory->image = $imagePath;
+
+            $buktirf->move(public_path('images'), $namaFile);
+        }
+
         $transactionHistory->update();
-        return redirect('/admin/keuanganAdmin');
+        return back();
     }
 
     /**
