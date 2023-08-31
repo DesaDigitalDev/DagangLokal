@@ -54,8 +54,13 @@
                 <input type="text" id="statustranssaksi" name="statustranssaksi" value="0"
                     class="form-control shadow bg-white rounded">
             </div>
+<<<<<<< HEAD
             <div class="col-12 mt-4 hide-target">
                 <label for="formFile" class="form-label">Foto Resi</label>
+=======
+            <div class="col-12 mt-4">
+                <label for="formFile" class="form-label">Foto Resi *Diisi Oleh Admin</label>
+>>>>>>> a75221dad58ea8a52442d6fe6139d757edbe901f
                 <input id="image" name="image"
                     class="form-control shadow bg-white rounded" type="file">
             </div>
