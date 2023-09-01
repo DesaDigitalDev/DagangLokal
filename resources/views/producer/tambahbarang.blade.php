@@ -42,10 +42,10 @@
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
-                    <div class="input-group-append">
+                    {{-- <div class="input-group-append">
                         <label class="input-group-text" onclick="window.location='{{ route('categories.create') }}'"
                             for="inputGroupSelect02">Tambah Kategori</label>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

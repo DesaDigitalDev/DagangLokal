@@ -4,10 +4,11 @@
             {{ __('List Barang') }}
         </h2>
         <style>
-            .link_name{
+            .link_name {
                 color: blue;
             }
-            .link_name:hover{
+
+            .link_name:hover {
                 border-bottom: 1.5px solid blue;
                 font-size: 15px;
                 /* transition: all 0.3s ease-in-out */
@@ -37,11 +38,11 @@
                             <th style="min-width: 100px">Nama Produk</th>
                             <th style="min-width: 100px">Kategori</th>
                             <th style="min-width: 100px">Harga</th>
-                            <th style="min-width: 100px">Berat</th>
-                            <th style="min-width: 100px">Nomor P-IRT</th>
-                            <th style="min-width: 100px">Nomor Serfitikat Halal</th>
-                            <th style="min-width: 100px">BPOM</th>
-                            <th style="min-width: 100px">Deskripsi</th>
+                            {{-- <th style="min-width: 100px">Berat</th> --}}
+                            <th style="min-width: 100px">No. P-IRT</th>
+                            <th style="min-width: 100px">No. Serfitikat Halal</th>
+                            {{-- <th style="min-width: 100px">BPOM</th>
+                            <th style="min-width: 100px">Deskripsi</th> --}}
                             <th style="min-width: 100px">Aksi</th>
                         </tr>
                     </thead>
@@ -51,15 +52,16 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->vendor }}</td>
                                 <td>
-                                    <a href="{{ route('tracking_product', $item->id) }}" class="link_name"> {{ $item->name }} </a>
+                                    <a href="{{ route('tracking_product', $item->id) }}" class="link_name">
+                                        {{ $item->name }} </a>
                                 </td>
                                 <td>{{ $item->category_name }}</td>
                                 <td>{{ $item->unit_price }}</td>
-                                <td>{{ $item->unit_weight }}</td>
+                                {{-- <td>{{ $item->unit_weight }}</td> --}}
                                 <td>{{ $item->no_pirt }}</td>
                                 <td>{{ $item->no_sertifikat_halal }}</td>
-                                <td>{{ $item->bpom_no }}</td>
-                                <td>{{ $item->description }}</td>
+                                {{-- <td>{{ $item->bpom_no }}</td>
+                                <td>{{ $item->description }}</td> --}}
                                 <td>
                                     <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fa fa-edit"></i> Edit

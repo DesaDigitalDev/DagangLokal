@@ -105,20 +105,20 @@ class KeuanganProducerController extends Controller
                 // $uploadedImage = $request->image->move(public_path('images'), $namaFile);
                 $request->image->move(public_path('images'), $namaFile);
                 $imagePath = 'images/' . $namaFile;
-    
+
                 $transactionHistory->image = $imagePath;
-            }
-            else
-            {
+            } else {
                 $transactionHistory->image = null;
             }
 
             $updateBalance = UserBalance::find($userBalance->id);
-            $balanceNow = $userBalance->balance - $request->jumTransaksi;
-            $updateBalance->balance = $balanceNow;
-            $updateBalance->update();
-            $transactionHistory->save();
-
+            if ($request->tipeTransaksi == 1) {
+                $balanceNow = $userBalance->balance - $request->jumTransaksi;
+                $updateBalance->balance = $balanceNow;
+                $updateBalance->update();
+            } else {
+                $transactionHistory->save();
+            }
             return redirect('producer/keuangan');
         } else {
             return redirect('producer/keuangan')->with('alert', 'Data gagal ditambahkan, jumlah transaksi melebihi saldo anda');

@@ -29,6 +29,14 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th>Nama Akun</th>
+                                <td>{{ $user->name }}</td>
+                            </tr>
+                            <tr>
+                                <th>No. Transaksi</th>
+                                <td>{{ $transactionHistory->transaction_no }}</td>
+                            </tr>
+                            <tr>
                                 <th>Jenis Transaksi</th>
                                 <td>{{ $transactionType->name }}</td>
                             </tr>

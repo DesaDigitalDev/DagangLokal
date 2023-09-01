@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TransactionHistory;
 use App\Models\TransactionType;
 use App\Models\UserBalance;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -67,11 +68,12 @@ class KeuanganAdminController extends Controller
             ->join('banks AS b', 'ba.bank_id', '=', 'b.id')
             ->select('ba.*', 'b.name as bankName')
             ->where('ba.id', $transactionHistory->bank_account_id)->first();
-
+        $user = User::find($transactionHistory->user_id);
         return view('admin.edit-keuangan')->with('transactionType', $transactionType)
             ->with('transactionHistory', $transactionHistory)
             ->with('bankAcc', $bankAcc)
-            ->with('status', $status);
+            ->with('status', $status)
+            ->with('user', $user);
     }
 
     /**
@@ -80,22 +82,26 @@ class KeuanganAdminController extends Controller
     public function update(Request $request, string $id)
     {
         $buktirf = $request->buktitf;
+        $transactionHistory = TransactionHistory::find($id);
         if (is_null($buktirf)) {
-            $transactionHistory = TransactionHistory::find($id);
             $transactionHistory->status_transaction = $request->input('statustransaksi');
+
+            $userBalance = UserBalance::where('user_id', $transactionHistory->user_id)->first();
+            $updateBalance = UserBalance::find($userBalance->id);
+            $balanceNow = $userBalance->balance + $transactionHistory->amount;
+            $updateBalance->balance = $balanceNow;
+            $updateBalance->update();
         } else {
             $namaFile = time() . '_' . $buktirf->getClientOriginalName();
             $imagePath = 'images/' . $namaFile;
 
-            $transactionHistory = TransactionHistory::find($id);
             $transactionHistory->status_transaction = $request->input('statustransaksi');
             $transactionHistory->image = $imagePath;
 
             $buktirf->move(public_path('images'), $namaFile);
         }
-
         $transactionHistory->update();
-        return back();
+        return redirect('admin/keuanganAdmin');
     }
 
     /**

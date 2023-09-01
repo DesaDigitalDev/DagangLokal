@@ -80,7 +80,7 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <x-primary-button class="ml-4" onclick="window.location='{{ route('keuangan.create') }}'">
-                    {{ __('Withdraw') }}
+                    {{ __('Transaksi') }}
                 </x-primary-button>
                 <x-primary-button class="ml-4" onclick="window.location='{{ route('createBank') }}'">
                     {{ __('Tambah Data Bank') }}
@@ -98,7 +98,7 @@
                                 <th style="min-width: 200px">Jumlah</th>
                                 <th style="min-width: 200px">Transaksi No.</th>
                                 <th style="min-width: 200px">Foto Struk</th>
-                                <th style="min-width: 165px">Opsi</th>
+                                <th style="min-width: 165px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>

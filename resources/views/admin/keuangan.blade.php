@@ -35,35 +35,39 @@
                         <thead>
                             <tr>
                                 <th style="min-width: 60px">No</th>
-                                <th style="min-width: 200px">Status Transaksi</th>
                                 <th style="min-width: 200px">Jenis Transaksi</th>
+                                {{-- <th style="min-width: 200px">Status Transaksi</th> --}}
                                 <th style="min-width: 200px">Bank Tujuan</th>
                                 <th style="min-width: 200px">Tanggal</th>
                                 <th style="min-width: 200px">Jumlah</th>
-                                <th style="min-width: 200px">Transaksi No.</th>
+                                {{-- <th style="min-width: 200px">Transaksi No.</th> --}}
                                 <th style="min-width: 200px">Foto Struk</th>
-                                <th style="min-width: 165px">Opsi</th>
+                                <th style="min-width: 165px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($dtHistory as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>
+                                    {{-- <td>
+
+                                    </td> --}}
+                                    <td> {{ $item->type_name }}<br>
                                         @if ($item->status_transaction == 0)
                                             <ion-icon name="timer" style="font-size: 25px"></ion-icon>
                                         @else
                                             <ion-icon name="checkmark" style="font-size: 25px"></ion-icon>
                                         @endif
                                     </td>
-                                    <td> {{ $item->type_name }} </td>
                                     <td>{{ $item->bank_name }} - {{ $item->acc_name }} -
                                         {{ $item->acc_no }}</td>
                                     <td>{{ date('d-m-Y H:i', strtotime($item->date_time)) }}</td>
                                     <td>Rp.{{ number_format($item->amount / 1, 2) }}</td>
-                                    <td>{{ $item->transaction_no }}</td>
+                                    {{-- <td>{{ $item->transaction_no }}</td> --}}
                                     <td>
-                                        <img src="{{ asset($item->image) }}" class="img-thumbnail {{ empty($item->image) ? 'd-none' : '' }}" style="width:100px" />
+                                        <img src="{{ asset($item->image) }}"
+                                            class="img-thumbnail {{ empty($item->image) ? 'd-none' : '' }}"
+                                            style="width:100px" />
                                     </td>
                                     <td>
                                         @if ($item->status_transaction == 1)
