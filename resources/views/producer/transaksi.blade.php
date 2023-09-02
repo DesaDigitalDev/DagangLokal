@@ -55,7 +55,7 @@
                     class="form-control shadow bg-white rounded">
             </div>
             <div class="col-12 mt-4 d-none hide-target">
-                <label for="formFile" class="form-label">Foto Resi</label>
+                <label for="formFile" class="form-label">Foto Bukti Transfer</label>
                 <input id="image" name="image" class="form-control shadow bg-white rounded" type="file">
             </div>
             <div class="col-12">

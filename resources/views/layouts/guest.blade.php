@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" href="{!! asset('assets/img/image-removebg-preview.png') !!}" />
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -30,7 +31,8 @@
         <div id="test" class="row w-full w-75 mt-6 px-6 py-4 bg-white shadow-md sm:rounded-lg">
             <div id="test2" class="col-6 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
+                    <img src="/assets/img/login.png" />
                 </a>
             </div>
             <div class="col-6 flex flex-col sm:justify-center items-center">

@@ -174,9 +174,12 @@ class KeuanganProducerController extends Controller
         $userBalance = UserBalance::where('user_id', Auth::id())->first();
         $BalanceDestroy = $transactionHistory->amount;
         $BalanceDB = $userBalance->balance;
-        $SUMBalance = $BalanceDestroy + $BalanceDB;
-        $userBalance->balance = $SUMBalance;
-        $userBalance->update();
+
+        if ($transactionHistory->transaction_type_id == 1) {
+            $SUMBalance = $BalanceDestroy + $BalanceDB;
+            $userBalance->balance = $SUMBalance;
+            $userBalance->update();
+        }
         TransactionHistory::destroy($id);
         return redirect('producer/keuangan')->with('status', 'Data Berhasil Di hapus');
     }

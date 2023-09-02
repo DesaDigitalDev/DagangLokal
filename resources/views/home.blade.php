@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
+    <link rel="icon" href="{!! asset('assets/img/image-removebg-preview.png') !!}" />
     <title>Home - Dagang Lokal</title>
     <meta name="keywords" content="">
     <meta name="description" content="">

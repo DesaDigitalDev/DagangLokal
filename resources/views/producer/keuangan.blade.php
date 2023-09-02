@@ -97,7 +97,7 @@
                                 <th style="min-width: 200px">Tanggal Transasksi</th>
                                 <th style="min-width: 200px">Jumlah</th>
                                 <th style="min-width: 200px">Transaksi No.</th>
-                                <th style="min-width: 200px">Foto Struk</th>
+                                <th style="min-width: 200px">Bukti Transfer</th>
                                 <th style="min-width: 165px">Aksi</th>
                             </tr>
                         </thead>
@@ -122,6 +122,27 @@
                                         <img src="{{ asset($item->image) }}"
                                             class="img-thumbnail {{ empty($item->image) ? 'd-none' : '' }}"
                                             style="width:100px" />
+                                        {{-- <!-- Button trigger modal -->
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <img src="{{ asset($item->image) }}"
+                                                class="img-thumbnail {{ empty($item->image) ? 'd-none' : '' }}"
+                                                style="width:100px" />
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-xl">
+                                                <div class="modal-content ">
+                                                    <div class="modal-body">
+                                                        <img src="{{ asset($item->image) }}" class="img-thumbnail" />
+                                                    </div>
+                                                    <div class="modal-footer" style="padding: 0px">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> --}}
                                     </td>
                                     <td>
                                         {{-- <a href="{{ route('keuangan.edit', $item->id) }}"
