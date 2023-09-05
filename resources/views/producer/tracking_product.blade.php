@@ -299,14 +299,17 @@
             <p class="dt-progress">{{ $currentProgress->updated_at }}</p>
             <p class="head-progress-des">{{ $currentProgress->description }}</p>
         </div>
-        <div class="container second-col" style="margin-top: -15px">
-            <p class="head-progress-name">Notes</p>
-            <p class="head-progress-des">{{ $product->notes }}</p>
-            <p>Untuk memperbaiki informasi produk silahkan <a class="btn btn-info"
-                    href="{{ route('barang.edit', $product->id) }}">klik sini</a>
-            </p>
-            <p class="gjobb"><strong>Terima kasih!</strong></p>
-        </div>
+
+        @if ($product->progress_id == '3' || $product->progress_id == '5' || $product->progress_id == '6')
+            <div class="container second-col" style="margin-top: -15px">
+                <p class="head-progress-name">Notes</p>
+                <p class="head-progress-des">{{ $product->notes }}</p>
+                <p>Untuk memperbaiki informasi produk silahkan <a class="btn btn-info"
+                        href="{{ route('barang.edit', $product->id) }}">klik sini</a>
+                </p>
+                <p class="gjobb"><strong>Terima kasih!</strong></p>
+            </div>
+        @endif
 
     </div>
 </x-app-layout>

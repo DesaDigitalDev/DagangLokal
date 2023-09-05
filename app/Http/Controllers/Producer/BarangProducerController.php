@@ -111,6 +111,7 @@ class BarangProducerController extends Controller
     {
         $product = Product::find($id);
         $product->name = $request->input('name');
+        $product->progress_id = $request->input('progress_id');
         $product->category_id = $request->input('category');
         $product->vendor = $request->input('vendor');
         $product->unit_price = $request->input('price');

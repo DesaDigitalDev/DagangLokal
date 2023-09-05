@@ -30,6 +30,11 @@
             </a>
         </div>
         <div id="collapseOne" class="collapse">
+            <a href="{{ route('barangAdminGagal') }}">
+                <span>Tidak Lolos</span>
+            </a>
+        </div>
+        <div id="collapseOne" class="collapse">
             <a href="{{ route('barangAdminDone') }}">
                 <span>Selesai</span>
             </a>

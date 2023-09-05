@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('List Barang') }}
+            {{ __('List Barang On Proses') }}
         </h2>
         <style>
             .link_name {
@@ -25,9 +25,9 @@
 
     <div class="card shadow mb-4">
         <div class="card-body">
-            <x-primary-button class="ml-4" onclick="window.location='{{ route('barang.create') }}'">
-                {{ __('Tambah Produk') }}
-            </x-primary-button>
+            {{-- <x-primary-button class="ml-4" onclick="window.location='{{ route('barang.create') }}'">
+                {{ __('Tambah Data') }}
+            </x-primary-button> --}}
             <!-- tabel -->
             <div class="mt-3 table-responsive" style="text-align: center">
                 <table class="table table-sm table-bordered table-striped">
@@ -37,13 +37,8 @@
                             <th style="min-width: 100px">Nama Perusahaan</th>
                             <th style="min-width: 100px">Nama Produk</th>
                             <th style="min-width: 100px">Kategori</th>
-                            <th style="min-width: 120px">Harga</th>
-                            {{-- <th style="min-width: 100px">Berat</th> --}}
-                            <th style="min-width: 100px">No. P-IRT</th>
-                            <th style="min-width: 100px">No. Serfitikat Halal</th>
-                            {{-- <th style="min-width: 100px">BPOM</th>
-                            <th style="min-width: 100px">Deskripsi</th> --}}
-                            {{-- <th style="min-width: 100px">Aksi</th> --}}
+                            <th style="min-width: 100px">Tanggal</th>
+                            <th style="min-width: 100px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,27 +46,14 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->vendor }}</td>
-                                <td>
-                                    <a href="{{ route('tracking_product', $item->id) }}" class="link_name">
-                                        {{ $item->name }} </a>
-                                </td>
+                                <td>{{ $item->name }} </td>
                                 <td>{{ $item->category_name }}</td>
-                                <td>Rp.{{ number_format($item->unit_price / 1, 2) }} </td>
-                                {{-- <td>{{ $item->unit_weight }}</td> --}}
-                                <td>{{ $item->no_pirt }}</td>
-                                <td>{{ $item->no_sertifikat_halal }}</td>
-                                {{-- <td>{{ $item->bpom_no }}</td>
-                                <td>{{ $item->description }}</td> --}}
-                                {{-- <td>
-                                    <form action="{{ route('barang.destroy', $item->id) }}" method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button onclick="return confirm('Hapus Data Barang ?')"
-                                            class="btn btn-sm btn-danger">
-                                            <i class="fa fa-trash"></i>Hapus
-                                        </button>
-                                    </form>
-                                </td> --}}
+                                <td>{{ date('d-m-Y H:i', strtotime($item->created_at)) }}</td>
+                                <td>
+                                    <a href="{{ route('barangDetail', $item->id) }}" class="btn btn-sm btn-warning">
+                                        <i class="fa fa-info-circle"></i> Detail
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
 

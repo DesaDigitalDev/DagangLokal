@@ -29,6 +29,11 @@
                 <input type="text" id="vendor" value="{{ $product->vendor }}" name="vendor"
                     class="form-control shadow bg-white rounded">
             </div>
+            <div class="col-12 mt-4 hidden">
+                <label for="inputnamaproduk" class="form-label">Progress</label>
+                <input type="text" id="vendor" value="1" name="progress_id"
+                    class="form-control shadow bg-white rounded">
+            </div>
             <div class="col-12 mt-4">
                 <label for="inputnamaproduk" class="form-label">Nama Produk</label>
                 <input type="text" id="name" name="name" value="{{ $product->name }}"

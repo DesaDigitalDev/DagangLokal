@@ -40,6 +40,19 @@ class BarangController extends Controller
             ->with('progress', $progress);
     }
 
+    public function indexGagal()
+    {
+        $product = DB::table('products AS p')
+            ->join('categories AS c', 'c.id', '=', 'p.category_id')
+            ->select('p.*', 'c.name as category_name')
+            ->whereIn('p.progress_id', [5, 6])->get();
+        $progress = DB::table('products AS p')
+            ->join('progress AS pr', 'pr.id', '=', 'p.progress_id')
+            ->select('p.*', 'pr.id as progress_id', 'p.progress_id as p_id', 'pr.name as progress_name')->get();
+        return view('admin.barangGagal')->with('product', $product)
+            ->with('progress', $progress);
+    }
+
     public function indexDone()
     {
         $product = DB::table('products AS p')

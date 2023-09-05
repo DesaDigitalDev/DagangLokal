@@ -88,9 +88,12 @@
                                 <th style="vertical-align: top">Gambar</th>
                                 <td style="align-items: center">
                                     <div class="d-flex">
+                                        <?php $count = 0; ?>
                                         @foreach ($productPicture as $item)
-                                            <img src="{{ asset('images/' . $item->link) }}" class="rounded"
-                                                style="width: 350px">
+                                            <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal{{ $count }}">
+                                                <img src="{{ asset('images/' . $item->link) }}" class="rounded"
+                                                    style="width: 350px">
                                             </button>
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal{{ $count }}" tabindex="-1"
@@ -140,7 +143,7 @@
                 const selectedValue = this.value;
                 console.log('Selected value:', selectedValue);
 
-                if (selectedValue === '3' || selectedValue === '4' || selectedValue === '6') {
+                if (selectedValue === '3' || selectedValue === '5' || selectedValue === '6') {
                     hideTargetElement.classList.remove('d-none');
                 } else {
                     hideTargetElement.classList.add('d-none');
