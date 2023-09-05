@@ -96,7 +96,7 @@
                                 </td>
                             </tr>
                             @foreach ($product as $item)
-                                <tr class="hide-target @if ($item->progress_id != '4') d-none @endif">
+                                <tr class="hide-target @if ($item->notes == null) d-none @endif">
                                     <th style="vertical-align: top">Notes</th>
                                     <td style="align-items: center"> 
                                         <div class="input-group">
@@ -122,7 +122,7 @@
                 const selectedValue = this.value;
                 console.log('Selected value:', selectedValue);
 
-                if (selectedValue === '3' || selectedValue === '4' || selectedValue === '6') {
+                if (selectedValue === '3' || selectedValue === '5' || selectedValue === '6') {
                     hideTargetElement.classList.remove('d-none');
                 } else {
                     hideTargetElement.classList.add('d-none');
