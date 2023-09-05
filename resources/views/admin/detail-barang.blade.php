@@ -91,6 +91,24 @@
                                         @foreach ($productPicture as $item)
                                             <img src="{{ asset('images/' . $item->link) }}" class="rounded"
                                                 style="width: 350px">
+                                            </button>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal{{ $count }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-xl">
+                                                    <div class="modal-content ">
+                                                        <div class="modal-body">
+                                                            <img src="{{ asset('images/' . $item->link) }}"
+                                                                class="rounded">
+                                                        </div>
+                                                        <div class="modal-footer" style="padding: 0px">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php $count++; ?>
                                         @endforeach
                                     </div>
                                 </td>
@@ -98,11 +116,11 @@
                             @foreach ($product as $item)
                                 <tr class="hide-target @if ($item->progress_id != '4') d-none @endif">
                                     <th style="vertical-align: top">Notes</th>
-                                    <td style="align-items: center"> 
+                                    <td style="align-items: center">
                                         <div class="input-group">
                                             <label for="notes"></label>
-                                            <textarea class="form-control" id="notes" name="notes" aria-label="With textarea" 
-                                            placeholder="Masukkan catatan..."  value="{{ old('notes') }}" rows="5" >{{ $item->notes }}</textarea>
+                                            <textarea class="form-control" id="notes" name="notes" aria-label="With textarea"
+                                                placeholder="Masukkan catatan..." value="{{ old('notes') }}" rows="5">{{ $item->notes }}</textarea>
                                         </div>
                                     </td>
                                 </tr>
