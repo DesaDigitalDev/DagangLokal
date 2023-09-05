@@ -122,10 +122,10 @@
                 const selectedValue = this.value;
                 console.log('Selected value:', selectedValue);
 
-                if (selectedValue === '1' || selectedValue === '2' || selectedValue === '3') {
-                    hideTargetElement.classList.add('d-none');
-                } else {
+                if (selectedValue === '3' || selectedValue === '4' || selectedValue === '6') {
                     hideTargetElement.classList.remove('d-none');
+                } else {
+                    hideTargetElement.classList.add('d-none');
                 }
             });
         });

@@ -113,13 +113,13 @@ class BarangController extends Controller
         $product = Product::find($id);
         $product->progress_id = $request->input('progres');
 
-        if($product->progress_id == '4') {
+        if($product->progress_id == '3' || $product->progress_id == '4' || $product->progress_id == '6') {
             $product->notes = $request->input('notes');
         }
         else {
             $product->notes = null;
         }
-        
+
         $product->update();
 
         return back();
