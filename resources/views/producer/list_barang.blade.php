@@ -37,7 +37,7 @@
                             <th style="min-width: 100px">Nama Perusahaan</th>
                             <th style="min-width: 100px">Nama Produk</th>
                             <th style="min-width: 100px">Kategori</th>
-                            <th style="min-width: 100px">Harga</th>
+                            <th style="min-width: 120px">Harga</th>
                             {{-- <th style="min-width: 100px">Berat</th> --}}
                             <th style="min-width: 100px">No. P-IRT</th>
                             <th style="min-width: 100px">No. Serfitikat Halal</th>
@@ -56,7 +56,7 @@
                                         {{ $item->name }} </a>
                                 </td>
                                 <td>{{ $item->category_name }}</td>
-                                <td>{{ $item->unit_price }}</td>
+                                <td>Rp.{{ number_format($item->unit_price / 1, 2) }} </td>
                                 {{-- <td>{{ $item->unit_weight }}</td> --}}
                                 <td>{{ $item->no_pirt }}</td>
                                 <td>{{ $item->no_sertifikat_halal }}</td>
