@@ -66,7 +66,7 @@ class BarangController extends Controller
             ->join('products as p', 'p.id', '=', 'pp.product_id')
             ->select('pp.*', 'p.id')
             ->where('p.id', $id)->get();
-        
+
         return view('admin.detail-barang')->with('product', $product)
             ->with('progress', $progress)
             ->with('productprogress', $productprogress)

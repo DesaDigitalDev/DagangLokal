@@ -63,9 +63,6 @@
                                 {{-- <td>{{ $item->bpom_no }}</td>
                                 <td>{{ $item->description }}</td> --}}
                                 <td>
-                                    <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-sm btn-warning">
-                                        <i class="fa fa-edit"></i> Edit
-                                    </a>
                                     <form action="{{ route('barang.destroy', $item->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
