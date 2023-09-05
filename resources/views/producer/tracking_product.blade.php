@@ -1,15 +1,10 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tracking Product') }}
-        </h2>
-    </x-slot>
     <!-- UniIcon CDN Link  -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <style>
         .main-progress {
             width: 100%;
-            height: 650px;
+            padding-top: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -198,6 +193,11 @@
             }
         }
     </style>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Tracking Product') }}
+        </h2>
+    </x-slot>
     <div class="main-progress">
         <div class="first-col">
             <div class="head-prog">
@@ -212,11 +212,12 @@
                         @if ($progress->id == 1)
                             <i class="icon uil {{ $icons[0] }}"></i>
                             @if ($product->progress_id == 5)
-                                <div class="{{ $product->progress_id >= $progress->id ? 'active' : '' }} progress one">
+                                <div style="background-color: #833000;"
+                                    class="{{ $product->progress_id >= $progress->id ? 'active' : '' }} progress one">
                                     <p style="padding-top: 5px">{{ $index + 1 }}</p>
-                                    <i class="uil uil-feedback"></i>
+                                    <i class="uil uil-times"></i>
                                 </div>
-                                <p class="text">{{ $progress->name }}</p>
+                                <p class="text">{{ $currentProgress->name }}</p>
                             @else
                                 <div class="{{ $product->progress_id >= $progress->id ? 'active' : '' }} progress one">
                                     <p style="padding-top: 5px">{{ $index + 1 }}</p>
@@ -242,11 +243,12 @@
                         @elseif ($progress->id == 3)
                             <i class="icon uil {{ $icons[2] }}"></i>
                             @if ($product->progress_id == 6)
-                                <div class="{{ $product->progress_id >= $progress->id ? 'active' : '' }} progress one">
+                                <div style="background-color: #833000;"
+                                    class="{{ $product->progress_id >= $progress->id ? 'active' : '' }} progress one">
                                     <p style="padding-top: 5px">{{ $index + 1 }}</p>
-                                    <i class="uil uil-feedback"></i>
+                                    <i class="uil uil-times"></i>
                                 </div>
-                                <p class="text">{{ $progress->name }}</p>
+                                <p class="text">{{ $currentProgress->name }}</p>
                             @else
                                 @if ($product->progress_id == 5 or $product->progress_id == 6)
                                     <div
