@@ -89,9 +89,33 @@
                             <th style="vertical-align: top">Gambar</th>
                             <td style="align-items: center">
                                 <div class="d-flex">
+                                    <?php $count = 0; ?>
                                     @foreach ($productPicture as $item)
-                                        <img src="{{ asset('images/' . $item->link) }}" class="rounded"
-                                            style="width: 350px">
+                                        {{-- <img src="{{ asset('images/' . $item->link) }}" class="rounded"
+                                            style="width: 350px"> --}}
+                                        <!-- Button trigger modal -->
+                                        <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal{{ $count }}">
+                                            <img src="{{ asset('images/' . $item->link) }}" class="rounded"
+                                                style="width: 350px">
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal{{ $count }}" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-xl">
+                                                <div class="modal-content ">
+                                                    <div class="modal-body">
+                                                        <img src="{{ asset('images/' . $item->link) }}"
+                                                            class="rounded">
+                                                    </div>
+                                                    <div class="modal-footer" style="padding: 0px">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php $count++; ?>
                                     @endforeach
                                 </div>
                             </td>

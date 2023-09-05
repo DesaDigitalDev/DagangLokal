@@ -102,6 +102,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $count = 0; ?>
                             @foreach ($dtHistory as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -119,22 +120,21 @@
                                     <td>Rp.{{ number_format($item->amount / 1, 2) }}</td>
                                     <td>{{ $item->transaction_no }}</td>
                                     <td>
-                                        <img src="{{ asset($item->image) }}"
-                                            class="img-thumbnail {{ empty($item->image) ? 'd-none' : '' }}"
-                                            style="width:100px" />
-                                        {{-- <!-- Button trigger modal -->
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                                        <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal{{ $count }}">
                                             <img src="{{ asset($item->image) }}"
                                                 class="img-thumbnail {{ empty($item->image) ? 'd-none' : '' }}"
                                                 style="width:100px" />
                                         </button>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal{{ $count }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-xl">
                                                 <div class="modal-content ">
                                                     <div class="modal-body">
-                                                        <img src="{{ asset($item->image) }}" class="img-thumbnail" />
+                                                        <img src="{{ asset($item->image) }}"
+                                                            class="img-thumbnail {{ empty($item->image) ? 'd-none' : '' }}" />
                                                     </div>
                                                     <div class="modal-footer" style="padding: 0px">
                                                         <button type="button" class="btn btn-secondary"
@@ -142,7 +142,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </td>
                                     <td>
                                         {{-- <a href="{{ route('keuangan.edit', $item->id) }}"
@@ -172,6 +172,7 @@
                                         @endif
                                     </td>
                                 </tr>
+                                <?php $count++; ?>
                             @endforeach
                         </tbody>
                     </table>
