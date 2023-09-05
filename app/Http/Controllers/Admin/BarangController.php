@@ -66,6 +66,7 @@ class BarangController extends Controller
             ->join('products as p', 'p.id', '=', 'pp.product_id')
             ->select('pp.*', 'p.id')
             ->where('p.id', $id)->get();
+        
         return view('admin.detail-barang')->with('product', $product)
             ->with('progress', $progress)
             ->with('productprogress', $productprogress)
@@ -111,7 +112,16 @@ class BarangController extends Controller
     {
         $product = Product::find($id);
         $product->progress_id = $request->input('progres');
+
+        if($product->progress_id == '4') {
+            $product->notes = $request->input('notes');
+        }
+        else {
+            $product->notes = null;
+        }
+        
         $product->update();
+
         return back();
     }
 

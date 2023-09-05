@@ -1,5 +1,5 @@
 <div class="col-12 col-sm-6 col-md-3 col-lg-2 g-2">
-    <div div class="card card-clicked" data-card-id="{{ $item->id }}" style="cursor: pointer">
+    <div class="card card-clicked" data-card-id="{{ $item->id }}" style="cursor: pointer">
         <img src="{{ asset('images/' . $item->link) }}"  class="card-img-top" style="" alt="{{ $item->name }}">
         <div class="card-body">
             <div class="card-title">{{ $item->name }}</div>
