@@ -14,18 +14,42 @@ class ProgressSeeder extends Seeder
     public function run(): void
     {
         DB::table('Progress')->insert([
-            ['name' => 'Pengiriman Informasi Produk',
-            'created_at'  =>date('Y-m-d H:i:s'),
-            'updated_at'  =>date('Y-m-d H:i:s')],
-            ['name' => 'Pengiriman Produk',
-            'created_at'  =>date('Y-m-d H:i:s'),
-            'updated_at'  =>date('Y-m-d H:i:s')],
-            ['name' => 'Testing Produk',
-            'created_at'  =>date('Y-m-d H:i:s'),
-            'updated_at'  =>date('Y-m-d H:i:s')],
-            ['name' => 'Sukses',
-            'created_at'  =>date('Y-m-d H:i:s'),
-            'updated_at'  =>date('Y-m-d H:i:s')],
+            [
+                'name' => 'Verifikasi Berkas',
+                'description' => 'Selamat, berkas anda sudah memenuhi persyaratan.',
+                'created_at'  => date('Y-m-d H:i:s'),
+                'updated_at'  => date('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Sedang Dikurasi',
+                'description' => 'Produk anda sedang dikurasi oleh tim kami.',
+                'created_at'  => date('Y-m-d H:i:s'),
+                'updated_at'  => date('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Feedback',
+                'description' => 'Produk anda sudah selesai dikurasi, tim kami akan menghubungi anda.',
+                'created_at'  => date('Y-m-d H:i:s'),
+                'updated_at'  => date('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Selesai',
+                'description' => 'SELAMAT, produk anda berhasil diverifikasi..',
+                'created_at'  => date('Y-m-d H:i:s'),
+                'updated_at'  => date('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Tidak Lolos Berkas',
+                'description' => 'Mohon maaf, berkas anda belum memenuhi persyaratan.',
+                'created_at'  => date('Y-m-d H:i:s'),
+                'updated_at'  => date('Y-m-d H:i:s')
+            ],
+            [
+                'name' => 'Feedback Tidak Lolos',
+                'description' => 'Produk anda sudah selesai dikurasi, tim kami akan menghubungi anda.',
+                'created_at'  => date('Y-m-d H:i:s'),
+                'updated_at'  => date('Y-m-d H:i:s')
+            ],
         ]);
     }
 }
