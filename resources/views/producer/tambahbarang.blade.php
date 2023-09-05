@@ -51,7 +51,7 @@
 
 
             <div class="col-12 mt-4">
-                <label for="inputnamaproduk" class="form-label">Harga Produk</label>
+                <label for="inputnamaproduk" class="form-label">HPP (Harga Per Produk)</label>
                 <input type="text" id="price required" name="price" type="number"
                     class="form-control shadow bg-white rounded">
             </div>

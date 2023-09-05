@@ -34,9 +34,9 @@
                 <input type="text" id="name" name="name" value="{{ $product->name }}"
                     class="form-control shadow bg-white rounded">
             </div>
-            <div class="col-md-4">
+            <div class="col-12 mt-4">
                 <label for="inputState" class="form-label">Kategori</label>
-                <select id="inputState" id="category" name="category" class="form-select shadow bg-white rounded">
+                <select class="custom-select" id="category" name="category">
                     <option>Pilih...</option>
                     @foreach ($category as $item)
                         <option value="{{ $item->id }}" {{ $item->id == $product->category_id ? 'selected' : '' }}>
@@ -45,7 +45,7 @@
                 </select>
             </div>
             <div class="col-12 mt-4">
-                <label for="inputnamaproduk" class="form-label">Harga Produk</label>
+                <label for="inputnamaproduk" class="form-label">HPP (Harga Per Produk)</label>
                 <input type="text" id="price" name="price" value="{{ $product->unit_price }}"
                     class="form-control shadow bg-white rounded">
             </div>

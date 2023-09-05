@@ -292,11 +292,21 @@
                 @endforeach
             </ul-progress>
         </div>
+
+
         <div class="container second-col">
             <p class="head-progress-name">{{ $currentProgress->name }}</p>
             <p class="dt-progress">{{ $currentProgress->updated_at }}</p>
-            <p class="head-progress-des">{{ $currentProgress->description }}</p><br>
-            <p class="gjobb"><strong>Good Job!</strong></p>
+            <p class="head-progress-des">{{ $currentProgress->description }}</p>
         </div>
+        <div class="container second-col" style="margin-top: -15px">
+            <p class="head-progress-name">Notes</p>
+            <p class="head-progress-des">{{ $product->notes }}</p>
+            <p>Untuk memperbaiki informasi produk silahkan <a class="btn btn-info"
+                    href="{{ route('barang.edit', $product->id) }}">klik sini</a>
+            </p>
+            <p class="gjobb"><strong>Terima kasih!</strong></p>
+        </div>
+
     </div>
 </x-app-layout>

@@ -42,88 +42,92 @@
                                     </x-primary-button>
                                 </td>
                             </tr>
-                        </form>
-                        @foreach ($product as $item)
+                            @foreach ($product as $item)
+                                <tr>
+                                    <th>Nama Perusahaan</th>
+                                    <td>{{ $item->vendor }}</td>
+                                </tr>
+                                <tr>
+                                    <th>No. Telepon</th>
+                                    <td>{{ $item->no_hp }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nama Produk</th>
+                                    <td>{{ $item->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Kategori</th>
+                                    <td>{{ $item->category_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Harga</th>
+                                    <td>{{ $item->unit_price }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Berat</th>
+                                    <td>{{ $item->unit_weight }}</td>
+                                </tr>
+                                <tr>
+                                    <th>No. P-IRT</th>
+                                    <td>{{ $item->no_pirt }}</td>
+                                </tr>
+                                <tr>
+                                    <th>No. Sertifikat Halal</th>
+                                    <td>{{ $item->no_sertifikat_halal }}</td>
+                                </tr>
+                                <tr>
+                                    <th>BPOM</th>
+                                    <td>{{ $item->bpom_no }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Deskripsi</th>
+                                    <td>{{ $item->description }}</td>
+                                </tr>
+                            @endforeach
                             <tr>
-                                <th>Nama Perusahaan</th>
-                                <td>{{ $item->vendor }}</td>
-                            </tr>
-                            <tr>
-                                <th>No. Telepon</th>
-                                <td>{{ $item->no_hp }}</td>
-                            </tr>
-                            <tr>
-                                <th>Nama Produk</th>
-                                <td>{{ $item->name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Kategori</th>
-                                <td>{{ $item->category_name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Harga</th>
-                                <td>{{ $item->unit_price }}</td>
-                            </tr>
-                            <tr>
-                                <th>Berat</th>
-                                <td>{{ $item->unit_weight }}</td>
-                            </tr>
-                            <tr>
-                                <th>No. P-IRT</th>
-                                <td>{{ $item->no_pirt }}</td>
-                            </tr>
-                            <tr>
-                                <th>No. Sertifikat Halal</th>
-                                <td>{{ $item->no_sertifikat_halal }}</td>
-                            </tr>
-                            <tr>
-                                <th>BPOM</th>
-                                <td>{{ $item->bpom_no }}</td>
-                            </tr>
-                            <tr>
-                                <th>Deskripsi</th>
-                                <td>{{ $item->description }}</td>
-                            </tr>
-                        @endforeach
-                        <tr>
-                            <th style="vertical-align: top">Gambar</th>
-                            <td style="align-items: center">
-                                <div class="d-flex">
-                                    <?php $count = 0; ?>
-                                    @foreach ($productPicture as $item)
-                                        {{-- <img src="{{ asset('images/' . $item->link) }}" class="rounded"
-                                            style="width: 350px"> --}}
-                                        <!-- Button trigger modal -->
-                                        <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal{{ $count }}">
+                                <th style="vertical-align: top">Gambar</th>
+                                <td style="align-items: center">
+                                    <div class="d-flex">
+                                        @foreach ($productPicture as $item)
                                             <img src="{{ asset('images/' . $item->link) }}" class="rounded"
                                                 style="width: 350px">
-                                        </button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal{{ $count }}" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-xl">
-                                                <div class="modal-content ">
-                                                    <div class="modal-body">
-                                                        <img src="{{ asset('images/' . $item->link) }}"
-                                                            class="rounded">
-                                                    </div>
-                                                    <div class="modal-footer" style="padding: 0px">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                            @foreach ($product as $item)
+                                <tr class="hide-target @if ($item->progress_id != '4') d-none @endif">
+                                    <th style="vertical-align: top">Notes</th>
+                                    <td style="align-items: center"> 
+                                        <div class="input-group">
+                                            <label for="notes"></label>
+                                            <textarea class="form-control" id="notes" name="notes" aria-label="With textarea" 
+                                            placeholder="Masukkan catatan..."  value="{{ old('notes') }}" rows="5" >{{ $item->notes }}</textarea>
                                         </div>
-                                        <?php $count++; ?>
-                                    @endforeach
-                                </div>
-                            </td>
-                        </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </form>
                     </thead>
                 </table>
             </div>
         </div>
     </div>
+    <script>
+        const hideTargetElement = document.querySelector('.hide-target');
+        const inputState = document.getElementById('progres');
 
+        document.addEventListener('DOMContentLoaded', function() {
+            inputState.addEventListener('change', function() {
+                const selectedValue = this.value;
+                console.log('Selected value:', selectedValue);
+
+                if (selectedValue === '3' || selectedValue === '4' || selectedValue === '6') {
+                    hideTargetElement.classList.remove('d-none');
+                } else {
+                    hideTargetElement.classList.add('d-none');
+                }
+            });
+        });
+    </script>
 </x-app-layout>
