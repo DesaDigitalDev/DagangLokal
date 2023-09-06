@@ -91,13 +91,13 @@
                         <thead>
                             <tr>
                                 <th style="min-width: 60px">No</th>
-                                <th style="min-width: 200px">Status Transaksi</th>
-                                <th style="min-width: 200px">Jenis Transaksi</th>
+                                <th style="min-width: 70px">Status</th>
+                                <th style="min-width: 150px">Jenis Transaksi</th>
                                 <th style="min-width: 200px">Bank Tujuan</th>
-                                <th style="min-width: 200px">Tanggal Transasksi</th>
-                                <th style="min-width: 200px">Jumlah</th>
-                                <th style="min-width: 200px">Transaksi No.</th>
-                                <th style="min-width: 200px">Bukti Transfer</th>
+                                <th style="min-width: 165px">Tanggal Transasksi</th>
+                                <th style="min-width: 180px">Jumlah</th>
+                                <th style="min-width: 160px">Transaksi No.</th>
+                                <th style="min-width: 165px">Bukti Transfer</th>
                                 <th style="min-width: 165px">Aksi</th>
                             </tr>
                         </thead>
@@ -159,6 +159,7 @@
                                                     <i class="fa fa-trash"></i>Batalkan
                                                 </button>
                                             </form>
+                                            <strong>Sukses</strong>
                                         @else
                                             <form action="{{ route('keuangan.destroy', $item->id) }}" method="POST">
                                                 @method('DELETE')
