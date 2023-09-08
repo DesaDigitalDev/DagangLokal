@@ -43,6 +43,18 @@
                                 </td>
                             </tr>
                             @foreach ($product as $item)
+                                <tr class="hide-target @if ($item->progress_id != '4') d-none @endif">
+                                    <th style="vertical-align: top">Notes</th>
+                                    <td style="align-items: center">
+                                        <div class="input-group">
+                                            <label for="notes"></label>
+                                            <textarea class="form-control" id="notes" name="notes" aria-label="With textarea"
+                                                placeholder="Masukkan catatan..." value="{{ old('notes') }}" rows="5">{{ $item->notes }}</textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            @foreach ($product as $item)
                                 <tr>
                                     <th>Nama Perusahaan</th>
                                     <td>{{ $item->vendor }}</td>
@@ -116,18 +128,6 @@
                                     </div>
                                 </td>
                             </tr>
-                            @foreach ($product as $item)
-                                <tr class="hide-target @if ($item->progress_id != '4') d-none @endif">
-                                    <th style="vertical-align: top">Notes</th>
-                                    <td style="align-items: center">
-                                        <div class="input-group">
-                                            <label for="notes"></label>
-                                            <textarea class="form-control" id="notes" name="notes" aria-label="With textarea"
-                                                placeholder="Masukkan catatan..." value="{{ old('notes') }}" rows="5">{{ $item->notes }}</textarea>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
                         </form>
                     </thead>
                 </table>

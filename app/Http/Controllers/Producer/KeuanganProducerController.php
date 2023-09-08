@@ -29,7 +29,7 @@ class KeuanganProducerController extends Controller
             ->get();
         $dtSaldo = UserBalance::where('user_id', Auth::id())->first();
         $dtTrxUser = Transactionhistory::all()->where('user_id', Auth::id())->count();
-        $dtTrxUserTotal = $dtHistory->sum('amount');
+        $dtTrxUserTotal = $dtHistory->where('transaction_type_id', 1)->sum('amount');
         return view('producer.keuangan')->with('dtHistory', $dtHistory)
             ->with('dtSaldo', $dtSaldo)
             ->with('dtTrxUser', $dtTrxUser)
@@ -77,7 +77,13 @@ class KeuanganProducerController extends Controller
     public function store(Request $request)
     {
         $userBalance = UserBalance::where('user_id', Auth::id())->first();
-        if ($userBalance->balance >= floatval($request->jumTransaksi)) {
+        if ($request->tipeTransaksi == 2 and is_null($userBalance)) {
+            $Balance = userBalance::create([
+                'user_id' => Auth::id(),
+                'balance' => 0,
+            ]);
+            $Balance->save();
+
             $thnBln = date('Ym');
             $cek = TransactionHistory::count();
             $inv = TransactionHistory::orderby('created_at', 'desc')->first();
@@ -91,7 +97,7 @@ class KeuanganProducerController extends Controller
             $transactionHistory = TransactionHistory::create([
                 'transaction_type_id' => $request->tipeTransaksi,
                 'bank_account_id' => $request->akunBank,
-                'user_balance_id' => $request->saldo,
+                'user_balance_id' => $Balance->id,
                 'user_id' => Auth::id(),
                 'transaction_no' => $invoice,
                 'date_time' => date('Y-m-d'),
@@ -110,18 +116,90 @@ class KeuanganProducerController extends Controller
             } else {
                 $transactionHistory->image = null;
             }
-
-            $updateBalance = UserBalance::find($userBalance->id);
-            if ($request->tipeTransaksi == 1) {
-                $balanceNow = $userBalance->balance - $request->jumTransaksi;
-                $updateBalance->balance = $balanceNow;
-                $updateBalance->update();
-            } else {
-                $transactionHistory->save();
-            }
+            $transactionHistory->save();
             return redirect('producer/keuangan');
         } else {
-            return redirect('producer/keuangan')->with('alert', 'Data gagal ditambahkan, jumlah transaksi melebihi saldo anda');
+            if ($request->tipeTransaksi == 2) {
+                $thnBln = date('Ym');
+                $cek = TransactionHistory::count();
+                $inv = TransactionHistory::orderby('created_at', 'desc')->first();
+                if ($cek == 0) {
+                    $urut = 1;
+                } else {
+                    $urut = $inv->id + 1;
+                }
+                $invoice = 'INV' . $thnBln . $urut;
+
+                $transactionHistory = TransactionHistory::create([
+                    'transaction_type_id' => $request->tipeTransaksi,
+                    'bank_account_id' => $request->akunBank,
+                    'user_balance_id' => $request->saldo,
+                    'user_id' => Auth::id(),
+                    'transaction_no' => $invoice,
+                    'date_time' => date('Y-m-d'),
+                    'amount' => $request->jumTransaksi,
+                    'status_transaction' => $request->statustranssaksi,
+                    'image' => $request->image,
+                ]);
+
+                if ($request->image != null) {
+                    $namaFile = time() . '_' . $request->image->getClientOriginalName();
+                    // $uploadedImage = $request->image->move(public_path('images'), $namaFile);
+                    $request->image->move(public_path('images'), $namaFile);
+                    $imagePath = 'images/' . $namaFile;
+
+                    $transactionHistory->image = $imagePath;
+                } else {
+                    $transactionHistory->image = null;
+                }
+                $transactionHistory->save();
+                return redirect('producer/keuangan');
+            } elseif ($request->tipeTransaksi == 1 and $userBalance->balance >= floatval($request->jumTransaksi)) {
+                $thnBln = date('Ym');
+                $cek = TransactionHistory::count();
+                $inv = TransactionHistory::orderby('created_at', 'desc')->first();
+                if ($cek == 0) {
+                    $urut = 1;
+                } else {
+                    $urut = $inv->id + 1;
+                }
+                $invoice = 'INV' . $thnBln . $urut;
+
+                $transactionHistory = TransactionHistory::create([
+                    'transaction_type_id' => $request->tipeTransaksi,
+                    'bank_account_id' => $request->akunBank,
+                    'user_balance_id' => $request->saldo,
+                    'user_id' => Auth::id(),
+                    'transaction_no' => $invoice,
+                    'date_time' => date('Y-m-d'),
+                    'amount' => $request->jumTransaksi,
+                    'status_transaction' => $request->statustranssaksi,
+                    'image' => $request->image,
+                ]);
+
+                if ($request->image != null) {
+                    $namaFile = time() . '_' . $request->image->getClientOriginalName();
+                    // $uploadedImage = $request->image->move(public_path('images'), $namaFile);
+                    $request->image->move(public_path('images'), $namaFile);
+                    $imagePath = 'images/' . $namaFile;
+
+                    $transactionHistory->image = $imagePath;
+                } else {
+                    $transactionHistory->image = null;
+                }
+
+                $updateBalance = UserBalance::find($userBalance->id);
+                if ($request->tipeTransaksi == 1) {
+                    $balanceNow = $userBalance->balance - $request->jumTransaksi;
+                    $updateBalance->balance = $balanceNow;
+                    $updateBalance->update();
+                } else {
+                    $transactionHistory->save();
+                }
+                return redirect('producer/keuangan');
+            } else {
+                return redirect('producer/keuangan')->with('alert', 'Data gagal ditambahkan, jumlah transaksi melebihi saldo anda');
+            }
         }
     }
 
